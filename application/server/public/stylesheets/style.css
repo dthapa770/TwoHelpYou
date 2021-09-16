@@ -2,9 +2,6 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #ffd900;
-  position:relative;
-  top: 180px;
-  bottom: 20px;
 }
 
 a.button:hover {
@@ -17,8 +14,6 @@ a.button:hover {
 
 .header {
   position:relative;
-  top:0;
-  left:0;
   width: 100%;
   padding: 10px;
   text-align: left;
@@ -29,16 +24,12 @@ a.button:hover {
 
 .body{
   position:relative;
-  top: 20px;
   padding: 10px;
   bottom: 20px;
 }
 
 .bottomHeader {
   position:relative;
-  top: 1000 px;
-  bottom:0;
-  left:0;
   width: 100%;
   padding: 10px;
   text-align: left;
