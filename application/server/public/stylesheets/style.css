@@ -1,16 +1,41 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #ffd900;
 }
 
 a {
-  color: #00B7FF;
+  color: #fafafa;
+  text-decoration: none
 }
 
 .header {
-  padding: 20px;
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  padding: 10px;
   text-align: left;
   background: #310944;
   color: white;
   font-size: 30px;
 }
+
+.body{
+  position:relative;
+  top: 180px;
+  padding: 10px;
+}
+
+.bottomHeader {
+  position:absolute;
+  bottom:0;
+  left:0;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  background: #310944;
+  color: white;
+  font-size: 20px;
+}
+
