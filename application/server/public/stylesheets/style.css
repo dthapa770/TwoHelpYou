@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.header {
+  padding: 20px;
+  text-align: left;
+  background: #310944;
+  color: white;
+  font-size: 30px;
+}
