@@ -2,15 +2,25 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #ffd900;
+  position:relative;
+  top: 180px;
+  bottom: 20px;
 }
 
-a {
+a.button:hover {
+  color: initial;
+  text-decoration: none
+  background-color: #4CAF50;
+  color: white;
+}
+}
+a1{
   color: #fafafa;
   text-decoration: none
 }
 
 .header {
-  position:absolute;
+  position:relative;
   top:0;
   left:0;
   width: 100%;
@@ -23,12 +33,14 @@ a {
 
 .body{
   position:relative;
-  top: 180px;
+  top: 20px;
   padding: 10px;
+  bottom: 20px;
 }
 
 .bottomHeader {
-  position:absolute;
+  position:relative;
+  top: 1000 px;
   bottom:0;
   left:0;
   width: 100%;
@@ -39,3 +51,19 @@ a {
   font-size: 20px;
 }
 
+.button {
+  color: purple;
+  border: none;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  background: grey;
+  transition-duration: 0.4s;
+}
+.button:hover {
+  background-color: yellow;
+  color: white;
+}
