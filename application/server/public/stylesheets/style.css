@@ -1,7 +1,5 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #ffd900;
+
 }
 
 a.button:hover {
@@ -24,8 +22,10 @@ a.button:hover {
 
 .body{
   position:relative;
-  padding: 10px;
-  bottom: 20px;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #ffd900;
+  top: 20 px;
 }
 
 .bottomHeader {
