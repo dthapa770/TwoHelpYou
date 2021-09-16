@@ -9,15 +9,11 @@ body {
 
 a.button:hover {
   color: initial;
-  text-decoration: none
+  text-decoration: none;
   background-color: #4CAF50;
   color: white;
 }
-}
-a1{
-  color: #fafafa;
-  text-decoration: none
-}
+
 
 .header {
   position:relative;
