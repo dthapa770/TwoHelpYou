@@ -7,15 +7,15 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP: 3.17.38.143:3000 
-2. SSH username: ubuntu
-3. SSH password or key: .pem in folder called csc648-team1-fall-2021.pem
+1. Server URL or IP
+2. SSH username
+3. SSH password or key.
     <br> If a ssh key is used please upload the key to the credentials folder.
-4. Database URL or IP and port used. 3.17.38.143:3306
+4. Database URL or IP and port used.
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
-5. Database username: team1
-6. Database password: CSC648Team1!!
-7. Database name (basically the name that contains all your tables) website
+5. Database username
+6. Database password
+7. Database name (basically the name that contains all your tables)
 8. Instructions on how to use the above information.
 
 # Most important things to Remember
