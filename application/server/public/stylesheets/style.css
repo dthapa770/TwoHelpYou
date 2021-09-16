@@ -1,5 +1,7 @@
 body {
-
+  height: 100vh;
+  width: 100vw;
+  background: #ffd900;
 }
 
 a.button:hover {
@@ -31,7 +33,8 @@ a.button:hover {
 .bottomHeader {
   position:relative;
   width: 100%;
-  padding: 10px;
+  height: 100%;
+  padding: 20px;
   text-align: left;
   background: #310944;
   color: white;
