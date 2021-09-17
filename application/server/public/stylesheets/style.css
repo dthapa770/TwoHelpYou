@@ -1,20 +1,24 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #ffd900;
+body{
+  background: #310944;
+  height: 100vh;
+  width: 100vw;
 }
 
-a {
-  color: #fafafa;
-  text-decoration: none
+a.button:hover {
+  color: initial;
+  text-decoration: none;
+  background-color: goldenrod;
+  color: black;
 }
+
 
 .header {
-  position:absolute;
-  top:0;
-  left:0;
-  width: 100%;
+  position:relative;
+  height: 20%;
+  width: 100vw;
   padding: 10px;
+  padding-left: 5vw;
+  padding-top: 0px;
   text-align: left;
   background: #310944;
   color: white;
@@ -23,19 +27,42 @@ a {
 
 .body{
   position:relative;
-  top: 180px;
-  padding: 10px;
+  height: 65%;
+  width: 100vw;
+  padding: 20px;
+  padding-left: 5vw;
+  padding-right: 8vw;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: gold;
+  
 }
 
 .bottomHeader {
-  position:absolute;
-  bottom:0;
-  left:0;
-  width: 100%;
+  position:relative;
+  height: 10%;
+  width: 100vw;
   padding: 10px;
+  padding-left: 5vw;
+  padding-bottom: 20px;
   text-align: left;
   background: #310944;
   color: white;
   font-size: 20px;
 }
 
+.button {
+  color: purple;
+  border: none;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  background: grey;
+  transition-duration: 0.4s;
+}
+.button:hover {
+  background-color: yellow;
+  color: white;
+}
