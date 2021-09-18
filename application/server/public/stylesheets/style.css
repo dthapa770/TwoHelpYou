@@ -46,6 +46,13 @@ a.button:hover {
   
 }
 
+/*to fix the issue when window is not at full screen*/
+@media all and (max-width: 1200px) {
+  .body{
+    height: 50vmax;
+  }
+}
+
 .bottomHeader {
   position:relative;
   height: 5vw;
