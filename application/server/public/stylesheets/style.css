@@ -1,9 +1,12 @@
-body{
-  background: #310944;
+/*body{
+  /*background: #310944;
+  background: white;
   height: 100vh;
-  width: 100vw;
+  /*width: 100vw;
+  width: 85vw;
+  padding-right: 8vw;
 }
-
+*/
 a.button:hover {
   color: initial;
   text-decoration: none;
@@ -15,9 +18,11 @@ a.button:hover {
 .header {
   position:relative;
   height: 20%;
-  width: 100vw;
-  padding: 10px;
+  /*width: 100vw;*/
+  width: 85vw;
+  padding: 20px;
   padding-left: 5vw;
+  padding-right: 8vw;
   padding-top: 0px;
   text-align: left;
   background: #310944;
@@ -27,31 +32,39 @@ a.button:hover {
 
 .body{
   position:relative;
-  height: 65%;
-  width: 100vw;
+  height: 35vw;
+  /*width: 100vw;*/
+  width: 85vw;
   padding: 20px;
   padding-left: 5vw;
   padding-right: 8vw;
+  /*width: 100%;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: gold;
+  /*background: gold;*/
+  background: white;
   
 }
 
 .bottomHeader {
   position:relative;
-  height: 10%;
-  width: 100vw;
+  height: 5vw;
+  /*width: 100vw;*/
+  width: 92vw;
   padding: 10px;
   padding-left: 5vw;
+  padding-right: 20px;
   padding-bottom: 20px;
   text-align: left;
-  background: #310944;
+  /*background: #310944;*/
+  /*background: white;*/
+  background: gold;
   color: white;
   font-size: 20px;
 }
 
 .button {
   color: purple;
+  /*color: rgb(116, 116, 221);*/
   border: none;
   padding: 5px 5px;
   text-align: center;
