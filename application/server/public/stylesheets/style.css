@@ -32,8 +32,9 @@ a.button:hover {
 
 .body{
   position:relative;
-  height: 35vw;
+  /*height: 35vw;
   /*width: 100vw;*/
+  height: 40vmax;
   width: 85vw;
   padding: 20px;
   padding-left: 5vw;
