@@ -1,0 +1,25 @@
+Hello Class CEO and CTO,
+
+Below is a list of the technologies used in Team 1's software stack:
+Server Host: AWS EC2 1vCPU 1GB RAM
+Operating System: Ubuntu 20.04 LTS (HVM) 64-bit x86
+Server Database: MySQL v8.0.26
+Web Server: Node.js v14.17.6           
+Server-Side Language: JavaScript
+Additional Technologies: 
+Web Framework: Express.js v4.16.1/v4.17.1
+IDE: Visual Studio Code
+Web Analytics: Google Analytics
+SSL Cert: Bcrypt v5.0.1
+Express-Handlebars: v5.3.3
+
+Member's Familiarity with Server-Side Language on a scale of 1 to 5, with 5 being very familiar and 1 being never used it.
+Justin Lam: 4
+Aviral Puri: 3
+Dinesh Thapa: 3
+Wesley Xu: 3
+Kurt Resayo: 2
+Chung (Terry) Fong: 2
+ 
+Best,
+Team 1 Justin Lam

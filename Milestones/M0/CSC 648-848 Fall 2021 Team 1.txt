@@ -1,0 +1,13 @@
+Final Email Mockup for Approval :
+Hello Class CEO and CTO
+ 
+Our team has completed Millstone 0 and is ready for grading.
+Link to application: Express or http://3.17.38.143:3000/
+Link to GitHub Repo: CSC-648-SFSU/csc648-03-fa21-team01: csc648-03-fa21-team01 created by GitHub Classroom
+
+Yes our team has correctly populated the credentials folder.
+ 
+If it’s necessary to run the web application for testing purposes, it is important to note that the individual first needs to navigate to the application folder followed by navigating to the server folder before calling the necessary functions to run the web application.
+ 
+Best,
+Team 1 Justin Lam
