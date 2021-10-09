@@ -36,4 +36,12 @@ router.get('/about/Xu', function(req, res, next) {
 }) ;
 //end of router for about page
 
+router.get('/Login', function(req,res,next){
+  res.render('login'), {title: 'Software Engineering Class SFSU'}
+});
+
+router.get('/Register', function(req,res,next){
+  res.render('register'), {title: 'Software Engineering Class SFSU'}
+});
+
 module.exports = router;

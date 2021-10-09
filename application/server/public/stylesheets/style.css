@@ -48,7 +48,19 @@ a.button:hover {
 }
 
 .main-navbar{
+  position:relative;
+  height: 2vw;
+  /*width: 100vw;*/
+  width: 92vw;
+  padding: 10px;
+  padding-top: 15px;
+  padding-left: 5.25vw;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  text-align: center;
   background: #ffdc70;
+  color: white;
+  font-size: 16px;
 }
 
 .main-nav #navbar {
@@ -63,13 +75,11 @@ a.button:hover {
   border: 1px solid transparent;
 }
 
-.navbar-header {
-  
+.navbar-header {  
   float: left;
 }
 
 .container {
-  
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
