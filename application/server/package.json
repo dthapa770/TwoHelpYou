@@ -14,7 +14,8 @@
     "express-handlebars": "^5.3.3",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.13",
+    "react": "^17.0.2",
     "update": "^0.4.2"
   }
 }
