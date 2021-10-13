@@ -1,0 +1,88 @@
+/* whole page */
+
+body {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #565656;
+    background-color: #fff;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr auto;
+    margin: 0;
+  }
+
+  /* header & footer */
+  .cross-screen-row {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  .banner {
+    grid-row: 1;
+    font-size: x-small;
+    background: #186295;
+    color: #ffffff;
+    padding: .5%
+  }
+
+  .site-section {
+    grid-row: 2;
+    background: #310944;
+    font-size: x-large;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 2%;
+  }
+
+  .main-navbar {
+    grid-row: 3;
+    background: gold;
+    color: white;
+    padding: .5%
+  }
+  
+  .bottomHeader {
+    /* grid-area: footer; */
+    background: gold;
+    color: white;
+  }
+
+  /* main site content */
+
+  .body {
+    grid-column: 2;
+  }
+
+  .l-a-content {
+    text-align: left;
+  }
+
+  /* Buttons and links */
+
+  a.button:hover {
+    color: initial;
+    text-decoration: none;
+    background-color: goldenrod;
+    color: black;
+  }
+
+  .button {
+    color: purple;
+    border: none;
+    padding: .5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: normal;
+    font-weight: bold;
+    background: grey;
+    transition-duration: 0.4s;
+  }
+
+  .button:hover {
+    background-color: yellow;
+    color: white;
+  }}
