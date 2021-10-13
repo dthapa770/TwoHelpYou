@@ -1,5 +1,4 @@
 /* whole page */
-
 body {
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
@@ -45,13 +44,11 @@ body {
   }
   
   .bottomHeader {
-    /* grid-area: footer; */
     background: gold;
     color: white;
   }
 
   /* main site content */
-
   .body {
     grid-column: 2;
   }
@@ -61,7 +58,6 @@ body {
   }
 
   /* Buttons and links */
-
   a.button:hover {
     color: initial;
     text-decoration: none;
@@ -85,4 +81,4 @@ body {
   .button:hover {
     background-color: yellow;
     color: white;
-  }}
+  }
