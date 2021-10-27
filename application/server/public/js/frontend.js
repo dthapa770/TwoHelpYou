@@ -29,7 +29,7 @@ if(searchButton){
 
 function createCard(postData){  
     return `
-    <img class="card-image" src=${postData.photopath} alt="image missing">
+    <img class="card-image" src="./${postData.photopath}" alt="image missing" width="100" height="100">
     <div class="card-body">
         <p class="card-title">${postData.first_name}</p>
         <p class="card-text">${postData.last_name}</p>
