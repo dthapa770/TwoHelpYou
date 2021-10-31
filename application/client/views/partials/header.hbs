@@ -7,22 +7,22 @@
 </div>
 
 <div class = "cross-screen-row main-navbar"> 
-  <div><a href="/" >Home</a> | <a href="/aboutUs" >About US</a> | </div>
+  <div id="default-nav"><a href="/" >Home</a> | <a href="/aboutUs" >About US</a> | </div>
   <form id="search-form">
     {{#if results}}
     <div class="search-bar">
-      <select name="course_prefix" id="select-menu">
+      <select name="course_prefix" id="select-menu" tabindex="0">
         <option selected value="">All</option>
         {{#each option}}
           <option value={{this.course_prefix}}>{{this.course_prefix}}</option>
         {{/each}}
       </select>
-      <input id="search-text" type="text" placeholder="Search" name="search-text" aria-label="Search">
-      <i id="search-button">&#x1F50E</i>
+      <input id="search-text" type="search" placeholder="Search" name="search-text" aria-label="Search">
+      <button type="button" id="search-button">&#x1F50E</button>
     </div>
     {{else}}
     <div>Return to Home to Search</div>
     {{/if}}
   </form>
-  <div> | <a href="/Login" >Login</a> | <a href="/Register" >Register</a></div>
+  <div id="user-nav"> | <a href="/Login" >Login</a> | <a href="/Register" >Register</a></div>
 </div>

@@ -54,7 +54,13 @@ body {
 }
 
 .search-bar{
-	background: white;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+}
+
+#search-button {
+	border:0;
 }
 
 /* main site content */
@@ -91,6 +97,27 @@ a.button:hover {
 	background-color: yellow;
 	color: white;
 }
+
+/*to fix the issue when window is not at full screen*/
+@media all and (max-width: 520px) {
+	.main-navbar {
+	  grid-template-columns: max-content max-content;
+	  grid-template-rows: max-content max-content;
+	}
+	#search-form {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 2;
+	}
+	#default-nav {
+		grid-column-start: 1;
+		grid-row: 1;
+	}
+	#user-nav {
+		grid-column-start: 2;
+		grid-row: 1;
+	}
+  }
 
 /* #search-button {
     background: #186295;
