@@ -40,7 +40,13 @@ body {
     grid-row: 3;
     background: gold;
     color: white;
-    padding: .5%
+    padding: .5%;
+    display: grid;
+    grid-template-columns: max-content max-content max-content;
+    grid-auto-rows: 1fr;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
   }
   
   .bottomHeader {
@@ -82,3 +88,7 @@ body {
     background-color: yellow;
     color: white;
   }
+
+  /* #search-button {
+    background: #186295;
+  } */
