@@ -40,6 +40,5 @@ function createCard(postData) {
         <p class="card-text">${postData.course}</p>
         <p class="card-text">${postData.time}</p>
         <p class="card-text">${postData.class}</p>  
-    </div>
-</div>`
+    </div>`
 }

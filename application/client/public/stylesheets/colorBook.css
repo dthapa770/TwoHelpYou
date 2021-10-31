@@ -53,6 +53,10 @@ body {
 	color: white;
 }
 
+.search-bar{
+	background: white;
+}
+
 /* main site content */
 .body {
 	grid-column: 2;
