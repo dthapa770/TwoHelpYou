@@ -18,7 +18,11 @@ app.engine(
     partialsDir: path.join(__dirname, "views/partials"),
     extname: ".hbs",
     defaultLayout: "home",
-    helpers: {}
+    helpers: {
+      emptyObject: (obj) => {
+        return !(obj.constructor === Object && Object.keys(obj).length == 0);
+    }
+    }
   })
 )
 
