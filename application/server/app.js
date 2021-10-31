@@ -14,23 +14,27 @@ var app = express();
 app.engine(
   "hbs",
   handlebars({
-    layoutsDir: path.join(__dirname, "views/layouts"),
-    partialsDir: path.join(__dirname, "views/partials"),
+    layoutsDir: path.join(__dirname, "../client/views/layouts"),
+    partialsDir: path.join(__dirname, "../client/views/partials"),
     extname: ".hbs",
-    defaultLayout: "home", 
-    helpers: {}
+    defaultLayout: "home",
+    helpers: {
+      emptyObject: (obj) => {
+        return !(obj.constructor === Object && Object.keys(obj).length == 0);
+    }
+    }
   })
 )
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../client/views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
