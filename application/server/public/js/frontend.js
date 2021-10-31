@@ -1,33 +1,36 @@
-
-
 function executeSearch(){
     let searchTerm = document.getElementById('search-text').value;
-    if (searchTerm || searchTerm=="") {
-        let mainContent = document.getElementById('main-content');
-        let searchURL = `/post/search?search=${searchTerm}`;
-        fetch(searchURL)
-        .then((data) =>{
-            return data.json();            
+    if (!searchTerm) {
+        location.replace('/');
+        return;
+    }
+    let searchURL = `/post/search?search=${searchTerm}`;
+    fetch(searchURL)
+        .then((data) => {
+            return data.json();
         })
         .then((data_json) => {
-            let newMainContentHTML = '';
+            let newMainContentHTML = '<div class="side-bar" id="postNum"> </div>';
             data_json.results.forEach((row) => {
                 newMainContentHTML += createCard(row);
             });
-           mainContent.innerHTML=newMainContentHTML;
-           console.log(data_json.message);
+            let mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = newMainContentHTML;
+            if (data_json.message) {
+                updateCardCount(data_json.message);
+            }
         })
-        .catch((err) => console.log(err));    
-       
-    } 
+        .catch((err) => console.log(err));
 }
 
-let searchButton= document.getElementById('search-button');
-if(searchButton){
-    searchButton.onclick =executeSearch;
+let searchButton = document.getElementById('search-button');
+if (searchButton) {
+    searchButton.onclick = function (event) {
+        executeSearch();
+    }
 }
 
-function createCard(postData){  
+function createCard(postData) {
     return `
     <img class="card-image" src="./${postData.photopath}" alt="image missing" width="100" height="100">
     <div class="card-body">
@@ -38,5 +41,5 @@ function createCard(postData){
         <p class="card-text">${postData.time}</p>
         <p class="card-text">${postData.class}</p>  
     </div>
-</div>`;
+</div>`
 }

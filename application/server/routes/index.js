@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var getHighestRatedPost = require('../middleware/postmiddleware').getHighestRatedPost;
+// const PostModel = require('../model/Post');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', getHighestRatedPost, function(req, res, next) {
   res.render('index', { title: 'Software Engineering Class SFSU' });
 });
 
@@ -42,6 +44,10 @@ router.get('/Login', function(req,res,next){
 
 router.get('/Register', function(req,res,next){
   res.render('register'), {title: 'Software Engineering Class SFSU'}
+});
+
+router.get('/Results', function(req,res,next){
+  res.render('result'), {title: 'Software Engineering Class SFSU'}
 });
 
 module.exports = router;

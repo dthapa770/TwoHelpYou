@@ -10,11 +10,14 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js">
     </script>
     <link rel='stylesheet' type="text/css" href='/stylesheets/colorBook.css' />
-     <script defer src= "/js/frontend.js"  ></script>
+     <script defer type="text/javascript" src= "/js/frontend.js"  ></script>
   </head>
   
   <body class="grid-container">
     {{> header}}
+    {{!-- {{#if (emptyObject messages)}}
+    {{> flashmessage}}
+    {{/if}} --}}
     {{{body}}}
     {{> footer}}
   </body>
