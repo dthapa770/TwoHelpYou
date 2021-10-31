@@ -12,7 +12,6 @@ router.get('/search', async (req, res, next) => {
         });
     } else {
         let results = await PostModel.search(searchTerm);
-        console.log(results);
         if (results.length) {
             res.send({
                 message: " relevent post(s) found.",
