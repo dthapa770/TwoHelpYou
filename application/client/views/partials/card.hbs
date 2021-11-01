@@ -1,9 +1,7 @@
-<div class="card-body">
-    <img class="card-image" src={{photopath}} width="100" height="100"></img>
-    <p class="card-title">{{first_name}}</p>
-    <p class="card-text">{{last_name}}</p>
-    <p class="card-text">{{date}}</p>
-    <p class="card-text">{{course}}</p>
-    <p class="card-text">{{time}}</p>
-    <p class="card-text">{{class}}</p>  
+<div class="card-body" id="post-{{post_id}}">
+        <p class="card-title">{{course_prefix}}{{course_postfix}}</p>
+        <img class="card-image" src="./{{photopath}}" alt="image missing" width="100" height="100">
+        <p class="card-title">{{first_name}}</p>
+        <p class="card-title">{{avg_rating}}</p>
+        <p class="card-text">{{availability}}</p>
 </div>
