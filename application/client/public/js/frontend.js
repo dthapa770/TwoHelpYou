@@ -37,7 +37,6 @@ function createCard(postData) {
         <img class="card-image" src="./${postData.photopath}" alt="image missing" width="100" height="100">
         <p class="card-title">${postData.first_name}</p>
         <p class="card-title">${postData.avg_rating}</p>
-        <p class="card-text">${postData.date}</p>
-        <p class="card-text">${postData.time}</p>
+        <p class="card-text">${postData.availability}</p>
     </div>`
 }
