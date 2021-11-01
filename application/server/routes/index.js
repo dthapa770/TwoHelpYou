@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var getHighestRatedPost = require('../middleware/postmiddleware').getHighestRatedPost;
+var getAllPostCoursePrefix = require('../middleware/postmiddleware').getAllPostCoursePrefix;
 // const PostModel = require('../model/Post');
 
 /* GET home page. */
-router.get('/', getHighestRatedPost, function(req, res, next) {
+router.get('/', getHighestRatedPost, getAllPostCoursePrefix, function(req, res, next) {
   res.render('index', { title: 'Software Engineering Class SFSU' });
 });
 

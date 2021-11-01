@@ -35,9 +35,10 @@ PostModel.getNHighestPosts = (nth) => {
 };
 
 PostModel.getCoursePrefix = () => {
-	let baseSQL = `select distinct post.course_prefix`;
-	return db.execute(([results]) => {
-		return Promise.resolve(resutls);
+	let baseSQL = `select distinct p.course_prefix from post p`;
+	return db.execute(baseSQL, [])
+	.then(([results, []]) => {
+		return Promise.resolve(results);
 	})
 	.catch((err) => Promise.reject(err));
 };
