@@ -1,13 +1,3 @@
-function noCards() {
-    if (getCardC() == 0) {
-        let noContent = document.createElement("h1");
-        let ncNode = document.createTextNode("No Cards");
-        noContent.appendChild(ncNode);
-        noContent.classList.add("fill_row");
-        mainContainer.appendChild(noContent);
-    }
-}
-
 function getCardC() {
     return document.getElementsByTagName("section").length;
 }
@@ -22,7 +12,6 @@ function updateCardCount(message) {
         mainC.appendChild(pNum);
     }
     pNum.innerText = getCardC() + message;
-    noCards();
 }
 
 function executeSearch(){
