@@ -13,7 +13,7 @@
     <div class="search-bar">
       <select name="course_prefix" id="select-menu" tabindex="0">
         <option selected value="">All</option>
-        {{#each option}}
+        {{#each course}}
           <option value={{this.course_prefix}}>{{this.course_prefix}}</option>
         {{/each}}
       </select>

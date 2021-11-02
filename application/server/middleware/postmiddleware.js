@@ -16,9 +16,9 @@ postMiddleware.getHighestRatedPost = async function(req,res,next) {
 
 postMiddleware.getAllPostCoursePrefix = async function(req,res,next) {
     try  {
-        let results = await PostModel.getCoursePrefix();
-        res.locals.results = results;
-        if (results.length == 0) {
+        let course = await PostModel.getCoursePrefix();
+        res.locals.course = course;
+        if (course.length == 0) {
             console.log("error getting course Prefix");
         }
         next();
