@@ -1,53 +1,67 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: index.js
+ * 
+ * Description: deals with most of the page routing.
+ *****************************************************************************/
+
 var express = require('express');
 var router = express.Router();
-var getHighestRatedPost = require('../middleware/postmiddleware').getHighestRatedPost;
-var getAllPostCoursePrefix = require('../middleware/postmiddleware').getAllPostCoursePrefix;
-// const PostModel = require('../model/Post');
+var GetHighestRatedPost = require('../middleware/post_middleware').GetHighestRatedPost;
+var GetAllPostCoursePrefix = require('../middleware/post_middleware').GetAllPostCoursePrefix;
 
 /* GET home page. */
-router.get('/', getHighestRatedPost, getAllPostCoursePrefix, function(req, res, next) {
+router.get('/', GetHighestRatedPost, GetAllPostCoursePrefix, function(req, res, next) {
   res.render('index', { title: 'Software Engineering Class SFSU' });
 });
 
-//router for the about us page 
-router.get('/aboutUs', function(req, res, next) {
-  res.render('aboutUs', { title: 'Software Engineering Class SFSU' });
+// router for the about us page 
+router.get('/about_us', function(req, res, next) {
+  res.render('about_us', { title: 'Software Engineering Class SFSU' });
 }) ;
 
-router.get('/about/Fong', function(req, res, next) {
-  res.render('./about/Fong', { title: 'Software Engineering Class SFSU' });
+router.get('/about/fong', function(req, res, next) {
+  res.render('./about/fong', { title: 'Software Engineering Class SFSU' });
 }) ;
 
-router.get('/about/Lam', function(req, res, next) {
-  res.render('./about/Lam', { title: 'Software Engineering Class SFSU' });
+router.get('/about/lam', function(req, res, next) {
+  res.render('./about/lam', { title: 'Software Engineering Class SFSU' });
 }) ;
 
-router.get('/about/Puri', function(req, res, next) {
-  res.render('./about/Puri', { title: 'Software Engineering Class SFSU' });
+router.get('/about/puri', function(req, res, next) {
+  res.render('./about/puri', { title: 'Software Engineering Class SFSU' });
 }) ;
 
-router.get('/about/Resayo', function(req, res, next) {
-  res.render('./about/Resayo', { title: 'Software Engineering Class SFSU' });
+router.get('/about/resayo', function(req, res, next) {
+  res.render('./about/resayo', { title: 'Software Engineering Class SFSU' });
 }) ;
 
-router.get('/about/Thapa', function(req, res, next) {
-  res.render('./about/Thapa', { title: 'Software Engineering Class SFSU' });
+router.get('/about/thapa', function(req, res, next) {
+  res.render('./about/thapa', { title: 'Software Engineering Class SFSU' });
 }) ;
 
-router.get('/about/Xu', function(req, res, next) {
-  res.render('./about/Xu', { title: 'Software Engineering Class SFSU' });
+router.get('/about/xu', function(req, res, next) {
+  res.render('./about/xu', { title: 'Software Engineering Class SFSU' });
 }) ;
 //end of router for about page
 
-router.get('/Login', function(req,res,next){
+router.get('/login', function(req,res,next){
   res.render('login'), {title: 'Software Engineering Class SFSU'}
 });
 
-router.get('/Register', function(req,res,next){
+router.get('/register', function(req,res,next){
   res.render('register'), {title: 'Software Engineering Class SFSU'}
 });
 
-router.get('/Results', function(req,res,next){
+router.get('/results', function(req,res,next){
   res.render('result'), {title: 'Software Engineering Class SFSU'}
 });
 

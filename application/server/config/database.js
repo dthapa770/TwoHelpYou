@@ -1,3 +1,18 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: database.js
+ * 
+ * Description: database configurations
+ *****************************************************************************/
+
 const mysql= require("mysql2");
 
 const pool = mysql.createPool({
