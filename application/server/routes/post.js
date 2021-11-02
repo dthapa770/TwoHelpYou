@@ -8,8 +8,12 @@ const PostModel = require('../models/Post');
 // when no results were found.
 router.get('/search', async (req, res, next) => {
     let searchQuery = (req.query.search).split(',');
+    let searchTerm = '';
     let prefix = searchQuery[0];
-    let searchTerm = searchQuery[0] + searchQuery[1];
+    if (prefix != '')
+        searchTerm = searchQuery[0] +' '+ searchQuery[1];
+    else
+        searchTerm = searchQuery[1];
     if (!searchTerm) {
         // Message doesn't appear.
         res.send({
@@ -21,6 +25,12 @@ router.get('/search', async (req, res, next) => {
         if (results.length) {
             res.send({
                 message: " relevent post(s) found.",
+                results: results
+            });
+        } else if (prefix == ''){
+            let results = await PostModel.getNHighestPosts(5);
+            res.send({
+                message: " most highest rated posts, no results were found.",
                 results: results
             });
         } else {
