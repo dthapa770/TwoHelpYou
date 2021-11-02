@@ -15,12 +15,14 @@ function updateCardCount(message) {
 }
 
 function executeSearch(){
-    let searchTerm = document.getElementById('search-text').value;
+    let searchMenu = document.getElementById('select-menu').value;
+    let searchText = document.getElementById('search-text').value;
+    let searchTerm = searchMenu + searchText
     if (!searchTerm) {
         location.replace('/');
         return;
     }
-    let searchURL = `/post/search?search=${searchTerm}`;
+    let searchURL = `/post/search?search=${searchMenu},${searchText}`;
     fetch(searchURL)
         .then((data) => {
             return data.json();

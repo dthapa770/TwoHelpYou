@@ -7,7 +7,9 @@ const PostModel = require('../models/Post');
 // most highest rated posts using the course_prefix
 // when no results were found.
 router.get('/search', async (req, res, next) => {
-    let searchTerm = req.query.search;
+    let searchQuery = (req.query.search).split(',');
+    let prefix = searchQuery[0];
+    let searchTerm = searchQuery[0] + searchQuery[1];
     if (!searchTerm) {
         // Message doesn't appear.
         res.send({
@@ -22,9 +24,9 @@ router.get('/search', async (req, res, next) => {
                 results: results
             });
         } else {
-            let results = await PostModel.getNHighestPosts(5);
+            let results = await PostModel.getNHighestPrefixPosts(5, prefix);
             res.send({
-                message: " most highest rated posts, no results were found.",
+                message: " most highest rated posts within catagory, no results were found.",
                 results: results
             });
         }
