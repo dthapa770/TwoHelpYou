@@ -7,7 +7,7 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP: 3.17.38.143:3000 
+1. Server URL or IP: 3.17.38.143 
 2. SSH username: ubuntu
 3. SSH password or key: .pem in folder called csc648-team1-fall-2021.pem
     <br> If a ssh key is used please upload the key to the credentials folder.
@@ -15,8 +15,14 @@
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
 5. Database username: team1
 6. Database password: CSC648Team1!!
-7. Database name (basically the name that contains all your tables) website
+7. Database name twohelpyouDB (basically the name that contains all your tables)
 8. Instructions on how to use the above information.
+
+No special instructions aside from following 
+https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171
+to access.
+
+The mysql2 database is contained within the instance and can be accessed via port forwarding in mysql2 or directly in the instance using terminal.
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
