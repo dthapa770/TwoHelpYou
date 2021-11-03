@@ -1,0 +1,46 @@
+{{!-- *************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: header.hbs
+ * 
+ * Description: header for all pages as a partial
+ ************************************************************************* --}}
+
+{{!-- Legal to prompt users this is not a real website --}}
+<div class = "cross_screen_row banner"> 
+  SFSU Software Engineering Project CSC 648-848, Fall 2021 For Demonstration Only
+</div>
+
+{{!-- Site Title --}}
+<div class = "cross_screen_row site_section">
+  TwoHelpYou | CSC 648-848, Fall 2021, Team 1
+</div>
+
+{{!-- Navigational bar --}}
+<div class = "cross_screen_row main_navbar"> 
+  <div id="default_nav"><a href="/" >Home</a> | <a href="/about_us" >About US</a> | </div>
+  <form id="search_form">
+    {{#if results}}
+    <div class="search_bar">
+      <select name="course_prefix" id="select_menu" tabindex="0">
+        <option selected value="">All</option>
+        {{#each course}}
+          <option value={{this.course_prefix}}>{{this.course_prefix}}</option>
+        {{/each}}
+      </select>
+      <input id="search_text" type="search" placeholder="Search" name="search_text" aria-label="Search">
+      <button type="button" id="search_button">&#x1F50E</button>
+    </div>
+    {{else}}
+    <div id="return_to_home">Return to Home to Search</div>
+    {{/if}}
+  </form>
+  <div id="user_nav"> | <a href="/login" >Login</a> | <a href="/register" >Register</a></div>
+</div>

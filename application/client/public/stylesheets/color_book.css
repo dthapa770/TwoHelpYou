@@ -1,0 +1,170 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * 
+ * File: color_book.css
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * Description: Provides the styling for most the pages specfically 
+ *				the style used on the home page, headers, and footers
+ *				to create a sense of uniformity across all pages
+ *****************************************************************************/
+
+/* whole page */
+body {
+	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: center;
+	color: #565656;
+	background-color: #fff;
+}
+
+.grid_container {
+	display: grid;
+	grid-template-columns: 1fr 8fr 1fr;
+	grid-template-rows: 1fr auto;
+	margin: 0;
+}
+
+/* header & footer */
+.cross_screen_row {
+	grid-column-start: 1;
+	grid-column-end: 4;
+}
+
+.banner {
+	grid-row: 1;
+	font-size: x-small;
+	background: #186295;
+	color: #ffffff;
+	padding: .5%;
+}
+
+.site_section {
+	grid-row: 2;
+	background: #310944;
+	font-size: x-large;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 2%;
+}
+
+.main_navbar {
+	grid-row: 3;
+	background: gold;
+	color: white;
+	padding: .5%;
+	display: grid;
+	grid-template-columns: max-content max-content max-content;
+	grid-auto-rows: 1fr;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.bottom_header {
+	background: gold;
+	color: white;
+}
+
+.search_bar {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+}
+
+#search_button {
+	border: 0;
+}
+
+#return_to_home {
+	color: #310944;
+}
+
+/* main site content */
+.body {
+	grid-column: 2;
+}
+
+.left_align_content {
+	text-align: left;
+}
+
+/* Buttons and links */
+a.button:hover {
+	color: initial;
+	text-decoration: none;
+	background-color: goldenrod;
+	color: black;
+}
+
+.button {
+	color: purple;
+	border: none;
+	padding: .5%;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: normal;
+	font-weight: bold;
+	background: grey;
+	transition-duration: 0.4s;
+}
+
+.button:hover {
+	background-color: yellow;
+	color: white;
+}
+
+/*to fix the issue when window is not at full screen*/
+@media all and (max-width: 520px) {
+	.main_navbar {
+		grid-template-columns: max-content max-content;
+		grid-template-rows: max-content max-content;
+	}
+	#search_form {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 2;
+	}
+	#default_nav {
+		grid-column-start: 1;
+		grid-row: 1;
+	}
+	#user_nav {
+		grid-column-start: 2;
+		grid-row: 1;
+	}
+}
+
+/* #search_button {
+    background: #186295;
+  } */
+
+/* Card/Search Results */
+.card_body {
+	padding: 1%;
+	margin: 2%;
+	margin-bottom: 1%;
+	border-radius: 10px;
+	border: 1px groove grey;
+}
+/* display: grid;
+	text-align: left;
+  }
+  */
+
+#main_content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: auto;
+	justify-content: center;
+}
+
+#post_number {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}

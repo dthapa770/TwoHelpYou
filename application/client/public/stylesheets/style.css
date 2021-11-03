@@ -43,11 +43,11 @@ a.button:hover {
   font-weight: bold;
   color: #ffffff;
 }
-.site-section{
+.site_section{
   padding: 2.5em 0;
 }
 
-.main-navbar{
+.main_navbar{
   position:relative;
   height: 2vw;
   /*width: 100vw;*/
@@ -110,7 +110,7 @@ a.button:hover {
   }
 }
 
-.bottomHeader {
+.bottom_header {
   position:relative;
   height: 5vw;
   /*width: 100vw;*/

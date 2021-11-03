@@ -1,0 +1,23 @@
+{{!-- *************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: card.hbs
+ * 
+ * Description: card partials that takes input to
+ *              generate the tutoring post
+ ************************************************************************* --}}
+
+<section class="card_body" id="post_{{post_id}}">
+        <p class="card_title">{{course_prefix}} {{course_postfix}}</p>
+        <p class="card_title">{{avg_rating}}</p>
+        <p class="card_text">{{availability}}</p>
+        <p class="card_title">{{first_name}}</p>
+        <img class="card_image" src="./{{photopath}}" alt="image missing" width="100" height="100">
+</section>
