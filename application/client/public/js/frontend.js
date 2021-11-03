@@ -57,9 +57,9 @@ function createCard(postData) {
     return `
     <section class="card-body" id="post-${postData.post_id}>
         <p class="card-title">${postData.course_prefix}${postData.course_postfix}</p>
-        <img class="card-image" src="./${postData.photopath}" alt="image missing" width="100" height="100">
-        <p class="card-title">${postData.first_name}</p>
         <p class="card-title">${postData.avg_rating}</p>
         <p class="card-text">${postData.availability}</p>
+        <p class="card-title">${postData.first_name}</p>
+        <img class="card-image" src="./${postData.photopath}" alt="image missing" width="100" height="100">
     </section>`
 }
