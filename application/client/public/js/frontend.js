@@ -94,11 +94,11 @@ if (search_button) {
  */
 function CreateCard(post_data) {
     return `
-    <section class="card_body" id="post_${postData.post_id}>
-        <p class="card_title">${postData.course_prefix}${postData.course_postfix}</p>
-        <p class="card_title">${postData.avg_rating}</p>
-        <p class="card_text">${postData.availability}</p>
-        <p class="card_title">${postData.first_name}</p>
-        <img class="card_image" src="./${postData.photopath}" alt="image missing" width="100" height="100">
+    <section class="card_body" id="post_${post_data.post_id}>
+        <p class="card_title">${post_data.course_prefix}${post_data.course_postfix}</p>
+        <p class="card_title">${post_data.avg_rating}</p>
+        <p class="card_text">${post_data.availability}</p>
+        <p class="card_title">${post_data.first_name}</p>
+        <img class="card_image" src="./${post_data.photopath}" alt="image missing" width="100" height="100">
     </section>`
 }
