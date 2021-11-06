@@ -14,5 +14,47 @@
  ************************************************************************* --}}
 
 <div class="body">
-    <img src=".\images\frontpag.png" alt="coming soon" width="500" height="600">
+    <form id="register_page" action="/users/register"
+    method="POST" enctype="x-www-form-urlencoded">
+        <h2>User Registration Form</h2>
+        <div>
+            <label for="first_name">First Name:</label><br />
+            <input type="text" id="first_name" name="first_name" required placeholder="First Name" /><br />
+            <label for="last_name">Last Name:</label><br />
+            <input type="text" id="last_name" name="last_name" required placeholder="Last Name" /><br />
+        </div>
+        <div>
+            <label for="username">User Name:</label><br />
+            <input type="text" id="username" name="username" required placeholder="User Name" />
+        </div>
+        <div>
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" required placeholder="Email Address" />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input id="password" type="password" name="password" required placeholder="Password" />
+        </div>
+        <div>
+            <label for="confirm_password">Confirm Password:</label>
+            <input id="confirm_password" type="password" required placeholder="Confirm Password" />
+        </div>
+        <div>
+            <label for="profile_picture">Upload Image:</label><br />
+            <input type="file" id="profile_picture" name="profile_picture" accept="image/*" required>
+        </div>
+        <div>
+            <label for="age">Are you 13 years or older:</label><br />
+            <input type="checkbox" id="age" name="old" value="enough" required>
+            <label for="old">I confirm I am 13 years or older.</label>
+        </div>
+        <div>
+            <label for="ToS">Please Read and Accept </label>
+            <a href="">Term of Service</a> and <a href="">Privacy Rules</a>:
+            <br />
+            <input type="checkbox" id="ToS" name="terms" value="agreement" required>
+            <label for="terms">I agree to the Term of Service and Privacy Rules.</label>
+        </div>
+        <input id="submit" type="submit" value="submit" />
+    </form>
 </div>

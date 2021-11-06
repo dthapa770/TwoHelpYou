@@ -14,5 +14,18 @@
  ************************************************************************* --}}
 
 <div class="body">
-    <img src=".\images\frontpag.png" alt="coming soon" width="500" height="600">
+    <form id="login_page" method="POST" action="/users/login"
+        enctype="application/x-www-form-urlencoded">
+        <h2>User Login Page</h2>
+        <p>
+            <label for="user_name">User Name:</label><br />
+            <input type="text" name="user_name" required placeholder="User Name" minlength="3"/>
+        </p>
+        <p>
+            <label for="password">Password</label><br />
+            <input type="password" name="password" id="password" required placeholder="Password" minlength="8"/>
+        </p>
+        <input id="login_button" type="submit" value="login" name="Login" /><br /><vr />
+        <a href="../register">Register</a>
+    </form>
 </div>
