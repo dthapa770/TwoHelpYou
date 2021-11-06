@@ -13,7 +13,7 @@
  * Description: Currently deals with anything post related
  *****************************************************************************/
 
-const {request} = require('express');
+//const {request} = require('express');
 var express = require('express');
 var router = express.Router();
 const PostModel = require('../models/post_model');
