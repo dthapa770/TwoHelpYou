@@ -10,14 +10,14 @@
  * 
  * File: user.js
  * 
- * Description: temporary page that will deal with users.
+ * Description: User based route exections
  *****************************************************************************/
 
 var express = require('express');
 var router = express.Router();
 
-const UserError =require("../helpers/error/UserError");
-const {successPrint,errorPrint}=require("../helpers/debug/debugprinters");
+const UserError =require("../helpers/error/user_error");
+const {SuccessPrint,ErrorPrint}=require("../helpers/debug/debug_printers");
 
 var db = require('../config/database');
 
@@ -29,6 +29,9 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+/**
+ * User registration route.
+ */
 router.post('/register',(req,res,next) =>{
   var first_name = req.body.first_name;
   var last_name = req.body.last_name;
@@ -37,7 +40,7 @@ router.post('/register',(req,res,next) =>{
   var password = req.body.password;
   console.log(password);
 
-     UserModel.usernameExists(username)
+     UserModel.UsernameExists(username)
       .then((userDoesNameExists) =>{
           if(userDoesNameExists){
               throw new UserError(
@@ -46,7 +49,7 @@ router.post('/register',(req,res,next) =>{
                   200
               );
           } else {
-              return UserModel.emailExists(email);
+              return UserModel.EmailExists(email);
           }
   })
   .then((emailDoesExists) => {
@@ -57,7 +60,7 @@ router.post('/register',(req,res,next) =>{
               200
           );
       }else{
-          return UserModel.create(first_name,last_name,username, password, email);
+          return UserModel.Create(first_name,last_name,username, password, email);
       }
   })
   .then((createUserId) => {
@@ -68,17 +71,17 @@ router.post('/register',(req,res,next) =>{
               500
           );
       } else {
-          successPrint("Users.js -->User was created!!");
+          SuccessPrint("Users.js -->User was created!!");
           res.redirect('/login');
       }
   })
   .catch((err) => {
-          errorPrint("user cannot be made", err);
+          ErrorPrint("user cannot be made", err);
           if (err instanceof UserError) {
-              errorPrint(err.getMessage());
-              //req.flash('error', err.getMessage());
-              res.status(err.getStatus());
-              res.redirect(err.getRedirectURL());
+              ErrorPrint(err.GetMessage());
+              //req.flash('error', err.GetMessage());
+              res.status(err.GetStatus());
+              res.redirect(err.GetRedirectURL());
           } else {
               next(err);
           }

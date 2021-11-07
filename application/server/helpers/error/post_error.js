@@ -4,13 +4,13 @@ class PostError extends Error{
         this.redirectURL=redirectURL;
         this.status=status;
     }
-    getMessage(){
+    GetMessage(){
         return this.message;
     }
-    getRedirectURL(){
+    GetRedirectURL(){
         return this.redirectURL;
     }
-    getStatus(){
+    GetStatus(){
         return this.status;
     }
 }

@@ -1,9 +1,33 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: user_model.js
+ * 
+ * Description: builds query to be sent to database and returns
+ * 				the results of the queries.
+ *****************************************************************************/
+
 var db= require("../config/database");
 var bcrypt=require('bcrypt');
 var UserModel = {};
 
-
-UserModel.create=(first_name,last_name,username,password,email) =>{
+/**
+ * Creates insert query for users based on the completed form
+ * @param first_name 
+ * @param last_name 
+ * @param username 
+ * @param password 
+ * @param email 
+ * @returns resolution to inserton of user to database
+ */
+UserModel.Create=(first_name,last_name,username,password,email) =>{
     console.log(password);
     return bcrypt.hash(password,10)
         .then((hashedPassword)=>{
@@ -20,7 +44,12 @@ UserModel.create=(first_name,last_name,username,password,email) =>{
         .catch((err) => Promise.reject(err));
 }
 
-UserModel.usernameExists=(username) =>{
+/**
+ * Checks database to ensure username has not been used
+ * @param username 
+ * @returns resolution to query
+ */
+UserModel.UsernameExists=(username) =>{
     return db.execute("SELECT * FROM user WHERE username=?", [username])
     .then(([results,fields]) =>{
         return Promise.resolve(!(results && results.length==0));
@@ -28,7 +57,12 @@ UserModel.usernameExists=(username) =>{
         .catch((err) => Promise.reject(err));
 }
 
-UserModel.emailExists= (email) =>{
+/**
+ * Checks database to ensure email has not ben used
+ * @param email 
+ * @returns resolution to query
+ */
+UserModel.EmailExists= (email) =>{
     return db.execute("SELECT * FROM user WHERE email=?", [email])
     .then(([results, fields]) => {
           return Promise.resolve(!(results && results.length == 0));
@@ -36,7 +70,14 @@ UserModel.emailExists= (email) =>{
         .catch((err) => Promise.reject(err));
 }
 
-UserModel.authenticate = (email, username, password) =>{
+/**
+ * Authenticate the user for sign in
+ * @param email 
+ * @param username 
+ * @param password 
+ * @returns result of signin
+ */
+UserModel.Authenticate = (email, username, password) =>{
     let user_id;
     let user_email;
     let baseSQL="SELECT user_id,username, password, email FROM user WHERE username=?;";
@@ -60,4 +101,5 @@ UserModel.authenticate = (email, username, password) =>{
         })
         .catch((err) =>Promise.reject(err));
 };
+
 module.exports = UserModel;
