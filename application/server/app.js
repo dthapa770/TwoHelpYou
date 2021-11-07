@@ -8,6 +8,8 @@ var handlebars = require("express-handlebars");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postRouter = require('./routes/post');
+var errorPrint = require('./helpers/debug/debugprinters').errorPrint;
+var requestPrint=require('./helpers/debug/debugprinters').requestPrint;
 
 var app = express();
 
@@ -36,14 +38,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
+app.use((req,res,next)=>{
+  requestPrint(req.url);
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/post', postRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -56,4 +63,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.use((err,req,res,next)=>{
+  errorPrint(err);
+  res.render('error',{err_message:err});
+})
+app.use((err,req,res,next) =>{
+  res.status(500);
+  res.send('something wrong with your db');
+})
 module.exports = app;

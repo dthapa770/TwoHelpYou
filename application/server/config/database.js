@@ -22,7 +22,7 @@ const pool = mysql.createPool({
     //host: 'CSC648Project',
     user: 'team1',
     password:'CSC648Team1!!',
-    database: 'twohelpyouDB',
+    database: 'csc648practice',
     connectionLimit:50,
     debug:false,
 

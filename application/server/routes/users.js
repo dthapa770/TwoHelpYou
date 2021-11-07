@@ -16,6 +16,9 @@
 var express = require('express');
 var router = express.Router();
 
+const UserError =require("../helpers/error/UserError");
+const {successPrint,errorPrint}=require("../helpers/debug/debugprinters");
+
 var db = require('../config/database');
 
 //var crypto=require('crypto');
@@ -32,6 +35,7 @@ router.post('/register',(req,res,next) =>{
   var username = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
+  console.log(password);
 
      UserModel.usernameExists(username)
       .then((userDoesNameExists) =>{
@@ -53,7 +57,7 @@ router.post('/register',(req,res,next) =>{
               200
           );
       }else{
-          return UserModel.create(username, password, email);
+          return UserModel.create(first_name,last_name,username, password, email);
       }
   })
   .then((createUserId) => {
@@ -80,6 +84,7 @@ router.post('/register',(req,res,next) =>{
           }
       });
   });
+
 
 
 module.exports = router;

@@ -1,10 +1,11 @@
 var db= require("../config/database");
 var bcrypt=require('bcrypt');
-const UserModel= {};
+var UserModel = {};
 
 
-UserModel.create=(username,password,email) =>{
-    return bcrypt.hash(password,15)
+UserModel.create=(first_name,last_name,username,password,email) =>{
+    console.log(password);
+    return bcrypt.hash(password,10)
         .then((hashedPassword)=>{
             let baseSQL="INSERT INTO user (first_name,last_name,username,email,password,created) VALUES(?,?,?,?,?,now());"
             return db.execute(baseSQL,[first_name,last_name,username,email,hashedPassword])
@@ -28,7 +29,7 @@ UserModel.usernameExists=(username) =>{
 }
 
 UserModel.emailExists= (email) =>{
-    return db.execute("SELECT * FROM users WHERE email=?", [email])
+    return db.execute("SELECT * FROM user WHERE email=?", [email])
     .then(([results, fields]) => {
           return Promise.resolve(!(results && results.length == 0));
     })
