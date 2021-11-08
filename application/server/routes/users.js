@@ -10,13 +10,13 @@
  * 
  * File: user.js
  * 
- * Description: User based route exections
+ * Description: temporary page that will deal with users.
  *****************************************************************************/
 
 var express = require('express');
 var router = express.Router();
 
-const UserError =require("../helpers/error/user_error");
+const userError =require("../helpers/error/user_error");
 const {SuccessPrint,ErrorPrint}=require("../helpers/debug/debug_printers");
 
 var db = require('../config/database');
@@ -29,18 +29,13 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-/**
- * User registration route.
- */
 router.post('/register',(req,res,next) =>{
   var first_name = req.body.first_name;
   var last_name = req.body.last_name;
   var username = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
-  console.log(password);
-
-     UserModel.UsernameExists(username)
+     UserModel.usernameExists(username)
       .then((userDoesNameExists) =>{
           if(userDoesNameExists){
               throw new UserError(
@@ -49,7 +44,7 @@ router.post('/register',(req,res,next) =>{
                   200
               );
           } else {
-              return UserModel.EmailExists(email);
+              return UserModel.emailExists(email);
           }
   })
   .then((emailDoesExists) => {
@@ -60,7 +55,7 @@ router.post('/register',(req,res,next) =>{
               200
           );
       }else{
-          return UserModel.Create(first_name,last_name,username, password, email);
+          return UserModel.create(first_name,last_name,username, password, email);
       }
   })
   .then((createUserId) => {
@@ -76,18 +71,45 @@ router.post('/register',(req,res,next) =>{
       }
   })
   .catch((err) => {
-          ErrorPrint("user cannot be made", err);
+    ErrorPrint("user cannot be made", err);
           if (err instanceof UserError) {
-              ErrorPrint(err.GetMessage());
-              //req.flash('error', err.GetMessage());
-              res.status(err.GetStatus());
-              res.redirect(err.GetRedirectURL());
+        ErrorPrint(err.getMessage());
+              //req.flash('error', err.getMessage());
+              res.status(err.getStatus());
+              res.redirect(err.getRedirectURL());
           } else {
               next(err);
           }
       });
   });
 
-
+router.post('/login',(req,res,next) => {
+  var username=req.body.user_name;
+  var password=req.body.password;
+      UserModel.Authenticate(username,password)
+          .then((loggedUserId)=>{
+              if(loggedUserId > 0){
+                  SuccessPrint(`User ${username} is logged in`);
+                  req.session.username=username;
+                  req.session.user_id=loggedUserId;
+                  res.locals.logged = true;
+                  res.redirect("/");
+              }else{
+                  throw new userError("Invalid username and/or password!","/login",200);
+              }
+          })
+          .catch((err) => {
+        ErrorPrint("User login failed!!");
+              if (err instanceof userError){
+            ErrorPrint(err.getMessage());
+                  res.status(err.getStatus());
+                  res.redirect('/login');
+              }
+              else{
+                  next(err);
+              }
+          });
+  });
+  
 
 module.exports = router;
