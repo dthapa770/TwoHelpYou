@@ -28,7 +28,6 @@ var UserModel = {};
  * @returns resolution to inserton of user to database
  */
 UserModel.Create=(first_name,last_name,username,password,email,image_name) =>{
-    console.log(password);
     var photopath = "images/uploads/" + image_name;
     var thumbnail = "images/thumbnails/" + image_name;
     return bcrypt.hash(password,10)
@@ -81,15 +80,11 @@ UserModel.EmailExists= (email) =>{
  */
 UserModel.Authenticate = (username, password) =>{
     let user_id;
-    console.log("XXXX")
     let baseSQL="SELECT user_id,username, password, email FROM user WHERE username=?;";
-    console.log(username);
     return db.execute(baseSQL,[username])
         .then(([results,fields]) =>{
             if(results && results.length ==1){
                 user_id= results[0].user_id;
-                console.log("----");
-                console.log(user_id);
 
                 return bcrypt.compare(password, results[0].password );
             }else{

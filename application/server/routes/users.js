@@ -10,7 +10,7 @@
  * 
  * File: user.js
  * 
- * Description: temporary page that will deal with users.
+ * Description: deals with routing to implement functions for users
  *****************************************************************************/
 
 var express = require('express');
@@ -27,6 +27,9 @@ router.get('/', function(req, res, next) {
 	res.send('respond with a resource');
 });
 
+/**
+ * route for user registration
+ */
 router.post('/register', (req, res, next) => {
 	var first_name = req.body.first_name;
 	var last_name = req.body.last_name;
@@ -133,6 +136,9 @@ router.post('/register', (req, res, next) => {
 		});
 });
 
+/**
+ * Route for user login
+ */
 router.post('/login', (req, res, next) => {
 	var username = req.body.user_name;
 	var password = req.body.password;
