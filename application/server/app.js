@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sessions=require('express-session');
 var mysqlSessions=require('express-mysql-session')(sessions);
+var fileupload = require('express-fileupload');
+
 var handlebars = require("express-handlebars");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -41,6 +43,9 @@ app.set('views', path.join(__dirname, '../client/views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
+
+app.use(fileupload());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
