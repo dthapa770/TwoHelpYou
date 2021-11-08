@@ -27,12 +27,14 @@ var UserModel = {};
  * @param email 
  * @returns resolution to inserton of user to database
  */
-UserModel.Create=(first_name,last_name,username,password,email) =>{
+UserModel.Create=(first_name,last_name,username,password,email,image_name) =>{
     console.log(password);
+    var photopath = "images/uploads/" + image_name;
+    var thumbnail = "images/thumbnails/" + image_name;
     return bcrypt.hash(password,10)
         .then((hashedPassword)=>{
-            let baseSQL="INSERT INTO user (first_name,last_name,username,email,password,created) VALUES(?,?,?,?,?,now());"
-            return db.execute(baseSQL,[first_name,last_name,username,email,hashedPassword])
+            let baseSQL="INSERT INTO user (first_name,last_name,username,email,password,created,photopath,thumbnail) VALUES(?,?,?,?,?,now(),?,?);"
+            return db.execute(baseSQL,[first_name,last_name,username,email,hashedPassword,photopath,thumbnail])
         })
         .then(([results,fields]) => {
             if(results && results.affectedRows){

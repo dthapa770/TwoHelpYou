@@ -14,6 +14,7 @@
  *****************************************************************************/
 
 var express = require('express');
+var sharp = require('sharp');
 var router = express.Router();
 var UserModel = require('../models/user_model');
 const { SuccessPrint, ErrorPrint } = require('../helpers/debug/debug_printers');
@@ -35,6 +36,75 @@ router.post('/register', (req, res, next) => {
 	var username = req.body.username;
 	var email = req.body.email;
 	var password = req.body.password;
+    let profile_picture = req.files.profile_picture;
+
+    try {
+        if (!res.locals.logged) {
+            SuccessPrint("User is not logged in.")
+        }
+        else
+            throw new UserError('User is logged in',
+            "/register",
+            200
+            );
+        var allowed_image = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        if (!allowed_image.exec(profile_picture.name)) {
+            throw new UserError('wrong file type',
+            "/register",
+            200
+            );
+        }
+    } catch(err) {
+        console.log('error');
+        ErrorPrint("Bad image");
+        if (err instanceof UserError) {
+            ErrorPrint(err.GetMessage());
+            // req.flash('Error', err.getMessage());
+            res.status(err.GetStatus());
+            req.session.save(function () {
+              res.redirect(err.GetRedirectURL());
+            })
+        } else {
+            next(err);
+        }
+        return;
+    }
+
+    try {
+        if (!req.files || Object.keys(req.files).length === 0){
+            return res.status(400).send('No files were uploaded.');
+        }
+        image_name = username + '_' + Date.now() + '_' + profile_picture.name;
+        profile_picture.mv('../client/public/images/uploads/' + image_name, (err) => {
+            if (err) {
+                throw new UserError("Image could not be uploaded");
+            } else {
+                SuccessPrint("Img was uploaded");
+            }
+        });
+        sharp(req.files.profile_picture.data).resize(200)
+        .toFile('../client/public/images/thumbnails/' + image_name)
+        .then(function (new_file_info) {
+            SuccessPrint("Image Resized");
+        })
+        .catch(function (err) {
+            throw new UserError("Image could not be thumbnailed");
+        });
+    } catch (err) {
+        console.log('error');
+        errorPrint("Bad post data");
+        if (err instanceof PostError) {
+            ErrorPrint(err.GetMessage());
+            // req.flash('Error', err.getMessage());
+            res.status(err.GetStatus());
+            req.session.save(function () {
+              res.redirect(err.GetRedirectURL());
+            })
+        } else {
+            next(err);
+        }
+        return;
+    }
 
 	UserModel.UsernameExists(username)
 		.then((user_name_exists) => {

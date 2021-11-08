@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var fileupload = require('express-fileupload');
 
 var handlebars = require("express-handlebars");
 var indexRouter = require('./routes/index');
@@ -33,6 +34,9 @@ app.set('views', path.join(__dirname, '../client/views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
+
+app.use(fileupload());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
