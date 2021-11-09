@@ -81,23 +81,18 @@ UserModel.EmailExists= (email) =>{
  */
 UserModel.Authenticate = (username, password) =>{
     let user_id;
-    console.log("XXXX")
     let baseSQL="SELECT user_id,username, password, email FROM user WHERE username=?;";
-    console.log(username);
     return db.execute(baseSQL,[username])
         .then(([results,fields]) =>{
             if(results && results.length ==1){
                 user_id= results[0].user_id;
-                console.log("----");
-                console.log(user_id);
-
                 return bcrypt.compare(password, results[0].password );
             }else{
                 return Promise.reject(-1);
             }
         })
-        .then((passwordMatch) =>{
-            if(passwordMatch){
+        .then((password_match) =>{
+            if(password_match){
                 return Promise.resolve(user_id);
             }else{
                 return Promise.resolve(-1);

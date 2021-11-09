@@ -160,4 +160,19 @@ router.post('/login', (req, res, next) => {
 		});
 });
 
+router.post('/logout', (req, res, next) => {
+    req.session.destroy((err) => {
+        if (err) {
+            ErrorPrint("session couldn't be destroyed");
+            next(err);
+        } else {
+            SuccessPrint("session was destroyed");
+            res.clearCookie('csid');
+            res.json({status: "OK", message: "user is logged out"});
+
+
+        }
+    })
+})
+
 module.exports = router;
