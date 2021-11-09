@@ -14,9 +14,9 @@
  *****************************************************************************/
 
 var express = require('express');
-var sharp = require('sharp');
 var router = express.Router();
 var UserModel = require('../models/user_model');
+var PhotoModel = require('../models/photo_model');
 const { SuccessPrint, ErrorPrint } = require('../helpers/debug/debug_printers');
 const UserError = require('../helpers/error/user_error');
 const { SaveSession } = require('../utility/promise');
@@ -37,20 +37,14 @@ router.post('/register', (req, res, next) => {
 	var username = req.body.username;
 	var email = req.body.email;
 	var password = req.body.password;
-
-	let profile_picture = req.files.profile_picture;
+	let profile_picture;
 
 	try {
 		if (!res.locals.logged) {
 			SuccessPrint('User is not logged in.');
-		} else throw new UserError('User is logged in', '/register', 200);
-		var allowed_image = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-		if (!allowed_image.exec(profile_picture.name)) {
-			throw new UserError('wrong file type', '/register', 200);
-		}
+		} else throw new UserError('User is logged in', '/', 200);
 	} catch (err) {
 		console.log('error');
-		ErrorPrint('Bad image');
 		if (err instanceof UserError) {
 			ErrorPrint(err.GetMessage());
 			// req.flash('Error', err.getMessage());
@@ -64,41 +58,33 @@ router.post('/register', (req, res, next) => {
 		return;
 	}
 
-	try {
-		if (!req.files || Object.keys(req.files).length === 0) {
-			return res.status(400).send('No files were uploaded.');
-		}
-		image_name = username + '_' + Date.now() + '_' + profile_picture.name;
-		profile_picture.mv('../client/public/images/uploads/' + image_name, (err) => {
-			if (err) {
-				throw new UserError('Image could not be uploaded');
-			} else {
-				SuccessPrint('Img was uploaded');
+	if (!req.files || Object.keys(req.files).length === 0) {
+		// utilize default
+		image_name = "default_photo.jpg";
+	} else {
+		// Grabs photo from client and uploads the image
+		try {
+			profile_picture = req.files.profile_picture;
+			image_name = PhotoModel.UploadPhoto(username, profile_picture);
+			if (image_name == "Error") {
+				throw new UserError('Issue with photo file.', '/register', 200);
 			}
-		});
-		sharp(req.files.profile_picture.data)
-			.resize(200)
-			.toFile('../client/public/images/thumbnails/' + image_name)
-			.then(function(new_file_info) {
-				SuccessPrint('Image Resized');
-			})
-			.catch(function(err) {
-				throw new UserError('Image could not be thumbnailed');
-			});
-	} catch (err) {
-		console.log('error');
-		ErrorPrint('Bad post data');
-		if (err instanceof PostError) {
-			ErrorPrint(err.GetMessage());
-			// req.flash('Error', err.getMessage());
-			res.status(err.GetStatus());
-			req.session.save(function() {
-				res.redirect(err.GetRedirectURL());
-			});
-		} else {
-			next(err);
+		} catch (err) {
+			console.log('error');
+			ErrorPrint("Cannot handle image properly.")
+			if (err instanceof UserError) {
+				ErrorPrint(err.GetMessage());
+				// req.flash('Error', err.getMessage());
+				res.status(err.GetStatus());
+				req.session.save(function() {
+					res.redirect(err.GetRedirectURL());
+				});
+			} else {
+				next(err);
+			}
+			return;
 		}
-		return;
+		SuccessPrint("Photos moved to correct place.")
 	}
 
 	UserModel.UsernameExists(username)
@@ -127,10 +113,10 @@ router.post('/register', (req, res, next) => {
 		.catch((err) => {
 			ErrorPrint('user cannot be made', err);
 			if (err instanceof UserError) {
-				ErrorPrint(err.getMessage());
+				ErrorPrint(err.GetMessage());
 				//req.flash('error', err.getMessage());
-				res.status(err.getStatus());
-				res.redirect(err.getRedirectURL());
+				res.status(err.GetStatus());
+				res.redirect(err.GetRedirectURL());
 			} else {
 				next(err);
 			}
