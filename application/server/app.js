@@ -56,6 +56,13 @@ app.use((req,res,next)=>{
   next();
 });
 
+app.use((req,res,next) =>{
+  if(req.session.username){
+          res.locals.logged=true;
+  }
+  next();
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/post', postRouter);

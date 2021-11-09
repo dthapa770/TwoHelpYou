@@ -85,14 +85,13 @@ UserModel.Authenticate = (username, password) =>{
         .then(([results,fields]) =>{
             if(results && results.length ==1){
                 user_id= results[0].user_id;
-
                 return bcrypt.compare(password, results[0].password );
             }else{
                 return Promise.reject(-1);
             }
         })
-        .then((passwordMatch) =>{
-            if(passwordMatch){
+        .then((password_match) =>{
+            if(password_match){
                 return Promise.resolve(user_id);
             }else{
                 return Promise.resolve(-1);
