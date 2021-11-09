@@ -43,8 +43,8 @@
     {{/if}}
   </form>
   {{#if logged}}
-  <div id="logout-button">LogOut </div>
+  <div id="user_nav"><a href="/" >Messages</a> | <a href="" id="logout" >Logout</a></div>
   {{else}}
-   <a href="/login" >Login</a> | <a href="/register" >Register</a></div>
+  <div id="user_nav"><a href="/login" >Login</a> | <a href="/register" >Register</a></div>
   {{/if}}
 </div>

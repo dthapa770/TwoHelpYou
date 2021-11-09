@@ -19,6 +19,7 @@ var router = express.Router();
 var UserModel = require('../models/user_model');
 const { SuccessPrint, ErrorPrint } = require('../helpers/debug/debug_printers');
 const UserError = require('../helpers/error/user_error');
+const { SaveSession } = require('../utility/promise');
 
 //var crypto=require('crypto');
 
@@ -133,46 +134,44 @@ router.post('/register', (req, res, next) => {
 		});
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', async (req, res, next) => {
 	var username = req.body.user_name;
 	var password = req.body.password;
-	UserModel.Authenticate(username, password)
-		.then((logged_user_id) => {
-			if (logged_user_id > 0) {
-				SuccessPrint(`User ${username} is logged in`);
-				req.session.username = username;
-				req.session.user_id = logged_user_id;
-				res.locals.logged = true;
-				res.redirect('/');
-			} else {
-				throw new userError('Invalid username and/or password!', '/login', 200);
-			}
-		})
-		.catch((err) => {
-			ErrorPrint('User login failed!!');
-			if (err instanceof userError) {
-				ErrorPrint(err.getMessage());
-				res.status(err.getStatus());
-				res.redirect('/login');
-			} else {
-				next(err);
-			}
-		});
+	let logged_user_id = await UserModel.Authenticate(username, password);
+	try {
+		if (logged_user_id > 0) {
+			SuccessPrint(`User ${username} is logged in`);
+			req.session.username = username;
+			req.session.user_id = logged_user_id;
+			res.locals.logged = true;
+			await SaveSession(req.session);
+			res.redirect('/');
+		} else {
+			throw new UserError('Invalid username and/or password!', '/login', 200);
+		}
+	} catch (err) {
+		ErrorPrint('User login failed!!');
+		if (err instanceof UserError) {
+			ErrorPrint(err.GetMessage());
+			res.status(err.GetStatus());
+			res.redirect('/login');
+		} else {
+			next(err);
+		}
+	}
 });
 
 router.post('/logout', (req, res, next) => {
-    req.session.destroy((err) => {
-        if (err) {
-            ErrorPrint("session couldn't be destroyed");
-            next(err);
-        } else {
-            SuccessPrint("session was destroyed");
-            res.clearCookie('csid');
-            res.json({status: "OK", message: "user is logged out"});
-
-
-        }
-    })
-})
+	req.session.destroy((err) => {
+		if (err) {
+			ErrorPrint("session couldn't be destroyed");
+			next(err);
+		} else {
+			SuccessPrint('session was destroyed');
+			res.clearCookie('csid');
+			res.json({ status: 'OK', message: 'user is logged out' });
+		}
+	});
+});
 
 module.exports = router;
