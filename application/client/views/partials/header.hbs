@@ -42,5 +42,9 @@
     <div id="return_to_home">Return to Home to Search</div>
     {{/if}}
   </form>
-  <div id="user_nav"> | <a href="/login" >Login</a> | <a href="/register" >Register</a></div>
+  {{#if logged}}
+  <div id="logout-button">LogOut </div>
+  {{else}}
+   <a href="/login" >Login</a> | <a href="/register" >Register</a></div>
+  {{/if}}
 </div>

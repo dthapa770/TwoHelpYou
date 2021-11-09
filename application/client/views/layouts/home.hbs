@@ -20,21 +20,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <script defer type="text/javascript" src= "/js/frontend.js"  ></script>
     <script
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js">
     </script>
     <link rel='stylesheet' type="text/css" href='/stylesheets/color_book.css' />
-     <script defer type="text/javascript" src= "/js/frontend.js"  ></script>
+     
   </head>
   
   <body class="grid_container">
+    {{log this}}
     {{> header}}
-    {{!-- {{#if (emptyObject messages)}}
-    {{> flashmessage}}
-    {{/if}} --}}
     {{{body}}}
     {{> footer}}
-  </body>
-  
+    {{#if logged}}
+     <script>
+        let ele = document.getElementById('logout-button');
+        console.log(ele);
+        if (ele) {
+            ele.onclick = (even) => {
+                fetch('/users/logout', {
+                    method: "POST"
+                })
+                        .then((data) => {
+                            location.replace('/');
+                        })
+            }
+        }
+    </script>
+    {{/if}}
+  </body> 
 </html>
