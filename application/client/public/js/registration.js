@@ -70,12 +70,12 @@ function ValidateUser(name) {
 
 /**
  * Function to validate email is compliant
- * (needs to be changed to only allow @mail.sfsu.edu)
+ * (needs to be changed to only allow @mail.sfsu.edu or @sfsu.edu)
  * @param email_to_add 
  * @returns 
  */
 function ValidateEmail(email_to_add){
-    if(!email_to_add.value.match(/[\w]+@[\w]/)){
+    if(!email_to_add.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
         return Error(email_to_add, 'Does not Comply to email format');
     }
     return Success(email_to_add);
