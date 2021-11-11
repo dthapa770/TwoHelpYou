@@ -27,7 +27,7 @@ var UserModel = {};
  * @param email 
  * @returns resolution to inserton of user to database
  */
-UserModel.Create=(first_name,last_name,username,password,email,image_name) =>{
+UserModel.Create = async (first_name,last_name,username,password,email,image_name) =>{
     var photopath = "images/uploads/" + image_name;
     var thumbnail = "images/thumbnails/" + image_name;
     return bcrypt.hash(password,10)
@@ -50,7 +50,7 @@ UserModel.Create=(first_name,last_name,username,password,email,image_name) =>{
  * @param username 
  * @returns resolution to query
  */
-UserModel.UsernameExists=(username) =>{
+UserModel.UsernameExists = (username) =>{
     return db.execute("SELECT * FROM user WHERE username=?", [username])
     .then(([results,fields]) =>{
         return Promise.resolve(!(results && results.length==0));
@@ -63,7 +63,7 @@ UserModel.UsernameExists=(username) =>{
  * @param email 
  * @returns resolution to query
  */
-UserModel.EmailExists= (email) =>{
+UserModel.EmailExists = (email) =>{
     return db.execute("SELECT * FROM user WHERE email=?", [email])
     .then(([results, fields]) => {
           return Promise.resolve(!(results && results.length == 0));

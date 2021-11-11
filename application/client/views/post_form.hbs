@@ -1,0 +1,46 @@
+{{!-- *************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: post_form.hbs
+ * 
+ * Description: Display form to allow users to create a post
+ ************************************************************************* --}}
+
+<div class="body">
+    <form id="post_page" method="POST" action="/post/request"
+       enctype="multipart/form-data">
+        <h2>Tutoring Post Request Page</h2>
+        <div id="course_information">
+            <label for="course_prefix">Please Select the course Prefix and enter postfix</label><br />
+            <select name="course_prefix" id="select_menu" tabindex="0" required>
+                <option selected value=""></option>
+                {{#each course}}
+                <option value="{{this.course_prefix}}">{{this.course_prefix}}</option>
+                {{/each}}
+            </select>
+            <input type="text" id="course_postfix" name="course_postfix" required placeholder="course postfix" maxlength="3"/>
+        </div>
+        <div id="availability">
+            <label for="availability">Please enter your availability</label><br />
+            <input type="text" id="availability" name="availability" required placeholder="availability" minlength="3"/>
+        </div>
+        <div id="credibility">
+            <label for="credibility">Credibility (why you can teach this course)</label><br />
+            <input type="file" id="credibility" name="credibility">
+        </div>
+        <div>
+            {{#if logged}}
+            <input id="post_button" type="submit" value="post" name="Post" />
+            {{else}}
+            <div id="user_nav"><a href="/login" >Login</a> or <a href="/register" >Register</a></div>
+            {{/if}}
+        </div>
+    </form>
+</div>

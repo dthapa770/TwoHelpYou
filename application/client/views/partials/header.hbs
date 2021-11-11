@@ -32,7 +32,7 @@
       <select name="course_prefix" id="select_menu" tabindex="0">
         <option selected value="">All</option>
         {{#each course}}
-          <option value={{this.course_prefix}}>{{this.course_prefix}}</option>
+          <option value="{{this.course_prefix}}">{{this.course_prefix}}</option>
         {{/each}}
       </select>
       <input id="search_text" type="search" placeholder="Search" name="search_text" aria-label="Search">
