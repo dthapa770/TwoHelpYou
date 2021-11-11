@@ -164,7 +164,7 @@ a.button:hover {
 	justify-content: center;
 }
 
-#post_number {
+.side_bar {
 	grid-column-start: 1;
 	grid-column-end: 3;
 }
