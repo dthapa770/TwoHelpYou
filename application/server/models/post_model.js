@@ -144,6 +144,12 @@ PostModel.CheckCoursePostfix = async (course_postfix) => {
 		.catch((err) => Promise.reject(err));
 }
 
+/**
+ * Fetches the existing course id from the db
+ * @param course_prefix 
+ * @param course_postfix 
+ * @returns course_id
+ */
 PostModel.GetCourseID = async (course_prefix, course_postfix) => {
 	let baseSQL = `select c.course_id
 					from course c
