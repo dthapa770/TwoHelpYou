@@ -64,9 +64,9 @@ PostMiddleware.GetAllPostCoursePrefix = async function(req,res,next) {
  */
 PostMiddleware.GetAllUserPost = async function(req,res,next) {
     try {
-        let results = await PostModel.Search(req.params.username);
-        res.locals.results = results;
-        if (results.length == 0) {
+        let courses = await PostModel.Search(req.params.username);
+        res.locals.courses = courses;
+        if (courses.length == 0) {
             console.log("Error getting courses");
         }
         next();
