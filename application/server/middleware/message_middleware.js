@@ -17,7 +17,6 @@
  const MessageMiddleware = {}
 
 MessageMiddleware.GatAllUserMessages = async function(req,res,next) {
-    console.log(req.session);
     try {
         let results = await MessageModel.GetUserMessages(req.session.user_id);
         res.locals.results = results;
