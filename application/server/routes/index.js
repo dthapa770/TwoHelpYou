@@ -69,4 +69,8 @@ router.get('/post_form', GetAllPostCoursePrefix, function(req,res,next){
   res.render('post_form'), {title: 'Software Engineering Class SFSU'}
 })
 
+router.get('/message',  function(req,res,next){
+  res.render('message'), {title: 'Software Engineering Class SFSU'}
+})
+
 module.exports = router;

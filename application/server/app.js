@@ -6,7 +6,7 @@ var logger = require('morgan');
 var sessions=require('express-session');
 var mysqlSessions=require('express-mysql-session')(sessions);
 var fileupload = require('express-fileupload');
-
+var messageRouter =require('./routes/message');
 var handlebars = require("express-handlebars");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -66,6 +66,7 @@ app.use((req,res,next) =>{
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/post', postRouter);
+app.use('/message',messageRouter);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
