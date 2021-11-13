@@ -126,15 +126,16 @@ PostModel.CheckCoursePrefix = async (course_prefix) => {
 }
 
 /**
- * Checks if the postfix exists
+ * Checks if the postfix exists for the prefix
+ * @param course_prefix
  * @param course_postfix 
  * @returns bool on if it exists
  */
-PostModel.CheckCoursePostfix = async (course_postfix) => {
+PostModel.CheckCoursePostfix = async (course_prefix, course_postfix) => {
 	let baseSQL = `select c.course_postfix
 					from course c
-					where c.course_postfix = ?;`;
-	return db.execute(baseSQL, [course_postfix])
+					where c.course_prefix = ? and c.course_postfix = ?;`;
+	return db.execute(baseSQL, [course_prefix, course_postfix])
 		.then(([results, fields]) => {
 			if (results.length > 0)
 				return Promise.resolve(true);

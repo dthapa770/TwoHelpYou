@@ -105,7 +105,7 @@ router.post('/request', async (req,res,next) => {
             throw new PostError('Course postfix is not allowed.', "/post_form", 200);
 
         // Checks if course postfix exists, if not add it to the table
-        let is_course_postfix = await PostModel.CheckCoursePostfix(course_postfix);
+        let is_course_postfix = await PostModel.CheckCoursePostfix(course_prefix, course_postfix);
         if (is_course_postfix) {
            SuccessPrint("Course postfix exist.");
            course_id = await PostModel.GetCourseID(course_prefix,course_postfix);
