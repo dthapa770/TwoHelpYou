@@ -17,6 +17,7 @@ var express = require('express');
 var router = express.Router();
 var GetHighestRatedPost = require('../middleware/post_middleware').GetHighestRatedPost;
 var GetAllPostCoursePrefix = require('../middleware/post_middleware').GetAllPostCoursePrefix;
+var GetAllUserMessages = require('../middleware/message_middleware').GatAllUserMessages;
 
 /* GET home page. */
 router.get('/', GetHighestRatedPost, GetAllPostCoursePrefix, function(req, res, next) {
@@ -67,6 +68,10 @@ router.get('/results', function(req,res,next){
 
 router.get('/post_form', GetAllPostCoursePrefix, function(req,res,next){
   res.render('post_form'), {title: 'Software Engineering Class SFSU'}
+})
+
+router.get('/message_page', GetAllUserMessages, function(req,res,next) {
+  res.render('message_page'), {title: 'Software Engineering Class SFSU'}
 })
 
 module.exports = router;

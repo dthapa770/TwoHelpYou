@@ -175,7 +175,6 @@ router.post('/logout', (req, res, next) => {
  */
 router.get('/:username', GetAllUserPost, (req,res,next) => {
   let username = req.params.username; 
-  console.log(username);
 
   UserModel.GetUser(username)
   .then((results) => {
@@ -190,6 +189,5 @@ router.get('/:username', GetAllUserPost, (req,res,next) => {
 	  }
   })
 })
-
 
 module.exports = router;
