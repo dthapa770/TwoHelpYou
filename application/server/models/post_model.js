@@ -27,7 +27,7 @@ const PostModel = {};
 PostModel.Search = (search) => {
 	let sqlSearchTerm = '%' + search + '%';
 	let baseSQL = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
-					u.first_name, u.photopath, avg(ifnull(r.rating,0)) as avg_rating,
+					u.user_id, u.username, u.thumbnail, avg(ifnull(r.rating,0)) as avg_rating,
 					concat_ws(' ', u.first_name, u.last_name, u.username, p.availability,
 					c.course_prefix, c.course_postfix)	as haystack
 					from user u, course c, post p
@@ -54,7 +54,7 @@ PostModel.Search = (search) => {
  */
 PostModel.GetNHighestPrefixPosts = (nth, prefix) => {
 	let baseSQL = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
-					u.first_name, u.photopath, avg(ifnull(r.rating,0)) as avg_rating 
+					u.user_id, u.username, u.thumbnail, avg(ifnull(r.rating,0)) as avg_rating 
 					from user u, course c, post p left join review r 
 					on r.post_id = p.post_id
 					where u.user_id = p.user_id and c.course_id = p.course_id and p.authorized <> 0
@@ -78,7 +78,7 @@ PostModel.GetNHighestPrefixPosts = (nth, prefix) => {
  */
 PostModel.GetNHighestPosts = (nth) => {
 	let baseSQL = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
-					u.first_name, u.photopath, avg(ifnull(r.rating,0)) as avg_rating 
+					u.user_id, u.username, u.thumbnail, avg(ifnull(r.rating,0)) as avg_rating 
 					from user u, course c, post p left join review r 
 					on r.post_id = p.post_id
 					where u.user_id = p.user_id and c.course_id = p.course_id and p.authorized <> 0

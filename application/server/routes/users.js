@@ -17,6 +17,7 @@ var express = require('express');
 var router = express.Router();
 var UserModel = require('../models/user_model');
 var PhotoModel = require('../models/photo_model');
+var GetAllUserPost = require('../middleware/post_middleware').GetAllUserPost;
 const { SuccessPrint, ErrorPrint } = require('../helpers/debug/debug_printers');
 const UserError = require('../helpers/error/user_error');
 const { SaveSession } = require('../utility/promise');
@@ -168,5 +169,27 @@ router.post('/logout', (req, res, next) => {
 		}
 	});
 });
+
+/**
+ * Get User Profile
+ */
+router.get('/:username', GetAllUserPost, (req,res,next) => {
+  let username = req.params.username; 
+  console.log(username);
+
+  UserModel.GetUser(username)
+  .then((results) => {
+	  if (results.length){
+		let user = results[0];
+		res.render('user_profile', {current_user: user, title: `User: ${username}`});
+	  } else {
+		  ErrorPrint('Error, this is no the correct User profile.');
+		  req.session.save(function () {
+			  res.redirect('/');
+		  })
+	  }
+  })
+})
+
 
 module.exports = router;

@@ -56,4 +56,23 @@ PostMiddleware.GetAllPostCoursePrefix = async function(req,res,next) {
     }
 }
 
+/**
+ * Get all post related to the user.
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+PostMiddleware.GetAllUserPost = async function(req,res,next) {
+    try {
+        let results = await PostModel.Search(req.params.username);
+        res.locals.results = results;
+        if (results.length == 0) {
+            console.log("Error getting courses");
+        }
+        next();
+    } catch(err) {
+        next(err);
+    }
+}
+
 module.exports = PostMiddleware;

@@ -100,4 +100,21 @@ UserModel.Authenticate = (username, password) =>{
         .catch((err) =>Promise.reject(err));
 };
 
+/**
+ * Get user information.
+ * @param username 
+ * @returns 
+ */
+UserModel.GetUser = (username) => {
+    console.log(username);
+    let baseSQL = `SELECT u.username, u.user_id, u.first_name, u.photopath
+                    from user u
+                    where u.username = ?;`;
+    return db.execute(baseSQL, [username])
+    .then(([results, fields]) => {
+        return Promise.resolve(results);
+    })
+    .catch((err) => Promise.reject(err));
+}
+
 module.exports = UserModel;

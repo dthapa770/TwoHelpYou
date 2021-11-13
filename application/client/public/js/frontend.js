@@ -98,8 +98,8 @@ function CreateCard(post_data) {
         <p class="card_title">${post_data.course_prefix}${post_data.course_postfix}</p>
         <p class="card_title">${post_data.avg_rating}</p>
         <p class="card_text">${post_data.availability}</p>
-        <p class="card_title">${post_data.first_name}</p>
-        <img class="card_image" src="./${post_data.photopath}" alt="image missing" width="100" height="100">
+        <a href="/users/${post_data.username}" class="card_title">${post_data.username}</a><br />
+        <img class="card_image" src="./${post_data.thumbnail}" alt="image missing" width="100" height="100">
     </section>`;
 }
 
