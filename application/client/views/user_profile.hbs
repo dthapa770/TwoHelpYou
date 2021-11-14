@@ -10,14 +10,30 @@
  * 
  * File: user_profile.hbs
  * 
- * Description: temporary user profile page.
+ * Description: User profile page. user_section class is the info on the right side of the page.
+ *              profile_image is the image on the left. course_info is the cards that will display below the other two class.
  ************************************************************************* --}}
+  <head>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/user_profile.css' />
+  </head>
 
 <div class="body">
-    <h2 id="username" >{{current_user.username}}</h2>
-    <img class="card_image" src="../{{current_user.photopath}}" alt="image missing" width="100" height="100">
-    <div id="first_name">{{current_user.first_name}}</div>
-    {{#each courses}}
-        {{> teaches this}}
-    {{/each}}
+    <div class = "user_section">
+        <div class = "user_info">
+            <h2 id="username" >{{current_user.username}}</h2>
+            <label>Name: <id="first_name">{{current_user.first_name}}</label>
+        </div>
+        <div class = "profile_image">
+            <img class="card_image" src="../{{current_user.photopath}}" alt="image missing" width="100" height="100"><br>
+            <button>message</button>
+        </div>
+    </div>
+    <div class = "courses_info">
+    {{#if courses}}
+    <p>Tutor Courses</p>
+        {{#each courses}}
+            {{> teaches this}}
+        {{/each}}
+    {{/if}}
+    </div>
 </div>

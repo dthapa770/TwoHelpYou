@@ -1,0 +1,41 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * 
+ * File: user_profile.css
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * Description: Provides the styling for the user profile page
+ *****************************************************************************/
+
+.user_section{
+	top: 10%;
+}
+
+.user_info{
+	float: right;
+	margin: 3% 1.5%;
+  	width: 55%;
+	height: auto;
+}
+
+.profile_image{
+	float: left;
+	margin: 5% 1.5%;
+  	width: 35%;
+	height: auto;
+}
+
+.courses_info{
+	/* 
+    float: left;
+	margin: 0 1.5%;
+  	width: 70%; 
+    */
+	clear: both;
+}

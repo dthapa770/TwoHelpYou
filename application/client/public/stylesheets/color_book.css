@@ -34,6 +34,7 @@ body {
 .cross_screen_row {
 	grid-column-start: 1;
 	grid-column-end: 4;
+	clear: both;
 }
 
 .banner {
@@ -42,6 +43,7 @@ body {
 	background: #186295;
 	color: #ffffff;
 	padding: .5%;
+	clear: both;
 }
 
 .site_section {
@@ -68,6 +70,7 @@ body {
 .bottom_header {
 	background: gold;
 	color: white;
+	clear: both;
 }
 
 .search_bar {
@@ -168,3 +171,6 @@ a.button:hover {
 	grid-column-start: 1;
 	grid-column-end: 3;
 }
+
+
+
