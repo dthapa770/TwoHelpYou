@@ -74,8 +74,4 @@ router.get('/message_page', GetAllUserMessages, function(req,res,next) {
   res.render('message_page'), {title: 'Software Engineering Class SFSU'}
 })
 
-// router.get('/message',  function(req,res,next){
-//   res.render('message'), {title: 'Software Engineering Class SFSU'}
-// })
-
 module.exports = router;
