@@ -10,7 +10,7 @@
  * 
  * File: mesage_model.js
  * 
- * Description: Deals with messages.
+ * Description: Insert query for the message sent by the user
  *****************************************************************************/
 
 var db = require('../config/database');
@@ -32,5 +32,41 @@ MessageModel.GetUserMessages = (user_id) => {
 		})
 		.catch((err) => Promise.reject(err));
 };
+
+/**
+ * Inserts Message into the database.
+ * @param sender 
+ * @param receiver 
+ * @param message 
+ * @returns 
+ */
+MessageModel.Create = (sender,receiver,message) =>{
+    let baseSQL = `INSERT INTO message (time, message, receiver_id,sender_id) VALUES (now(),?,(SELECT user_id FROM user WHERE username = ?),?);`
+    return db.query(baseSQL,[message,receiver,sender])
+    .then (([results,fields]) =>{
+        if(results && results.affectedRows){
+            return Promise.resolve(results);
+        } else {
+            return Promise.resolve(-1);
+        }
+
+    })
+    .catch((err) => Promise.reject(err));
+}
+
+/**
+ * Grabs all message data for recipent of message
+ * @param user_id 
+ * @returns 
+ */
+MessageModel.GetMessage = (user_id) =>{
+    let baseSQL= `SELECT * FROM message WHERE receiver_id= ?;`
+    return db.query(baseSQL, [user_id])
+        .then (([results,fields]) =>{
+            return Promise.resolve(results);
+        })
+        .catch(err => Promise.reject(err));
+
+}
 
 module.exports = MessageModel;

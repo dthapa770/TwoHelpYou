@@ -116,4 +116,4 @@ if (logout_button) {
 			location.replace('/');
 		});
 	};
-}
+};
