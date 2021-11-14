@@ -17,7 +17,13 @@
 var db=require("../config/database");
 const MessageModel= {};
 
-
+/**
+ * Inserts Message into the database.
+ * @param sender 
+ * @param receiver 
+ * @param message 
+ * @returns 
+ */
 MessageModel.Create = (sender,receiver,message) =>{
     let baseSQL = `INSERT INTO message (time, message, receiver_id,sender_id) VALUES (now(),?,(SELECT user_id FROM user WHERE username = ?),?);`
     return db.query(baseSQL,[message,receiver,sender])
@@ -32,6 +38,11 @@ MessageModel.Create = (sender,receiver,message) =>{
     .catch((err) => Promise.reject(err));
 }
 
+/**
+ * Grabs all message data for recipent of message
+ * @param user_id 
+ * @returns 
+ */
 MessageModel.GetMessage = (user_id) =>{
     let baseSQL= `SELECT * FROM message WHERE receiver_id= ?;`
     return db.query(baseSQL, [user_id])
@@ -41,4 +52,5 @@ MessageModel.GetMessage = (user_id) =>{
         .catch(err => Promise.reject(err));
 
 }
+
 module.exports = MessageModel;

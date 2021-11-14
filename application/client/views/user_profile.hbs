@@ -17,10 +17,7 @@
     <h2 id="username" >{{current_user.username}}</h2>
     <img class="card_image" src="../{{current_user.photopath}}" alt="image missing" width="100" height="100">
     <div id="first_name">{{current_user.first_name}}</div>
-<div>
-    <textarea id="message-text" name = "message" value ="message" placeholder="Type your message here"></textarea>
-    <button id= "message-button">Send Message</label> 
-</div>
+    <a href="/message/{{current_user.username}}">Message</a>
     {{#each courses}}
         {{> teaches this}}
     {{/each}}

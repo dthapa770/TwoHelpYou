@@ -1,0 +1,30 @@
+{{!-- *************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: message.hbs
+ * 
+ * Description: Message page.
+ ************************************************************************* --}}
+
+<div class="body">
+    <form id="message_page" method="POST" action="/message/create/{{current_user.username}}"
+        enctype="application/x-www-form-urlencoded">
+        <h2 id="username" >{{current_user.username}}</h2>
+        <textarea id="message-text" name = "message" value ="message" placeholder="Type your message here"></textarea>
+        <div>
+            {{#if logged}}
+            <button id="message-button" type="submit">Send Message</button> 
+            {{else}}
+            <div id="user_nav"><a href="/login" >Login</a> or <a href="/register" >Register</a></div>
+            {{/if}}
+        </div>
+    </form>
+    
+</div>
