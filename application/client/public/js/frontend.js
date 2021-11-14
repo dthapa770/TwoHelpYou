@@ -116,4 +116,28 @@ if (logout_button) {
 			location.replace('/');
 		});
 	};
+};
+
+function FetchMessage() {  
+    let message = document.getElementById("message-text").value;
+    let username1 = document.getElementById("username").textContent;
+    if(!message){
+        return;
+    }
+    let fetchOptions ={
+        method: "POST",
+        headers: {
+                    "Content-Type": "Application/json"
+                },
+                body: JSON.stringify({
+                    message: message,
+                    username: username1,
+                })
+            
+            }
+    fetch('/message/create',fetchOptions)
+	alert("Message Sent");
 }
+document.getElementById("message-button").addEventListener("click", FetchMessage);
+
+

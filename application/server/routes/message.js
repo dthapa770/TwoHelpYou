@@ -8,9 +8,9 @@
  *        Wesley J Xu
  *        Chung Hei Fong
  * 
- * File: frontend.js
+ * File: message.js
  * 
- * Description: 
+ * Description: deals with sending message to the user
  *              
  *****************************************************************************/
 
@@ -20,7 +20,6 @@
  const {Create} = require('../models/message_model');
  
  router.post('/create',(req,res,next) =>{
-     console.log(req.session);
      if(!req.session.username){
          ErrorPrint("Must be logged in to send message");
          res.json({
@@ -29,13 +28,12 @@
              message: "Must be logged in to send message"
          })
      } else {
-         let {message,recieverId} = req.body;
-         let username = req.session.username;
+         let {message,username} = req.body;
          let userId = req.session.user_id;
-         Create(userId,recieverId,message)
+         Create(userId,username,message)
          .then((was_successful) =>{
              if ( was_successful !== -1){
-                 SuccessPrint(`message was sent from ${username}`);
+                 SuccessPrint(`message was sent to ${username}`);
                  res.json({
                      code: 1,
                      status: "success",
