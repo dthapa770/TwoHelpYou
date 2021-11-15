@@ -122,6 +122,8 @@ a.button:hover {
 	color: white;
 }
 
+
+
 /*to fix the issue when window is not at full screen*/
 @media all and (max-width: 520px) {
 	.main_navbar {
