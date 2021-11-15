@@ -1,0 +1,35 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: user_profile.css
+ * 
+ * Description: Provides the styling for the message form page
+ *****************************************************************************/
+
+ .message_button{
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+
+    width: 100px;
+    max-width: 70%;
+	height: auto;
+ }
+
+ .text_area{
+    width: 50%;
+    height: 150%;
+    resize: none;
+ }

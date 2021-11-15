@@ -12,17 +12,27 @@
  * 
  * Description: Message page.
  ************************************************************************* --}}
+<head>
+    <script defer type="text/javascript" src="/js/message_form.js"  ></script>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/message.css' />
+</head>
 
 <div class="body">
     <form id="message_page" method="POST" action="/message/create/{{current_user.username}}"
         enctype="application/x-www-form-urlencoded">
-        <h2 id="username" >{{current_user.username}}</h2>
-        <textarea id="message-text" name = "message" value ="message" placeholder="Type your message here"></textarea>
+        <h2>Send message</h2>
+        <p id="username" >To: {{current_user.username}}</p>
         <div>
             {{#if logged}}
-            <button id="message-button" type="submit">Send Message</button> 
+                <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br>
+                <button class="message_button" id="message-button" type="submit">Send</button> <br><br><br>
             {{else}}
-            <div id="user_nav"><a href="/login" >Login</a> or <a href="/register" >Register</a></div>
+                <p>You need to login or register an account before you can send message.</p><br><br>
+                <div id="user_nav">
+                    <a href="/login" class="message_button">Login</a><br><br>
+                    or <br><br>
+                    <a href="/register" class="message_button">Register</a><br><br><br>
+                </div>
             {{/if}}
         </div>
     </form>
