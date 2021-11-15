@@ -106,7 +106,6 @@ UserModel.Authenticate = (username, password) =>{
  * @returns 
  */
 UserModel.GetUser = (username) => {
-    console.log(username);
     let baseSQL = `SELECT u.username, u.user_id, u.first_name, u.photopath
                     from user u
                     where u.username = ?;`;
