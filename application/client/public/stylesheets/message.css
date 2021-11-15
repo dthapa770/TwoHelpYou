@@ -21,7 +21,21 @@
     text-align: center;
     text-decoration: none;
     margin: 4px 2px;
-    cursor: pointer;
+    transition-duration: 0.4s;
+
+    width: 100px;
+    max-width: 70%;
+	height: auto;
+ }
+
+ .message_button:hover{
+    background-color: #04779e;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
 
     width: 100px;
     max-width: 70%;
