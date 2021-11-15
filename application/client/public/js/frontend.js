@@ -67,6 +67,13 @@ function ExecuteSearch() {
 		.catch((err) => console.log(err));
 }
 
+//prevents and stops a XSS attack 
+function JsEscape(str){
+	return String(str).replace(/[^\w. ]/gi, function(c){
+	   return '\\u'+('0000'+c.charCodeAt(0).toString(16)).slice(-4);
+	});
+} 
+
 /**
  * Updates the number of post/cards on the 
  * result/main page automatically
@@ -83,6 +90,7 @@ let search_button = document.getElementById('search_button');
 if (search_button) {
 	search_button.onclick = function(event) {
 		ExecuteSearch();
+		JsEscape(); 
 	};
 }
 
