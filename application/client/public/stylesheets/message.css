@@ -13,7 +13,7 @@
  * Description: Provides the styling for the message form page
  *****************************************************************************/
 
- .message_button{
+ /* .message_button{
     background-color: #008CBA;
     border: none;
     color: white;
@@ -40,7 +40,7 @@
     width: 100px;
     max-width: 70%;
 	height: auto;
- }
+ } */
  
 
  .text_area{
