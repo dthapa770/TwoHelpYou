@@ -122,6 +122,36 @@ a.button:hover {
 	color: white;
 }
 
+/* This button is from profile and message */
+.button2{
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+
+    width: 100px;
+    max-width: 70%;
+	height: auto;
+ }
+
+ .button2:hover{
+    background-color: #04779e;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+
+    width: 100px;
+    max-width: 70%;
+	height: auto;
+ }
+
 /*to fix the issue when window is not at full screen*/
 @media all and (max-width: 520px) {
 	.main_navbar {
