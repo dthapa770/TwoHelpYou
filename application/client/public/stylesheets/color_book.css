@@ -200,7 +200,7 @@ input[type=text], input[type=password], input[type = email] {
 	margin: 8px 0;
 	border: none;
 	cursor: pointer;
-	width: 15%;
+	/* width: 15%; */
 	opacity: 0.9;
 }
 

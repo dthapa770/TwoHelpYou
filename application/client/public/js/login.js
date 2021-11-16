@@ -14,18 +14,22 @@
  *              such as field validaton and image posting.
  *****************************************************************************/
 
-(function () {
-'use strict'
-var forms = document.querySelectorAll('.requires-validation')
-Array.prototype.slice.call(forms)
-  .forEach(function (form) {
-    form.addEventListener('submit', function (event) {
-    if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-    }
-  
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
+(function() {
+	'use strict';
+	var forms = document.querySelectorAll('.requires-validation');
+	Array.prototype.slice.call(forms).forEach(function(form) {
+		form.addEventListener(
+			'submit',
+			function(event) {
+				if (!form.checkValidity()) {
+					alert("Invalid login information");
+					event.preventDefault();
+					event.stopPropagation();
+				}
+
+				form.classList.add('was-validated');
+			},
+			false
+		);
+	});
+})();

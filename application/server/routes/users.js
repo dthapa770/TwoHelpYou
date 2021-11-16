@@ -42,7 +42,7 @@ const Validate = (req, res, next) => {
 	if(errors.isEmpty()){
 		return next()
 	}else{
-		req.flash('error', "Enter Valid information"); 
+		// req.flash('error', "Enter Valid information"); 
 		ErrorPrint("Validation Failed!")
 		res.redirect('/registration'); 
 	}

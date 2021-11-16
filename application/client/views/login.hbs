@@ -16,26 +16,24 @@
 
 
 <div class="body">
-    <form class="requires-validation" novalidate>
-        <form id="login_page" method="POST" action="/users/login"
-            enctype="application/x-www-form-urlencoded" >
-            <h2>User Login Page</h2>
+    <form class="requires-validation" novalidate id="login_page" method="POST" action="/users/login"
+        enctype="application/x-www-form-urlencoded" >
+        <h2>User Login Page</h2>
+        <p>
+            <label for="user_name">Username: </label><br/>
+            <input type="text" name="user_name" required placeholder="Username" minlength="3"/><br/>
+        </p>
+        <p>
+            <label for="password">Password: </label><br/>
+            <input type="password" name="password" id="password" required placeholder="Password" minlength="8"/><br/>
+        </p>
+        <button class="registerbtn" id="login_button" type="submit" value="login" name="Login" />Login</button><br /><vr />
+        {{!-- <button type="submit" class="registerbtn"> Login </button> --}}
+        <div class = "container">
             <p>
-                <label for="user_name">Username: </label><br/>
-                <input type="text" name="user_name" required placeholder="Username" minlength="3"/><br/>
+                Do not have an account yet? Click here to
+                <a href="../register">Register</a>!
             </p>
-            <p>
-                <label for="password">Password: </label><br/>
-                <input type="password" name="password" id="password" required placeholder="Password" minlength="8"/><br/>
-            </p>
-            {{!-- <input id="login_button" type="submit" value="login" name="Login" /><br /><vr /> --}}
-            <button type="submit" class="registerbtn"> Login </button>
-            <div class = "container">
-                <p>
-                    Do not have an account yet? Click here to
-                    <a href="../register">Register</a>!
-                </p>
-            </div>
-        </form>
+        </div>
     </form>
 </div>
