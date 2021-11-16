@@ -1,0 +1,31 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: login.css
+ * 
+ * Description: Provides the styling for the login page
+ *****************************************************************************/
+
+.login_box {
+    margin-top: 2%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.login_input {
+    text-align: left;
+}
+
+.input {
+    max-width: 100vh;
+    width: 80%;
+}
