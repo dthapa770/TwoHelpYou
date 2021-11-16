@@ -17,11 +17,35 @@ var express = require('express');
 var router = express.Router();
 var UserModel = require('../models/user_model');
 var PhotoModel = require('../models/photo_model');
+const { body, validationResult} = require('express-validator');
 const { SuccessPrint, ErrorPrint } = require('../helpers/debug/debug_printers');
 const UserError = require('../helpers/error/user_error');
 const { SaveSession } = require('../utility/promise');
 
 //var crypto=require('crypto');
+
+//validation rules for registration
+const UserValidationRules = () => {
+	return [
+		body('username').notEmpty().isAlphanumeric(), 
+
+		body('email').matches(/^[a-zA-Z0-9_.+-]+@(sfsu|mail.sfsu)\.edu$/), 
+
+		body('password').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z*-+-./!@#$()^&*]{8,}$/)
+	]
+}
+
+//checks validation for registration
+const Validate = (req, res, next) => {
+	const errors = validationResult(req)
+	if(errors.isEmpty()){
+		return next()
+	}else{
+		req.flash('error', "Enter Valid information"); 
+		ErrorPrint("Validation Failed!")
+		res.redirect('/registration'); 
+	}
+}
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -31,7 +55,7 @@ router.get('/', function(req, res, next) {
 /**
  * route for user registration
  */
-router.post('/register', (req, res, next) => {
+router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 	var first_name = req.body.first_name;
 	var last_name = req.body.last_name;
 	var username = req.body.username;
