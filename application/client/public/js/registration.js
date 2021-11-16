@@ -70,12 +70,12 @@ function ValidateUser(name) {
 
 /**
  * Function to validate email is compliant
- * (needs to be changed to only allow @mail.sfsu.edu)
+ * Only allows @mail.sfsu.edu or @sfsu.edu)
  * @param email_to_add 
  * @returns 
  */
 function ValidateEmail(email_to_add){
-    if(!email_to_add.value.match(/[\w]+@[\w]/)){
+    if(!email_to_add.value.match(/^[a-zA-Z0-9_.+-]+@(sfsu|mail.sfsu)\.edu$/)) {
         return Error(email_to_add, 'Does not Comply to email format');
     }
     return Success(email_to_add);
@@ -179,7 +179,10 @@ register_form.onsubmit = function(event){
         alert('Password does not comply');
     }else if(!ConfirmPassword(user_password, user_confirm)){
         alert('Confirm does not match Password');
-    }else {
+    }else if (!ValidateEmail(email_to_add)){
+        alert('Email address must have @sfsu.edu or @mail.sfsu.edu!'); 
+    }
+    else {
         return true;
     }
     event.preventDefault();
