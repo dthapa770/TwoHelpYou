@@ -91,4 +91,13 @@ app.use((err,req,res,next) =>{
   res.status(500);
   res.send('something wrong with your db');
 })
+
+//stops SQL Injection attacks
+app.post("/users", (request, response) => {
+  const data = request.body;
+  connection.query('SELECT * FROM password where id = ?', [data.id], (err, rows) => {
+  if(err) throw err;
+  response.json({data:rows});
+  });
+});
 module.exports = app;
