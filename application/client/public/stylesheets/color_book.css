@@ -229,3 +229,11 @@ input[type=text], input[type=password], input[type = email] {
 .valid-feedback {
     color: #2acc80;
 }
+
+.Error {
+    color: #ff606e;
+}
+
+.Success {
+    color: #2acc80;
+}
