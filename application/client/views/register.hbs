@@ -15,51 +15,53 @@
 
 <head>
     <script defer type="text/javascript" src="/js/registration.js"  ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    
 </head>
 
 <div class="body">
-    <form id="register_page" action="/users/register"
-    method="POST" enctype="multipart/form-data">
+    <form id="register_page" action="/users/register" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
         <h2>User Registration Form</h2>
         <div>
-            <label for="first_name">First Name:</label><br />
-            <input type="text" id="first_name" name="first_name" required placeholder="First Name" /><br />
-            <label for="last_name">Last Name:</label><br />
-            <input type="text" id="last_name" name="last_name" required placeholder="Last Name" /><br />
+            <label for="first_name">First name: </label> <br/>
+            <input type="text" id="first_name" name="first_name" required placeholder="First name" /><br/>
+            <label for="last_name">Last name: </label><br/>
+            <input type="text" id="last_name" name="last_name" required placeholder="Last name" /><br/>
         </div>
         <div>
-            <label for="username">User Name:</label><br />
-            <input type="text" id="username" name="username" required placeholder="User Name" />
+            <label for="username">Username: </label><br/>
+            <input type="text" id="username" name="username" required placeholder="Username" /><br/>
+            <label for="email">Email: </label><br/>
+            <input type="email" id="email" name="email" required placeholder="Email Address" /><br/>
         </div>
-        <div>
-            <label for="email">Email:</label><br />
+        {{!--<div>
+            <label for="email">Email </label>
             <input type="email" id="email" name="email" required placeholder="Email Address" />
+        </div>--}}
+        <div>
+            <label for="password">Password: </label><br/>
+            <input id="password" type="password" name="password" required placeholder="Password" /><br/>
+            {{!-- <i class="bi bi-eye-slash" id="togglePassword"></i> --}}
         </div>
         <div>
-            <label for="password">Password:</label>
-            <input id="password" type="password" name="password" required placeholder="Password" />
+            <label for="confirm_password">Confirm Password: </label><br/>
+            <input id="confirm_password" type="password" required placeholder="Confirm Password" /><br/>
+        </div>
+        <div class="container">
+            <label for="profile_picture">Upload Image for Profile Picture </label><br />
+            <input type="file" id="profile_picture" name="profile_picture" accept="image/*"><br />
+            <label>Uploading a picture is optional, if no picture is provided a defualt will be used</label>
         </div>
         <div>
-            <label for="confirm_password">Confirm Password:</label>
-            <input id="confirm_password" type="password" required placeholder="Confirm Password" />
+            {{!--<label for="ToS">Please Read and Accept </label> --}}
+            <a href="">Term of Service</a> and <a href="">Privacy Rules</a> <br /> <br />
+            <input type="checkbox" id="ToS" name="terms" value="agreement" required> 
+            <label for="terms" for = "invalidCheck">I agree to the Term of Service and Privacy Rules.</label>
         </div>
         <div>
-            <label for="profile_picture">Upload Image for Profile Picure:</label><br />
-            <label>Uploading a picture is otional, if no picure is provided a defualt will be used</label><br />
-            <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
-        </div>
-        <div>
-            <label for="age">Are you 13 years or older:</label><br />
             <input type="checkbox" id="age" name="old" value="enough" required>
-            <label for="old">I confirm I am 13 years or older.</label>
+            <label for="old">I am 13 years or older.</label>
         </div>
-        <div>
-            <label for="ToS">Please Read and Accept </label>
-            <a href="">Term of Service</a> and <a href="">Privacy Rules</a>:
-            <br />
-            <input type="checkbox" id="ToS" name="terms" value="agreement" required>
-            <label for="terms">I agree to the Term of Service and Privacy Rules.</label>
-        </div>
-        <input id="submit" type="submit" value="submit" />
+        <button type="submit" class="registerbtn">Register</button>
     </form>
 </div>

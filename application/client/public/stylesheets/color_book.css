@@ -30,6 +30,7 @@ body {
 	margin: 0;
 }
 
+
 /* header & footer */
 .cross_screen_row {
 	grid-column-start: 1;
@@ -174,5 +175,51 @@ a.button:hover {
 	grid-column-end: 3;
 }
 
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
 
+.container {
+	padding: 16px;
+}
 
+input[type=text], input[type=password], input[type = email] {
+	width: 25%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+}
+
+.registerbtn {
+	background-color: #310944;
+	color: white;
+	padding: 16px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 15%;
+	opacity: 0.9;
+}
+
+.registerbtn:hover {
+	opacity:1;
+}
+
+.registration_body {
+	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: left;
+	color: #565656;
+	background-color: #fff;
+	margin-left: 815px;
+}
+
+.invalid-feedback {
+    color: #ff606e;
+}
+ 
+.valid-feedback {
+    color: #2acc80;
+}

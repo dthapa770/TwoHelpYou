@@ -12,20 +12,30 @@
  * 
  * Description: temporary page for logins
  ************************************************************************* --}}
+<script defer type="text/javascript" src="/js/login.js"  ></script>
+
 
 <div class="body">
-    <form id="login_page" method="POST" action="/users/login"
-        enctype="application/x-www-form-urlencoded">
-        <h2>User Login Page</h2>
-        <p>
-            <label for="user_name">User Name:</label><br />
-            <input type="text" name="user_name" required placeholder="User Name" minlength="3"/>
-        </p>
-        <p>
-            <label for="password">Password</label><br />
-            <input type="password" name="password" id="password" required placeholder="Password" minlength="8"/>
-        </p>
-        <input id="login_button" type="submit" value="login" name="Login" /><br /><vr />
-        <a href="../register">Register</a>
+    <form class="requires-validation" novalidate>
+        <form id="login_page" method="POST" action="/users/login"
+            enctype="application/x-www-form-urlencoded" >
+            <h2>User Login Page</h2>
+            <p>
+                <label for="user_name">Username: </label><br/>
+                <input type="text" name="user_name" required placeholder="Username" minlength="3"/><br/>
+            </p>
+            <p>
+                <label for="password">Password: </label><br/>
+                <input type="password" name="password" id="password" required placeholder="Password" minlength="8"/><br/>
+            </p>
+            {{!-- <input id="login_button" type="submit" value="login" name="Login" /><br /><vr /> --}}
+            <button type="submit" class="registerbtn"> Login </button>
+            <div class = "container">
+                <p>
+                    Do not have an account yet? Click here to
+                    <a href="../register">Register</a>!
+                </p>
+            </div>
+        </form>
     </form>
 </div>
