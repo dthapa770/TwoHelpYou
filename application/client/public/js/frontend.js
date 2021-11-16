@@ -93,9 +93,12 @@ if (search_button) {
  */
 let return_home = document.getElementById('return_to_home');
 if (return_home) {
-	// on hover change color of button temporarily	
+	// on hover change color of button temporarily
 	return_home.onmouseover = function(event) {
 		return_home.style.backgroundColor = '#f5f5f5';
+	};
+	return_home.onmouseout = function(event) {
+		return_home.style.backgroundColor = '';
 	};
 	return_home.onclick = function(event) {
 		window.location.href = '/';
@@ -108,6 +111,9 @@ if (cards) {
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].onmouseover = function(event) {
 			cards[i].style.backgroundColor = '#f5f5f5';
+		};
+		cards[i].onmouseout = function(event) {
+			cards[i].style.backgroundColor = '';
 		};
 	}
 }
