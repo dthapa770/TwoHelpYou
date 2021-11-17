@@ -17,12 +17,10 @@ const mysql= require("mysql2");
 
 const pool = mysql.createPool({
 
-     host:'3.17.38.143',
-     port: '3306',
-    //host: 'CSC648Project',
+    host: 'localhost',
     user: 'team1',
     password:'CSC648Team1!!',
-    database: 'csc648practice',
+    database: 'twohelpyouDB',
     connectionLimit:50,
     debug:false,
 
