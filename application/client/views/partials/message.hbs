@@ -8,16 +8,13 @@
  *        Wesley J Xu
  *        Chung Hei Fong
  * 
- * File: index.hbs
+ * File: message.hbs
  * 
- * Description: current home/search result page
+ * Description: card partials tof user messages
  ************************************************************************* --}}
 
-<div id = "main_content" class="body">
-    <div class="side_bar">Help us Help others by tutoring
-        <a id="post_button" href="../post_form">Post</a></div>
-    <div class="side_bar" id="post_number"> </div>
-    {{#each results}}
-        {{> card this}}
-    {{/each}}
-</div>
+<section class="card_body" id="message_{{message_id}}">
+        <a href="/users/{{username}}" class="card_title">{{username}}</a><br />
+        <p class="card_title"> {{time}}</p>
+        <p class="card_text">{{message}}</p>
+</section>

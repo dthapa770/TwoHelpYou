@@ -8,16 +8,14 @@
  *        Wesley J Xu
  *        Chung Hei Fong
  * 
- * File: index.hbs
+ * File: message_page.hbs
  * 
- * Description: current home/search result page
+ * Description: display all user received messages
  ************************************************************************* --}}
 
-<div id = "main_content" class="body">
-    <div class="side_bar">Help us Help others by tutoring
-        <a id="post_button" href="../post_form">Post</a></div>
-    <div class="side_bar" id="post_number"> </div>
+<div class="body">
+    <h2>Messages</h2>
     {{#each results}}
-        {{> card this}}
+        {{> message this}}
     {{/each}}
 </div>

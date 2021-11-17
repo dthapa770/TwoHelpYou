@@ -1,0 +1,53 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ *
+ * File: post_form.css
+ * 
+ * Description: Provides the styling for the post form
+ *****************************************************************************/
+
+select {
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+}
+
+.flow {
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.crossrow {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+label {
+	text-align: left;
+}
+
+@media all and (min-width: 450px) {
+	
+}
+
+/* @media all and (max-width: 450px) {
+	.flow {
+		margin-left: 30vw;
+		margin-right: 30vw;
+	}
+} */

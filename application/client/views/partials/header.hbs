@@ -20,7 +20,8 @@
 
 {{!-- Site Title --}}
 <div class = "cross_screen_row site_section">
-  TwoHelpYou | CSC 648-848, Fall 2021, Team 1
+    <img src="..\images\logo.png" alt="TwoHelpYou" width="90" height="40">
+   | CSC 648-848, Fall 2021, Team 1
 </div>
 
 {{!-- Navigational bar --}}
@@ -32,15 +33,19 @@
       <select name="course_prefix" id="select_menu" tabindex="0">
         <option selected value="">All</option>
         {{#each course}}
-          <option value={{this.course_prefix}}>{{this.course_prefix}}</option>
+          <option value="{{this.course_prefix}}">{{this.course_prefix}}</option>
         {{/each}}
       </select>
       <input id="search_text" type="search" placeholder="Search" name="search_text" aria-label="Search">
       <button type="button" id="search_button">&#x1F50E</button>
     </div>
     {{else}}
-    <div id="return_to_home">Return to Home to Search</div>
+    <div id="return_to_home">Return to the Home Page to Search</div>
     {{/if}}
   </form>
-  <div id="user_nav"> | <a href="/login" >Login</a> | <a href="/register" >Register</a></div>
+  {{#if logged}}
+  <div id="user_nav"><a href="/message_page" >Messages</a> | <a href="" id="logout" >Logout</a></div>
+  {{else}}
+  <div id="user_nav"><a href="/login" >Login</a> | <a href="/register" >Register</a></div>
+  {{/if}}
 </div>

@@ -13,6 +13,33 @@
  * Description: temporary page for logins
  ************************************************************************* --}}
 
+<head>
+    <script defer type="text/javascript" src="/js/login.js"  ></script>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/login.css' />
+</head>
+
+
 <div class="body">
-    <img src=".\images\frontpag.png" alt="coming soon" width="500" height="600">
+    <form class="requires-validation login_box" novalidate id="login_page" method="POST" action="/users/login"
+        enctype="application/x-www-form-urlencoded" >
+        <h2>Login</h2>
+        <div class="login_input">
+            <p>
+                <label for="user_name">Username: </label><br/>
+                <input class="input" type="text" name="user_name" required placeholder="Username" minlength="3"/><br/>
+            </p>
+            <p>
+                <label for="password">Password: </label><br/>
+                <input class="input" type="password" name="password" id="password" required placeholder="Password" minlength="8"/><br/>
+            </p>
+        </div>
+        <button class="registerbtn" id="login_button" type="submit" value="login" name="Login" />Login</button><br /><vr />
+        {{!-- <button type="submit" class="registerbtn"> Login </button> --}}
+        <div class = "container">
+            <p>
+                Do not have an account yet? Click here to
+                <a href="../register">Register</a>!
+            </p>
+        </div>
+    </form>
 </div>

@@ -8,16 +8,14 @@
  *        Wesley J Xu
  *        Chung Hei Fong
  * 
- * File: index.hbs
+ * File: teaches.hbs
  * 
- * Description: current home/search result page
+ * Description: card partials that takes input to
+ *              generate the posts the users post
  ************************************************************************* --}}
 
-<div id = "main_content" class="body">
-    <div class="side_bar">Help us Help others by tutoring
-        <a id="post_button" href="../post_form">Post</a></div>
-    <div class="side_bar" id="post_number"> </div>
-    {{#each results}}
-        {{> card this}}
-    {{/each}}
-</div>
+<section class="card_body" id="post_{{post_id}}">
+        <p class="card_title">{{course_prefix}} {{course_postfix}}</p>
+        <p class="card_title">{{avg_rating}}</p>
+        <p class="card_text">{{availability}}</p>
+</section>
