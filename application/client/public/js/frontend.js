@@ -41,30 +41,15 @@ function UpdateCardCount(message) {
 }
 
 /**
- * Function grabs the values from the search bar sends the search to the
- * backend where it will return the requested data. Based on the data content
- * it will populate the main body of the result page.
+ * Search execution now grabs the elemeents needed to the execute
+ * the search and change the location by sending the request to
+ * the post route.
  */
 function ExecuteSearch() {
 	let search_menu = document.getElementById('select_menu').value;
 	let search_text = document.getElementById('search_text').value;
 	let search_url = `/post/search?search=${search_menu},${search_text}`;
-	fetch(search_url)
-		.then((data) => {
-			return data.json();
-		})
-		.then((data_json) => {
-			let new_main_content = '<div class="side_bar" id="post_number"> </div>';
-			data_json.results.forEach((row) => {
-				new_main_content += CreateCard(row);
-			});
-			let main_contentontent = document.getElementById('main_content');
-			main_contentontent.innerHTML = new_main_content;
-			if (data_json.message) {
-				UpdateCardCount(data_json.message);
-			}
-		})
-		.catch((err) => console.log(err));
+	window.location.assign(search_url);
 }
 
 //prevents and stops a XSS attack 
@@ -89,27 +74,8 @@ if (main_content) {
 let search_button = document.getElementById('search_button');
 if (search_button) {
 	search_button.onclick = function(event) {
-		ExecuteSearch();
 		JsEscape(); 
-	};
-}
-
-/**
- * Event listener waiting for user to interact with the
- * return home button
- * To DO: add proper hover functionality to the return home button
- */
-let return_home = document.getElementById('return_to_home');
-if (return_home) {
-	// on hover change color of button temporarily
-	return_home.onmouseover = function(event) {
-		return_home.style.backgroundColor = '#f5f5f5';
-	};
-	return_home.onmouseout = function(event) {
-		return_home.style.backgroundColor = '';
-	};
-	return_home.onclick = function(event) {
-		window.location.href = '/';
+		ExecuteSearch();
 	};
 }
 
@@ -127,23 +93,6 @@ if (cards) {
 }
 
 /**
- * Template for the cards to be appeneded to the result page
- * based on the data sent to ir
- * @param post_data data from database used to populate posts
- * @returns the html to be appended to the page
- */
-function CreateCard(post_data) {
-	return `
-    <section class="card_body" id="post_${post_data.post_id}>
-        <p class="card_title">${post_data.course_prefix}${post_data.course_postfix}</p>
-        <p class="card_title">${post_data.avg_rating}</p>
-        <p class="card_text">${post_data.availability}</p>
-        <a href="/users/${post_data.username}" class="card_title">${post_data.username}</a><br />
-        <img class="card_image" src="./${post_data.thumbnail}" alt="image missing" width="100" height="100">
-    </section>`;
-}
-
-/**
  * Event listener waiting for the user to interact
  * with the logout button.
  */
@@ -157,3 +106,14 @@ if (logout_button) {
 		});
 	};
 };
+
+/**
+ * Ensures that the preselected value is persistent after
+ * search execution by having the original value stored as
+ * the name.
+ */
+let selected_option = document.getElementById('select_menu');
+if (selected_option.name) {
+	let options = document.getElementById(selected_option.name);
+	options.setAttribute('selected', true);
+}

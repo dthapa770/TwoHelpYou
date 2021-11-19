@@ -20,7 +20,7 @@ var GetAllPostCoursePrefix = require('../middleware/post_middleware').GetAllPost
 var GetAllUserMessages = require('../middleware/message_middleware').GatAllUserMessages;
 
 /* GET home page. */
-router.get('/', GetHighestRatedPost, GetAllPostCoursePrefix, function(req, res, next) {
+router.get('/', GetHighestRatedPost, function(req, res, next) {
   res.render('index', { title: 'Software Engineering Class SFSU' });
 });
 
