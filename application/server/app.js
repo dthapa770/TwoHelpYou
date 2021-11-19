@@ -13,6 +13,7 @@ var usersRouter = require('./routes/users');
 var postRouter = require('./routes/post');
 var ErrorPrint = require('./helpers/debug/debug_printers').ErrorPrint;
 var RequestPrint = require('./helpers/debug/debug_printers').RequestPrint;
+var GetAllPostCoursePrefix = require('./middleware/post_middleware').GetAllPostCoursePrefix;
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.engine(
     }
   })
 )
+
 var mysqlSessionStore=new mysqlSessions({/*using default options */},require('./config/database'));
 app.use(sessions({
         key:"csid",
@@ -62,6 +64,8 @@ app.use((req,res,next) =>{
   }
   next();
 })
+
+app.use(GetAllPostCoursePrefix);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
