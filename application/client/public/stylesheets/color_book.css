@@ -94,6 +94,15 @@ body {
 	color: #310944;
 }
 
+/* Dashboard */
+.dashboard {
+	grid-row: 4;
+	grid-column: 1;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
 /* main site content */
 .body {
 	grid-column: 2;
@@ -127,29 +136,6 @@ a.button:hover {
 .button:hover {
 	background-color: yellow;
 	color: white;
-}
-
-
-
-/*to fix the issue when window is not at full screen*/
-@media all and (max-width: 520px) {
-	.main_navbar {
-		grid-template-columns: max-content max-content;
-		grid-template-rows: max-content max-content;
-	}
-	#search_form {
-		grid-column-start: 1;
-		grid-column-end: 3;
-		grid-row: 2;
-	}
-	#default_nav {
-		grid-column-start: 1;
-		grid-row: 1;
-	}
-	#user_nav {
-		grid-column-start: 2;
-		grid-row: 1;
-	}
 }
 
 /* #search_button {
@@ -236,4 +222,29 @@ input[type=text], input[type=password], input[type = email] {
 
 .Success {
     color: #2acc80;
+}
+
+/*to fix the issue when window is not at full screen*/
+@media all and (max-width: 520px) {
+	.main_navbar {
+		grid-template-columns: max-content max-content;
+		grid-template-rows: max-content max-content;
+	}
+	#search_form {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 2;
+	}
+	#default_nav {
+		grid-column-start: 1;
+		grid-row: 1;
+	}
+	#user_nav {
+		grid-column-start: 2;
+		grid-row: 1;
+	}
+	#main_content {
+		display: flex;
+		flex-direction: column;
+	}
 }

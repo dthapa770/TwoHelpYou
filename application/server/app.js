@@ -60,7 +60,11 @@ app.use((req,res,next)=>{
 
 app.use((req,res,next) =>{
   if(req.session.username){
-          res.locals.logged=true;
+    res.locals.logged=true;
+    res.locals.dashboard_username = req.session.username;
+    res.locals.dashboard_first_name = req.session.dashboard_first_name;
+    res.locals.dashboard_message_count = req.session.dashboard_message_count;
+    res.locals.dashboard_post_count = req.session.dashboard_post_count;
   }
   next();
 })
