@@ -14,11 +14,15 @@
  ************************************************************************* --}}
 
 <div class="dashboard">
-    <div>Hello {{dashboard_first_name}}</div>
-    <div>You have: </br><a href="/message_page">
-        {{dashboard_message_count}} Message(s)</a></div>
-    {{#if dashboard_post_count}}
-    <div>and: </br><a href="/users/{{dashboard_username}}">
-        {{dashboard_post_count}} Post(s)</a></div>
-    {{/if}}
+    <div class="dashboard_content">
+        <div>Hello {{dashboard_first_name}}</div>
+        <div>You have: </br><a class="dashboard_link" 
+            href="/message_page">
+            {{dashboard_message_count}} Message(s)</a></div>
+        {{#if dashboard_post_count}}
+        <div>and: </br><a class="dashboard_link" 
+            href="/users/{{dashboard_username}}">
+            {{dashboard_post_count}} Post(s)</a></div>
+        {{/if}}
+    </div>
 </div>

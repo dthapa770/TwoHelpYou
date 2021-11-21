@@ -98,9 +98,21 @@ body {
 .dashboard {
 	grid-row: 4;
 	grid-column: 1;
+}
+
+.dashboard_content {
+	margin: 1%;
+    padding: 2%;
+    padding-right: 10%;
+	border: solid purple;
+	background-color: gold;
+	border-radius: 10%;
 	display: flex;
 	flex-direction: column;
 	text-align: left;
+}
+a.dashboard_link {
+	font-size: small;
 }
 
 /* main site content */
