@@ -1,0 +1,8 @@
+<div id="post-details">
+            <div id="post-username">Username: {{current_post.username}}</div>
+            <div id="post-name">Name : {{current_post.first_name}} {{current_post.last_name}}</div>
+            <div id="post-availability">Availabiltiy: {{current_post.availability}}</div>
+            <div id="post-course">Course: {{current_post.course_prefix}}{{current_post.course_postfix}}</div>
+            <img class="post-photo" src="../{{current_post.thumbnail}}" alt="image missing"><br>
+            <a href="/users/{{current_post.username}}"> <button class = "registerbtn">{{current_post.username}} Profile</button></a><br />                    
+</div>

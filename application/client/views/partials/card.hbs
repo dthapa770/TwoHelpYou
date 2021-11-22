@@ -16,8 +16,8 @@
 
 <section class="card_body" id="post_{{post_id}}">
         <p class="card_title">{{course_prefix}} {{course_postfix}}</p>
-        <p class="card_title">{{avg_rating}}</p>
-        <p class="card_text">{{availability}}</p>
-        <a href="/users/{{username}}" class="card_title">{{username}}</a><br />
+        <a href="/post/{{post_id}}"><button class = "registerbtn">Post Details</button></a>
+        <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="registerbtn">Message Tutor</button></a>
         <img class="card_image" src="../{{thumbnail}}" alt="image missing" width="100" height="100">
+        
 </section>
