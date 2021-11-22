@@ -34,6 +34,9 @@
   
   <body class="grid_container">
     {{> header}}
+    {{#if logged}}
+    {{> dashboard}}
+    {{/if}}
     {{{body}}}
     {{> footer}}
   </body> 

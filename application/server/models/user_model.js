@@ -116,4 +116,40 @@ UserModel.GetUser = (username) => {
     .catch((err) => Promise.reject(err));
 }
 
+/**
+ * Acquires the number of messages sent to the user
+ * @param user_id 
+ * @returns 
+ */
+UserModel.GetUserMessageCount = (user_id) => {
+    let baseSQL = `SELECT u.user_id, u.first_name, COUNT(m.receiver_id) AS messages 
+                    FROM user u LEFT JOIN message m
+                    ON u.user_id = m.receiver_id
+                    GROUP BY u.user_id, m.receiver_id
+                    HAVING u.user_id = ?;`
+    return db.execute(baseSQL, [user_id])
+    .then(([messages, fields]) => {
+        return Promise.resolve(messages[0]);
+    })
+    .catch((err) => Promise.reject(err));
+}
+
+/**
+ * Aquires the number of post made by the user
+ * @param user_id 
+ * @returns 
+ */
+UserModel.GetUserPostCount = (user_id) => {
+    let baseSQL = `SELECT u.user_id, COUNT(p.user_id) AS posts 
+                    FROM user u LEFT JOIN post p
+                    ON u.user_id = p.user_id
+                    GROUP BY u.user_id, p.user_id
+                    HAVING u.user_id = ?;`
+    return db.execute(baseSQL, [user_id])
+    .then(([posts, fields]) => {
+        return Promise.resolve(posts[0]);
+    })
+    .catch((err) => Promise.reject(err));
+}
+
 module.exports = UserModel;

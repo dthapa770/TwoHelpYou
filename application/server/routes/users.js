@@ -158,6 +158,15 @@ router.post('/login', async (req, res, next) => {
 	try {
 		if (logged_user_id > 0) {
 			SuccessPrint(`User ${username} is logged in`);
+			let messages = await UserModel.GetUserMessageCount(logged_user_id);
+			if (messages.user_id > 0) {
+				req.session.dashboard_first_name = messages.first_name;
+				req.session.dashboard_message_count = messages.messages;
+			}
+			let posts = await UserModel.GetUserPostCount(logged_user_id);
+			if (posts.user_id > 0) {
+				req.session.dashboard_post_count = posts.posts;
+			}
 			req.session.username = username;
 			req.session.user_id = logged_user_id;
 			res.locals.logged = true;

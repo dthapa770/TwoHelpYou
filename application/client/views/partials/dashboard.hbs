@@ -1,0 +1,28 @@
+{{!-- *************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: dashboard.hbs
+ * 
+ * Description: Dashboard for loged in users on all pages as a partial
+ ************************************************************************* --}}
+
+<div class="dashboard">
+    <div class="dashboard_content">
+        <div>Hello {{dashboard_first_name}}</div>
+        <div>You have: </br><a class="dashboard_link" 
+            href="/message_page">
+            {{dashboard_message_count}} Message(s)</a></div>
+        {{#if dashboard_post_count}}
+        <div>and: </br><a class="dashboard_link" 
+            href="/users/{{dashboard_username}}">
+            {{dashboard_post_count}} Post(s)</a></div>
+        {{/if}}
+    </div>
+</div>
