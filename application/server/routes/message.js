@@ -31,7 +31,9 @@ router.post('/create/:username', (req, res, next) => {
 		let message = req.body.message;
         let username = req.params.username;
 		let userId = req.session.user_id;
-		Create(userId, username, message)
+		// let course_prefix = req.session.;
+		// let course_postfix= req.session.;
+		Create(userId, username, message,course_prefix,course_postfix)
 			.then((was_successful) => {
 				if (was_successful !== -1) {
 					SuccessPrint(`message was sent to ${username}`);
