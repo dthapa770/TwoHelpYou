@@ -41,6 +41,11 @@
     max-width: 70%;
 	height: auto;
  } */
+.message_info{
+   text-align: left; 
+    position: relative;
+    left: 25%;
+}
 
 
  .text_area{

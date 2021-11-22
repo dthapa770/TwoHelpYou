@@ -20,14 +20,17 @@
 <div class="body">
     <form id="message_page" method="POST" action="/message/create/{{current_user.username}}"
         enctype="application/x-www-form-urlencoded">
-        <h2>Send message</h2>
-        <p id="username" >To: {{current_user.username}}</p>
-        <p>Time register: "placeholder" <br> Class: "placeholder"</p>
-        <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your contact information and the subject you want to ask here" rows="5"></textarea><br>
-        
+        {{!-- <h2>Send message</h2> --}}
+        <h2>Register Tutoring Time</h2>
+        <div class="message_info">
+            <p id="username">To: {{current_user.username}}</p>
+            <p>Time: "placeholder" <br> Course: "placeholder"</p>
+        </div>
+        <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6"></textarea><br>
+       
         <div>
             {{#if logged}}
-                <p>From: "login user"</p>
+                <p class="message_info">From: "login user"</p>
                 <button  class="registerbtn" id="message-button" type="submit">Send</button> <br><br><br>
             {{else}}
                 <p>You need to login or register an account before you can send message.</p><br>
@@ -38,6 +41,7 @@
                 </div>
             {{/if}}
         </div>
+        
     </form>
     
 </div>
