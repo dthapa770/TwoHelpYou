@@ -75,4 +75,18 @@ PostMiddleware.GetAllUserPost = async function(req,res,next) {
     }
 }
 
+PostMiddleware.GetUserPostById = async function(req, res, next){
+    try{
+        let postId =req.params.id;
+        console.log(postId);
+        let results =await PostModel.GetPostById(postId);
+        console.log(results);
+        if(results && results.length){
+            res.locals.current_post =results[0];
+            next();
+        } 
+    } catch(err) {
+        next(err);
+    }
+}
 module.exports = PostMiddleware;

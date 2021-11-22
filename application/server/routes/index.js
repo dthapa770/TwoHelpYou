@@ -18,6 +18,7 @@ var router = express.Router();
 var GetHighestRatedPost = require('../middleware/post_middleware').GetHighestRatedPost;
 var GetAllPostCoursePrefix = require('../middleware/post_middleware').GetAllPostCoursePrefix;
 var GetAllUserMessages = require('../middleware/message_middleware').GatAllUserMessages;
+var GetPostById = require('../middleware/post_middleware').GetUserPostById;
 
 /* GET home page. */
 router.get('/', GetHighestRatedPost, function(req, res, next) {
@@ -74,4 +75,12 @@ router.get('/message_page', GetAllUserMessages, function(req,res,next) {
   res.render('message_page'), {title: 'Software Engineering Class SFSU'}
 })
 
+router.get('/message', function(req,res,next) {
+  res.render('message'), {title: 'Software Engineering Class SFSU'}
+})
+
+
+  router.get('/post/:id(\\d+)',GetPostById,function(req,res,next){
+     res.render('post'),{ title:'Software Engineering Class SFSU'} 
+    });
 module.exports = router;
