@@ -37,8 +37,12 @@ select {
 	grid-column-end: 3;
 }
 
-label {
+.align_left {
 	text-align: left;
+}
+
+.justify_left {
+    justify-content: start;
 }
 
 @media all and (min-width: 450px) {

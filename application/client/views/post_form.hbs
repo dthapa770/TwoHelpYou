@@ -38,20 +38,23 @@
                     placeholder="ex: Mon-Fri 9am-5pm" minlength="3" />
                 <!-- select multiple days checkbox -->
                 <div class="grid crossrow" id="days">
-                    <label class="grid crossrow" for="days">Days:</label>
-                    <input type="checkbox" name="days[]" value="Monday">Monday
-                    <input type="checkbox" name="days[]" value="Tuesday">Tuesday
-                    <input type="checkbox" name="days[]" value="Wednesday">Wednesday
-                    <input type="checkbox" name="days[]" value="Thursday">Thursday
-                    <input type="checkbox" name="days[]" value="Friday">Friday
-                    <input type="checkbox" name="days[]" value="Saturday">Saturday
-                    <input type="checkbox" name="days[]" value="Sunday">Sunday
+                    <div class="grid crossrow justify_left" id="days">
+                    <label class="crossrow" for="days">Days:</label>
+                    <input type="checkbox" name="days[]" value="Monday"><div class="align_left">Monday</div>
+                    <input type="checkbox" name="days[]" value="Tuesday"><div class="align_left">Tuesday</div>
+                    <input type="checkbox" name="days[]" value="Wednesday"><div class="align_left">Wednesday</div>
+                    <input type="checkbox" name="days[]" value="Thursday"><div class="align_left">Thursday</div>
+                    <input type="checkbox" name="days[]" value="Friday"><div class="align_left">Friday</div>
+                    <input type="checkbox" name="days[]" value="Saturday"><div class="align_left">Saturday</div>
+                    <input type="checkbox" name="days[]" value="Sunday"><div class="align_left">Sunday</div>
                 </div>
+                <br>
                 <!-- start time selector -->
                 <div class="grid crossrow" id="start_time">
                     <label for="start_time">Start Time:</label>
                     <input type="time" name="start_time" id="start_time" required>
                 </div>
+                <br>
                 <!-- time duration selector -->
                 <div class="grid crossrow" id="duration">
                     <label for="duration">Duration:</label>
@@ -66,6 +69,7 @@
                         <option value="8">8 hours</option>
                     </select>
                 </div>
+                <br>
             </div>
             <div class="grid crossrow" id="credibility">
                 <label class="crossrow" for="credibility">Qualifications (why you can teach this course)</label>
