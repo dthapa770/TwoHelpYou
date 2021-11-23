@@ -39,7 +39,7 @@
                 <!-- select multiple days checkbox -->
                 <div class="grid crossrow" id="days">
                     <div class="grid crossrow justify_left" id="days">
-                    <label class="crossrow" for="days">Days:</label>
+                    <label class="crossrow" for="days">Select One or More Days:</label>
                     <input type="checkbox" name="days[]" value="Monday"><div class="align_left">Monday</div>
                     <input type="checkbox" name="days[]" value="Tuesday"><div class="align_left">Tuesday</div>
                     <input type="checkbox" name="days[]" value="Wednesday"><div class="align_left">Wednesday</div>
@@ -50,14 +50,14 @@
                 </div>
                 <br>
                 <!-- start time selector -->
-                <div class="grid crossrow" id="start_time">
-                    <label for="start_time">Start Time:</label>
+                <div class="grid crossrow justify_left" id="start_time">
+                    <label for="start_time">Start Time : </label>
                     <input type="time" name="start_time" id="start_time" required>
                 </div>
                 <br>
                 <!-- time duration selector -->
-                <div class="grid crossrow" id="duration">
-                    <label for="duration">Duration:</label>
+                <div class="grid crossrow justify_left" id="duration">
+                    <label for="duration"><div class="top_pad"> Duration :</div></label>
                     <select name="duration" id="duration">
                         <option value="1">1 hour</option>
                         <option value="2">2 hours</option>
@@ -78,10 +78,12 @@
         </div>
         <div>
             {{#if logged}}
-            <input class="registerbtn" id="post_button" type="submit" value="post" name="Post" />
+            <input class="post_btn" id="post_button" type="submit" value="post" name="Post" />
             {{else}}
-            <div id="user_nav"><a href="/login">Login</a> or <a href="/register">Register</a></div>
+            <div id="user_nav"><a href="/login" class="post_btn">Login</a> or <a href="/register" class="post_btn">Register</a></div>
             {{/if}}
         </div>
     </form>
 </div>
+<br>
+<br>

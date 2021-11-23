@@ -20,7 +20,33 @@ select {
 	border: none;
 	background: #f1f1f1;
 }
-
+/*blue button with temporary hover effect  */
+.post_btn{
+    /* background color purple */
+	background-color: #3d00a7e3;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s;
+	/* Safari */
+	transition-duration: 0.4s;
+}
+.post_btn:hover {
+  /* background color gold */
+  background-color: #f0ca20;
+  color: #ffffff;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
 .flow {
 	display: flex;
 	flex-direction: column;
@@ -43,6 +69,10 @@ select {
 
 .justify_left {
     justify-content: start;
+}
+
+.top_pad {
+	padding-top: 16px;
 }
 
 @media all and (min-width: 450px) {
