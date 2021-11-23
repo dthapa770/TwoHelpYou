@@ -18,10 +18,15 @@
 </head>
 
 <div class="body">
-    <form id="message_page" method="POST" action="/message/create/{{current_user.username}}"
+    <form id="message_page" method="POST" action="/message/create/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"
         enctype="application/x-www-form-urlencoded">
         <h2>Send message</h2>
         <p id="username" >To: {{current_user.username}}</p>
+        {{#if logged}}
+        <p id="sender">From: {{sender_username}}</p>
+        {{/if}}
+        <p id="course">Course: {{course_prefix}}{{course_postfix}}</p>
+
         <div>
             {{#if logged}}
                 <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br>
@@ -35,6 +40,5 @@
                 </div>
             {{/if}}
         </div>
-    </form>
-    
+    </form>   
 </div>
