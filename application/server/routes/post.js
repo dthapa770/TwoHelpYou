@@ -36,28 +36,40 @@ router.get('/search', async (req, res, next) => {
         searchTerm = searchQuery[1];
     if (!searchTerm) {
         let results = await PostModel.GetNHighestPosts(100);
-        res.send({
+        res.render('search_results',{
+            title: "All Posts",
+            prefix: prefix,
+            postfix: searchQuery[1],
             message: " No search term given, generating all",
-            results: results
+            cards: results
         });
     } else {
         let results = await PostModel.Search(searchTerm);
         if (results.length) {
-            res.send({
+            res.render('search_results',{
+                title: "Search: " + prefix +" "+ searchQuery[1],
+                prefix: prefix,
+                postfix: searchQuery[1],
                 message: " relevent post(s) found.",
-                results: results
+                cards: results
             });
         } else if (prefix == ''){
             let results = await PostModel.GetNHighestPosts(5);
-            res.send({
+            res.render('search_results',{
+                title: "Search: " + prefix +" "+ searchQuery[1],
+                prefix: prefix,
+                postfix: searchQuery[1],
                 message: " most highest rated posts, no results were found.",
-                results: results
+                cards: results
             });
         } else {
             let results = await PostModel.GetNHighestPrefixPosts(5, prefix);
-            res.send({
+            res.render('search_results',{
+                title: "Search: " + prefix +" "+ searchQuery[1],
+                prefix: prefix,
+                postfix: searchQuery[1],
                 message: " most highest rated posts within catagory, no results were found.",
-                results: results
+                cards: results
             });
         }
     }

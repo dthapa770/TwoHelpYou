@@ -28,20 +28,19 @@
 <div class = "cross_screen_row main_navbar"> 
   <div id="default_nav"><a href="/" >Home</a> | <a href="/about_us" >About US</a> | </div>
   <form id="search_form">
-    {{#if cards}}
     <div class="search_bar">
-      <select name="course_prefix" id="select_menu" tabindex="0">
-        <option selected value="">All</option>
-        {{#each course}}
-          <option value="{{this.course_prefix}}">{{this.course_prefix}}</option>
+      <select name="{{prefix}}" id="select_menu">
+        <option value="">All</option>
+        {{#each course as |c|}}
+          <option id="{{c.course_prefix}}" value="{{c.course_prefix}}"> 
+            {{c.course_prefix}}</option>
         {{/each}}
       </select>
-      <input id="search_text" type="search" placeholder="Search" name="search_text" aria-label="Search">
+      <input id="search_text" type="search" placeholder="Search"
+        value="{{#if postfix}}{{postfix}}{{/if}}"
+        name="search_text" aria-label="Search">
       <button type="button" id="search_button">&#x1F50E</button>
     </div>
-    {{else}}
-    <div id="return_to_home">Return to the Home Page to Search</div>
-    {{/if}}
   </form>
   {{#if logged}}
   <div id="user_nav"><a href="/message_page" >Messages</a> | <a href="" id="logout" >Logout</a></div>

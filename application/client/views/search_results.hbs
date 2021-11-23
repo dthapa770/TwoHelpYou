@@ -10,18 +10,15 @@
  * 
  * File: search_results.hbs
  * 
- * Description: planned search_result page, is not in working condition
+ * Description: search results page, mirrors the original landing page
  ************************************************************************* --}}
 
 <div id = "main_content" class="body">
-    <img src=".\images\frontpag.png" alt="coming soon" width="500" height="600">
-    <div class="card_body">
-        <img class="card-image" src={{photopath}}>
-        <p class="card_title">{{first_name}}</p>
-        <p class="card_text">{{last_name}}</p>
-        <p class="card_text">{{date}}</p>
-        <p class="card_text">{{course}}</p>
-        <p class="card_text">{{time}}</p>
-        <p class="card_text">{{class}}</p>  
-    </div>
+    <div class="side_bar">Help us Help others by tutoring
+        <a id="post_button" href="../post_form">Post</a></div>
+    <div class="side_bar"><h2>Showing results for: {{prefix}} {{postfix}}</h2></div>
+    <div class="side_bar" id="post_number"> </div>
+    {{#each cards}}
+        {{> card this}}
+    {{/each}}
 </div>
