@@ -50,7 +50,7 @@ body {
 .site_section {
 	grid-row: 2;
 	background: #310944;
-	font-size: x-large;
+	font-size: small;
 	font-weight: bold;
 	color: #ffffff;
 	padding: 2%;
@@ -84,11 +84,25 @@ body {
 	margin: 0;
 	display: flex;
 	justify-content: center;
+	align-items: baseline;
 }
 
-#search_button {
-	border: 0;
+.search_nav {
+	padding: 15px 0 15px 0;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;}
+
+#default_nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
+
+/* #search_button {
+	border: 0;
+} */
 
 #return_to_home {
 	color: #310944;
