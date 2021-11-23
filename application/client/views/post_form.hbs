@@ -1,25 +1,24 @@
 {{!-- *************************************************************************
- * Class: CSC 0648-03 Software Engineering Fall 2021
- * Team: 1
- * Name:  Justin Lam
- *        Aviral Puri
- *        Dinesh Thapa
- *        Kurt D Resayo
- *        Wesley J Xu
- *        Chung Hei Fong
- * 
- * File: post_form.hbs
- * 
- * Description: Display form to allow users to create a post
- ************************************************************************* --}}
+* Class: CSC 0648-03 Software Engineering Fall 2021
+* Team: 1
+* Name: Justin Lam
+* Aviral Puri
+* Dinesh Thapa
+* Kurt D Resayo
+* Wesley J Xu
+* Chung Hei Fong
+*
+* File: post_form.hbs
+*
+* Description: Display form to allow users to create a post
+************************************************************************* --}}
 
 <head>
     <link rel="stylesheet" type="text/css" href='/stylesheets/post_form.css' />
 </head>
 
 <div class="body">
-    <form class="flow" id="post_page" method="POST" action="/post/request"
-       enctype="multipart/form-data">
+    <form class="flow" id="post_page" method="POST" action="/post/request" enctype="multipart/form-data">
         <h2>Tutoring Post Request Page</h2>
         <div class="grid">
             <div class="grid crossrow" id="course_information">
@@ -30,11 +29,43 @@
                     <option value="{{this.course_prefix}}">{{this.course_prefix}}</option>
                     {{/each}}
                 </select>
-                <input type="text" id="course_postfix" name="course_postfix" required placeholder="course number" maxlength="3"/>
+                <input type="text" id="course_postfix" name="course_postfix" required placeholder="course number"
+                    maxlength="3" />
             </div>
             <div class="grid crossrow" id="availability">
                 <label class="crossrow" for="availability">Please enter your availability</label>
-                <input class="crossrow" type="text" id="availability" name="availability" required placeholder="ex: Mon-Fri 9am-5pm" minlength="3"/>
+                <input class="crossrow" type="text" id="availability" name="availability" required
+                    placeholder="ex: Mon-Fri 9am-5pm" minlength="3" />
+                <!-- select multiple days checkbox -->
+                <div class="grid crossrow" id="days">
+                    <label for="days">Days:</label>
+                    <input type="checkbox" name="days[]" value="Monday">Monday
+                    <input type="checkbox" name="days[]" value="Tuesday">Tuesday
+                    <input type="checkbox" name="days[]" value="Wednesday">Wednesday
+                    <input type="checkbox" name="days[]" value="Thursday">Thursday
+                    <input type="checkbox" name="days[]" value="Friday">Friday
+                    <input type="checkbox" name="days[]" value="Saturday">Saturday
+                    <input type="checkbox" name="days[]" value="Sunday">Sunday
+                </div>
+                <!-- start time selector -->
+                <div class="grid crossrow" id="start_time">
+                    <label for="start_time">Start Time:</label>
+                    <input type="time" name="start_time" id="start_time" required>
+                </div>
+                <!-- time duration selector -->
+                <div class="grid crossrow" id="duration">
+                    <label for="duration">Duration:</label>
+                    <select name="duration" id="duration">
+                        <option value="1">1 hour</option>
+                        <option value="2">2 hours</option>
+                        <option value="3">3 hours</option>
+                        <option value="4">4 hours</option>
+                        <option value="5">5 hours</option>
+                        <option value="6">6 hours</option>
+                        <option value="7">7 hours</option>
+                        <option value="8">8 hours</option>
+                    </select>
+                </div>
             </div>
             <div class="grid crossrow" id="credibility">
                 <label class="crossrow" for="credibility">Qualifications (why you can teach this course)</label>
@@ -45,7 +76,7 @@
             {{#if logged}}
             <input class="registerbtn" id="post_button" type="submit" value="post" name="Post" />
             {{else}}
-            <div id="user_nav"><a href="/login" >Login</a> or <a href="/register" >Register</a></div>
+            <div id="user_nav"><a href="/login">Login</a> or <a href="/register">Register</a></div>
             {{/if}}
         </div>
     </form>
