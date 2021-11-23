@@ -66,6 +66,7 @@ body {
 	grid-auto-rows: 1fr;
 	justify-content: space-between;
 	align-items: center;
+	/* line-height: 16px; */
 }
 
 .bottom_header {
@@ -85,6 +86,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: baseline;
+	/* line-height: 16px; */
 }
 
 .search_nav {
@@ -92,7 +94,10 @@ body {
 	margin: 5px 0 22px 0;
 	display: inline-block;
 	border: none;
-	background: #f1f1f1;}
+	background: #f1f1f1;
+	line-height: 17px;
+}
+
 
 #default_nav {
 	display: flex;
