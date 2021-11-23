@@ -23,7 +23,7 @@ var UserModel = require('../models/user_model');
 /**
  * route to send message to user.
  */
-router.post('/create/:username', (req, res, next) => {
+ router.post('/create/:username/:post_id/:course_prefix/:course_postfix', (req, res, next) => {
 	if (!req.session.username) {
 		ErrorPrint('Must be logged in to send message');
 		res.redirect('/');
@@ -31,7 +31,9 @@ router.post('/create/:username', (req, res, next) => {
 		let message = req.body.message;
         let username = req.params.username;
 		let userId = req.session.user_id;
-		Create(userId, username, message)
+		let course_prefix = req.params.course_prefix;
+		let course_postfix = req.params.course_postfix;
+		Create(userId, username, message,course_prefix,course_postfix)
 			.then((was_successful) => {
 				if (was_successful !== -1) {
 					SuccessPrint(`message was sent to ${username}`);
@@ -47,14 +49,18 @@ router.post('/create/:username', (req, res, next) => {
 /**
  * Route to create form to send message to user.
  */
-router.get('/:username', (req, res, next) => {
+ router.get('/:username/:post_id/:course_prefix/:course_postfix', (req, res, next) => {
     let username= req.params.username;
+	let post_id = req.params.post_id;
+	let course_prefix = req.params.course_prefix;
+	let course_postfix = req.params.course_postfix;
+	let sender = req.session.username;
     
     UserModel.GetUser(username)
     .then((results) => {
         if (results.length){
           let user = results[0];
-          res.render('message', {current_user: user, title: `User: ${username}`});
+          res.render('message', {current_user: user, post_id:post_id, course_prefix: course_prefix, course_postfix:course_postfix, sender_username:sender, title: `User: ${username}`});
         } else {
             ErrorPrint('Error, this is not the correct User profile.');
             req.session.save(function () {
