@@ -26,9 +26,14 @@
         <p id="sender">From: {{sender_username}}</p>
         {{/if}}
         <p id="course">Course: {{course_prefix}}{{course_postfix}}</p>
+        <p>Date: <span id ="date-time"></span>
+        <script>
+             var dt= new Date();
+             document.write(new Date().toLocaleDateString()); </script>
+        </p>
 
         <div>
-            {{#if logged}}
+            {{#if logged}} 
                 <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br>
                 <button  class="registerbtn" id="message-button" type="submit">Send</button> <br><br><br>
             {{else}}
