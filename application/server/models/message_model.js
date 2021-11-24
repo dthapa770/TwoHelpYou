@@ -38,9 +38,9 @@ MessageModel.GetUserMessages = (user_id) =>{
  * @param receiver 
  * @param message 
  * @returns 
- *
+ */
 MessageModel.Create = (sender,receiver,message,course_prefix,course_postfix) =>{
-    let baseSQL = `INSERT INTO message ( time, message,receiver_id,sender_id,related_course_id) VALUES (now(),?,(SELECT user_id FROM user WHERE username = ?),2,(SELECT course_id FROM course WHERE course_prefix=? AND course_postfix=?));`
+    let baseSQL = `INSERT INTO message ( time, message,receiver_id,sender_id,related_course_id) VALUES (now(),?,(SELECT user_id FROM user WHERE username = ?),?,(SELECT course_id FROM course WHERE course_prefix=? AND course_postfix=?));`
     return db.query(baseSQL,[message,receiver,sender,course_prefix,course_postfix])
     .then (([results,fields]) =>{
         if(results && results.affectedRows){
