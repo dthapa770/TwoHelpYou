@@ -75,14 +75,15 @@
                 <br>
             </div>
             <div class="grid crossrow" id="credibility">
-                <label class="crossrow" for="credibility"><div class="align_left">Curriculum Vitae/Resume (Required)*</div></label>
+                <label class="crossrow" for="credibility"><div class="align_left">CV/Resume | Why you are qualified to tutor this course (Required)*</div></label>
                 <input class="crossrow" type="file" id="credibility" name="credibility">
             </div>
             <br>
         </div>
         <div>
             {{#if logged}}
-            <input class="post_btn" id="post_button" type="submit" value="post" name="Post" />
+            <label class="crossrow" for="post"><div class="align_left">Please Note: Applications will take up to 24 hrs to review</div></label>
+            <input class="post_btn" id="post_button" type="submit" value="Submit Request" name="Post" />
             {{else}}
             <div id="user_nav"><a href="/login" class="post_btn">Login</a> or <a href="/register" class="post_btn">Register</a></div>
             {{/if}}
