@@ -22,21 +22,22 @@
         <h2>Tutor Application</h2>
         <div class="grid">
             <div class="grid crossrow" id="course_information">
-                <label class="crossrow" for="course_prefix"><div class="align_left">Please Select the subject</div></label>
+                <label class="crossrow" for="course_prefix"><div class="align_left">Please Select the subject (Required)*</div></label>
                 <select name="course_prefix" id="select_menu" tabindex="0" required>
-                    <option selected value=""></option>
+                    <option selected value="" disabled selected hidden>Major</option>
                     {{#each course}}
                     <option value="{{this.course_prefix}}">{{this.course_prefix}}</option>
                     {{/each}}
                 </select><br>
-                <label class="crossrow" for="course_number"><div class="align_left">Please enter course number</div></label>
-                <input type="text" id="course_postfix" name="course_postfix" required placeholder="course number"
+                <label class="crossrow" for="course_number"><div class="align_left">Please enter course number (Required)*</div></label>
+                <input type="text" id="course_postfix" name="course_postfix" required placeholder="ex: 310"
                     maxlength="3" />
             </div>
             <div class="grid crossrow" id="availability">
-                <label class="crossrow" for="availability"><div class="align_left">Please enter your availability</div></label>
+                <label class="crossrow" for="availability"><div class="align_left">Please enter your availability (Required)*</div></label>
                 <input class="crossrow" type="text" id="availability" name="availability" required
                     placeholder="ex: Mon-Fri 9am-5pm" minlength="3" />
+                {{!-- 
                 <!-- select multiple days checkbox -->
                 <div class="grid crossrow" id="days">
                     <div class="grid crossrow justify_left" id="days">
@@ -70,10 +71,11 @@
                         <option value="8">8 hours</option>
                     </select>
                 </div>
+                 --}}
                 <br>
             </div>
             <div class="grid crossrow" id="credibility">
-                <label class="crossrow" for="credibility"><div class="align_left">Curriculum Vitae/Resume</div></label>
+                <label class="crossrow" for="credibility"><div class="align_left">Curriculum Vitae/Resume (Required)*</div></label>
                 <input class="crossrow" type="file" id="credibility" name="credibility">
             </div>
             <br>
