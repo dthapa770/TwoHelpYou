@@ -14,6 +14,7 @@
  ************************************************************************* --}}
 <head>
     <script defer type="text/javascript" src="/js/message_form.js"  ></script>
+    <script defer type="text/javascript" src="/js/local_storage.js"  ></script>
     <link rel='stylesheet' type="text/css" href='/stylesheets/message.css' />
 </head>
 
@@ -44,9 +45,9 @@
             {{else}}
                 <p>You need to login or register an account before you can send message.</p><br>
                 <div id="user_nav">
-                    <a href="/login/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}" >Login</a><br><br>
+                    <a class="lsbutton" href="/login/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}" >Login</a><br><br>
                     or <br><br>
-                    <a href="/register" class="registerbtn">Register</a><br><br><br>
+                    <a class="lsbutton" href="/register" class="registerbtn">Register</a><br><br><br>
                 </div>
             {{/if}}
         </div>
