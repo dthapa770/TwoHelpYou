@@ -20,15 +20,6 @@
 <div class="body">
     <form id="message_page" method="POST" action="/message/create/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"
         enctype="application/x-www-form-urlencoded">
-<<<<<<< HEAD
-        <h2>Send message</h2>
-        <p id="username" >To: {{current_user.username}}</p>
-        {{#if logged}}
-        <p id="sender">From: {{sender_username}}</p>
-        {{/if}}
-        <p id="course">Course: {{course_prefix}}{{course_postfix}}</p>
-
-=======
         {{!-- <h2>Send message</h2> --}}
         <h2>Register Tutoring Time</h2>
         <div class="message_info">
@@ -46,7 +37,6 @@
         </div>
         <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6"></textarea><br>
        
->>>>>>> b7ebc4ff75d1fbadc53e9605a5f1f52c1ceeb8e4
         <div>
             {{#if logged}}
                 <p class="message_info">From: {{sender_username}}</p>
@@ -62,7 +52,3 @@
         </div>
     </form>   
 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> b7ebc4ff75d1fbadc53e9605a5f1f52c1ceeb8e4
