@@ -20,30 +20,36 @@
 <div class="body">
     <form id="message_page" method="POST" action="/message/create/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"
         enctype="application/x-www-form-urlencoded">
-        <h2>Send message</h2>
-        <p id="username" >To: {{current_user.username}}</p>
-        {{#if logged}}
-        <p id="sender">From: {{sender_username}}</p>
-        {{/if}}
-        <p id="course">Course: {{course_prefix}}{{course_postfix}}</p>
-        <p>Date: <span id ="date-time"></span>
-        <script>
-             var dt= new Date();
-             document.write(new Date().toLocaleDateString()); </script>
-        </p>
-
+        {{!-- <h2>Send message</h2> --}}
+        <h2>Register Tutoring Time</h2>
+        <div class="message_info">
+            <p id="username">To: {{current_user.username}}</p>
+            <p>
+                Date: <span id ="date-time"></span>
+                <script>
+                    var dt= new Date();
+                    document.write(new Date().toLocaleDateString()); 
+                </script> 
+            </p>    
+            <br> 
+            <p id="course">Course: {{course_prefix}}{{course_postfix}}</p>
+            
+        </div>
+        <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6"></textarea><br>
+       
         <div>
-            {{#if logged}} 
-                <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br>
+            {{#if logged}}
+                <p class="message_info">From: {{sender_username}}</p>
                 <button  class="registerbtn" id="message-button" type="submit">Send</button> <br><br><br>
             {{else}}
-                <p>You need to login or register an account before you can send message.</p><br><br>
+                <p>You need to login or register an account before you can send message.</p><br>
                 <div id="user_nav">
                     <a href="/login/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}" >Login</a><br><br>
                     or <br><br>
-                    <a href="/register" >Register</a><br><br><br>
+                    <a href="/register" class="registerbtn">Register</a><br><br><br>
                 </div>
             {{/if}}
         </div>
     </form>   
 </div>
+
