@@ -17,6 +17,7 @@
 (function() {
 	'use strict';
 	var forms = document.querySelectorAll('.requires-validation');
+	var originalURL= window.location.pathname;	
 	Array.prototype.slice.call(forms).forEach(function(form) {
 		form.addEventListener(
 			'submit',
@@ -24,9 +25,9 @@
 				if (!form.checkValidity()) {
 					alert("Invalid login information");
 					event.preventDefault();
-					event.stopPropagation();
+					event.stopPropagation();	
 				}
-
+				document.login_page_name.action = "/users/"+originalURL;
 				form.classList.add('was-validated');
 			},
 			false
