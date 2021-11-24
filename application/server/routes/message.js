@@ -41,7 +41,7 @@ var UserModel = require('../models/user_model');
 				} else {
 					ErrorPrint('message was not saved');
 				}
-                res.redirect('/');
+                res.redirect('/conformation');
 			})
 			.catch((err) => next(err));
 	}
