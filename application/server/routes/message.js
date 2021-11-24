@@ -23,7 +23,11 @@ var UserModel = require('../models/user_model');
 /**
  * route to send message to user.
  */
+<<<<<<< HEAD
 router.post('/create/:username/:post_id/:course_prefix/:course_postfix', (req, res, next) => {
+=======
+ router.post('/create/:username/:post_id/:course_prefix/:course_postfix', (req, res, next) => {
+>>>>>>> b7ebc4ff75d1fbadc53e9605a5f1f52c1ceeb8e4
 	if (!req.session.username) {
 		ErrorPrint('Must be logged in to send message');
 		res.redirect('/');
@@ -33,6 +37,10 @@ router.post('/create/:username/:post_id/:course_prefix/:course_postfix', (req, r
 		let userId = req.session.user_id;
 		let course_prefix = req.params.course_prefix;
 		let course_postfix = req.params.course_postfix;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> b7ebc4ff75d1fbadc53e9605a5f1f52c1ceeb8e4
 		Create(userId, username, message,course_prefix,course_postfix)
 			.then((was_successful) => {
 				if (was_successful !== -1) {
@@ -49,13 +57,20 @@ router.post('/create/:username/:post_id/:course_prefix/:course_postfix', (req, r
 /**
  * Route to create form to send message to user.
  */
+<<<<<<< HEAD
 router.get('/:username/:post_id/:course_prefix/:course_postfix', (req, res, next) => {
+=======
+ router.get('/:username/:post_id/:course_prefix/:course_postfix', (req, res, next) => {
+>>>>>>> b7ebc4ff75d1fbadc53e9605a5f1f52c1ceeb8e4
     let username= req.params.username;
 	let post_id = req.params.post_id;
 	let course_prefix = req.params.course_prefix;
 	let course_postfix = req.params.course_postfix;
 	let sender = req.session.username;
+<<<<<<< HEAD
     
+=======
+>>>>>>> b7ebc4ff75d1fbadc53e9605a5f1f52c1ceeb8e4
     UserModel.GetUser(username)
     .then((results) => {
         if (results.length){
