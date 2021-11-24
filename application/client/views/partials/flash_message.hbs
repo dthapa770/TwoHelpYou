@@ -1,0 +1,22 @@
+{{!-- *************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: flash_messages.hbs
+ * 
+ * Description: flash message layout.
+ ************************************************************************* --}}
+
+<div id="flash_message">
+    {{#if messages.Error}}
+    <div class="box flash_error">{{messages.Error}}</div>
+    {{else}}
+    <div class="box flash_success">{{messages.Success}}</div>
+    {{/if}}
+</div>

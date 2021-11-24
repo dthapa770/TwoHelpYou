@@ -34,6 +34,9 @@
   
   <body class="grid_container">
     {{> header}}
+    {{#if (emptyObject messages)}}
+    {{> flash_message}}
+    {{/if}}
     {{#if logged}}
     {{> dashboard}}
     {{/if}}

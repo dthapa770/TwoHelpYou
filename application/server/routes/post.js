@@ -183,6 +183,7 @@ router.post('/request', async (req,res,next) => {
                     throw new PostError("Unable to make a post.","/post_form", 500);
                 } else {
                     SuccessPrint("posts.js --> post was crated.");
+                    req.flash('Success', `Tutor Request was Created.`);
                     req.session.save(function () {
                         res.redirect('/');
                     })
@@ -193,6 +194,7 @@ router.post('/request', async (req,res,next) => {
                 if (err instanceof PostError) {
                     ErrorPrint(err.GetMessage());
                     res.status(err.GetStatus());
+                    req.flash('Error', err.GetMessage());
                     req.session.save(function () {
                       res.redirect(err.GetRedirectURL());
                     })
@@ -206,6 +208,7 @@ router.post('/request', async (req,res,next) => {
         if (err instanceof PostError) {
             ErrorPrint(err.GetMessage());
             res.status(err.GetStatus());
+			req.flash('Error', err.GetMessage());
             req.session.save(function () {
               res.redirect(err.GetRedirectURL());
             })

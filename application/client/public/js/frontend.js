@@ -161,3 +161,28 @@ function RetreiveSearch() {
 		postfix.setAttribute('value', course_parts.postfix);
 	}
 }
+
+/**
+ * Removes Flash Message about a set time has passed.
+ */
+function SetFlashMessageFadeOut() {
+    setTimeout(() => {
+        let currentOpacity = 1.0;
+        let timer = setInterval(() => {
+            if (currentOpacity < 0.05){
+                clearInterval(timer);
+                flashElement.remove();
+            }
+            currentOpacity = currentOpacity - 0.05;
+            flashElement.style.opacity = currentOpacity;
+        }, 50);
+    }, 4000);
+}
+
+/**
+ * Event listener to look for flash message to remove.
+ */
+let flashElement = document.getElementById('flash_message');
+if (flashElement){
+    SetFlashMessageFadeOut();
+}
