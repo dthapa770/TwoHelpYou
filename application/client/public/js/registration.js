@@ -178,7 +178,6 @@ let register_form = document.getElementById('register_page');
  * @returns 
  */
 register_form.onsubmit = function(event) {
-	console.log('here');
 	if (!ValidateUser(username)) {
 		alert('Fix User');
 	} else if (!ValidatePassword(user_password)) {
@@ -188,28 +187,8 @@ register_form.onsubmit = function(event) {
 	} else if (!ValidateEmail(email_to_add)) {
 		alert('Email address must have @sfsu.edu or @mail.sfsu.edu!');
 	} else {
-		console.log('all good');
 		return true;
 	}
-	console.log('issue');
 	event.preventDefault();
 };
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-// (() => {
-//     'use strict';
-
-//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//     const forms = document.querySelectorAll('.needs-validation');
-
-//     // Loop over them and prevent submission
-//     Array.prototype.slice.call(forms).forEach((form) => {
-//       form.addEventListener('submit', (event) => {
-//         if (!form.checkValidity()) {
-//           event.preventDefault();
-//           event.stopPropagation();
-//         }
-//         form.classList.add('was-validated');
-//       }, false);
-//     });
-//   })();
