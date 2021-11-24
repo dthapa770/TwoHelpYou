@@ -55,7 +55,6 @@ var UserModel = require('../models/user_model');
 	let course_prefix = req.params.course_prefix;
 	let course_postfix = req.params.course_postfix;
 	let sender = req.session.username;
-    
     UserModel.GetUser(username)
     .then((results) => {
         if (results.length){

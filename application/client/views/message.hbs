@@ -39,7 +39,7 @@
             {{else}}
                 <p>You need to login or register an account before you can send message.</p><br><br>
                 <div id="user_nav">
-                    <a href="/login" >Login</a><br><br>
+                    <a href="/login/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}" >Login</a><br><br>
                     or <br><br>
                     <a href="/register" >Register</a><br><br><br>
                 </div>
