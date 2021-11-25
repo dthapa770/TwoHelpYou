@@ -171,16 +171,16 @@ router.post('/login', async (req, res, next) => {
 			req.session.user_id = logged_user_id;
 			res.locals.logged = true;
 			await SaveSession(req.session);
-			res.redirect('/');
+			res.redirect(req.get('referer'));
 		} else {
-			throw new UserError('Invalid username and/or password!', '/login', 200);
+			throw new UserError('Invalid username and/or password!', req.get('referer'), 200);
 		}
 	} catch (err) {
 		ErrorPrint('User login failed!!');
 		if (err instanceof UserError) {
 			ErrorPrint(err.GetMessage());
 			res.status(err.GetStatus());
-			res.redirect('/login');
+			res.redirect(req.get('referer'));
 		} else {
 			next(err);
 		}
