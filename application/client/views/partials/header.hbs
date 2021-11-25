@@ -13,6 +13,10 @@
  * Description: header for all pages as a partial
  ************************************************************************* --}}
 
+<head>
+    <script defer type="text/javascript" src="/js/login.js"  ></script>
+</head>
+
 {{!-- Legal to prompt users this is not a real website --}}
 <div class = "cross_screen_row banner"> 
   SFSU Software Engineering Project CSC 648-848, Fall 2021 For Demonstration Only
@@ -45,6 +49,37 @@
   {{#if logged}}
   <div id="user_nav"> | <a href="/message_page" >Messages</a> | <a href="" id="logout" >Logout</a></div>
   {{else}}
-  <div id="user_nav"><a href="/login" >Login</a> | <a href="/register" >Register</a></div>
+  <div id="user_nav">{{!--<a href="/login" >Login</a>--}}<button id="myBtn">login</button> | <a href="/register" >Register</a></div>
   {{/if}}
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+<!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form class="requires-validation login_box" novalidate id="login_page" method="POST" action="/users/login"
+        enctype="application/x-www-form-urlencoded" >
+        <h2>Login</h2>
+        <div class="login_input">
+            <p>
+                <label for="user_name">Username: </label><br/>
+                <input class="input" type="text" name="user_name" required placeholder="Username" minlength="3"/><br/>
+            </p>
+            <p>
+                <label for="password">Password: </label><br/>
+                <input class="input" type="password" name="password" id="password" required placeholder="Password" minlength="8"/><br/>
+            </p>
+        </div>
+        <button class="registerbtn" id="login_button" type="submit" value="login" name="Login" />Login</button><br /><vr />
+        {{!-- <button type="submit" class="registerbtn"> Login </button> --}}
+        <div class = "container">
+            <p>
+                Do not have an account yet? Click here to
+                <a href="../register">Register</a>!
+            </p>
+        </div>
+    </form>
+  </div>
 </div>
