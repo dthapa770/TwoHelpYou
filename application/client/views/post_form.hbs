@@ -1,17 +1,17 @@
 {{!-- *************************************************************************
- * Class: CSC 0648-03 Software Engineering Fall 2021
- * Team: 1
- * Name:  Justin Lam
- *        Aviral Puri
- *        Dinesh Thapa
- *        Kurt D Resayo
- *        Wesley J Xu
- *        Chung Hei Fong
- * 
- * File: post_form.hbs
- * 
- * Description: Display form to allow users to create a post
- ************************************************************************* --}}
+* Class: CSC 0648-03 Software Engineering Fall 2021
+* Team: 1
+* Name: Justin Lam
+* Aviral Puri
+* Dinesh Thapa
+* Kurt D Resayo
+* Wesley J Xu
+* Chung Hei Fong
+*
+* File: post_form.hbs
+*
+* Description: Display form to allow users to create a post
+************************************************************************* --}}
 
 <head>
     <link rel="stylesheet" type="text/css" href='/stylesheets/post_form.css' />
@@ -19,35 +19,79 @@
 </head>
 
 <div class="body">
-    <form class="flow" id="post_page" method="POST" action="/post/request"
-       enctype="multipart/form-data">
-        <h2>Tutoring Post Request Page</h2>
+    <form class="flow" id="post_page" method="POST" action="/post/request" enctype="multipart/form-data">
+        <h2>Tutor Application</h2>
         <div class="grid">
             <div class="grid crossrow" id="course_information">
-                <label class="crossrow" for="course_prefix">Please Select the subject and enter course number</label>
+                <label class="crossrow" for="course_prefix"><div class="align_left">Please Select the subject (Required)*</div></label>
                 <select name="course_prefix" id="select_menu" tabindex="0" required>
-                    <option selected value=""></option>
+                    <option selected value="" disabled selected hidden>Major</option>
                     {{#each course}}
                     <option value="{{this.course_prefix}}">{{this.course_prefix}}</option>
                     {{/each}}
                 </select>
-                <input type="text" id="course_postfix" name="course_postfix" required placeholder="course number" maxlength="3"/>
+            </div>
+            <div class="grid crossrow">
+                <label class="crossrow" for="course_number"><div class="align_left">Please enter course number (Required)*</div></label>
+                <input type="text" id="course_postfix" name="course_postfix" required placeholder="ex: 310"
+                    maxlength="3" />
             </div>
             <div class="grid crossrow" id="availability">
-                <label class="crossrow" for="availability">Please enter your availability</label>
-                <input class="crossrow" type="text" id="availability" name="availability" required placeholder="ex: Mon-Fri 9am-5pm" minlength="3"/>
+                <label class="crossrow" for="availability"><div class="align_left">Please enter your availability (Required)*</div></label>
+                <input class="crossrow" type="text" id="availability" name="availability" required
+                    placeholder="ex: Mon-Fri 9am-5pm" minlength="3" />
+                {{!-- 
+                <!-- select multiple days checkbox -->
+                <div class="grid crossrow" id="days">
+                    <div class="grid crossrow justify_left" id="days">
+                    <label class="crossrow" for="days">Select One or More Days:</label>
+                    <input type="checkbox" name="days[]" value="Monday"><div class="align_left">Monday</div>
+                    <input type="checkbox" name="days[]" value="Tuesday"><div class="align_left">Tuesday</div>
+                    <input type="checkbox" name="days[]" value="Wednesday"><div class="align_left">Wednesday</div>
+                    <input type="checkbox" name="days[]" value="Thursday"><div class="align_left">Thursday</div>
+                    <input type="checkbox" name="days[]" value="Friday"><div class="align_left">Friday</div>
+                    <input type="checkbox" name="days[]" value="Saturday"><div class="align_left">Saturday</div>
+                    <input type="checkbox" name="days[]" value="Sunday"><div class="align_left">Sunday</div>
+                </div>
+                <br>
+                <!-- start time selector -->
+                <div class="grid crossrow justify_left" id="start_time">
+                    <label for="start_time">Start Time : </label>
+                    <input type="time" name="start_time" id="start_time" required>
+                </div>
+                <br>
+                <!-- time duration selector -->
+                <div class="grid crossrow justify_left" id="duration">
+                    <label for="duration"><div class="top_pad"> Duration :</div></label>
+                    <select name="duration" id="duration">
+                        <option value="1">1 hour</option>
+                        <option value="2">2 hours</option>
+                        <option value="3">3 hours</option>
+                        <option value="4">4 hours</option>
+                        <option value="5">5 hours</option>
+                        <option value="6">6 hours</option>
+                        <option value="7">7 hours</option>
+                        <option value="8">8 hours</option>
+                    </select>
+                </div>
+                 --}}
+                <br>
             </div>
             <div class="grid crossrow" id="credibility">
-                <label class="crossrow" for="credibility">Qualifications (why you can teach this course)</label>
+                <label class="crossrow" for="credibility"><div class="align_left">CV/Resume | Why you are qualified to tutor this course (Required)*</div></label>
                 <input class="crossrow" type="file" id="credibility" name="credibility">
             </div>
+            <br>
         </div>
         <div>
+            <label class="crossrow" for="post"><div class="align_left">Please Note: Applications will take up to 24 hrs to review</div></label>
             {{#if logged}}
-            <input class="registerbtn" id="post_button" type="submit" value="post" name="Post" />
+            <input class="post_btn" id="post_button" type="submit" value="Submit Request" name="Post" />
             {{else}}
             <button type="button" id="submit_button">submit</button>
             {{/if}}
         </div>
     </form>
 </div>
+<br>
+<br>
