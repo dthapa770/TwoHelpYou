@@ -8,49 +8,49 @@
  *        Wesley J Xu
  *        Chung Hei Fong
  * 
- * File: modal.js
+ * File: submit_modal.js
  * 
- * Description: Login and Registration Modal implementation
- *              provided by w3school.
+ * Description: Provides functionability to the submit button page.
  *****************************************************************************/
 
 // Get the <span> element that closes the modal
-var span_login = document.getElementsByClassName("close_login")[0];
-var span_register = document.getElementsByClassName("close_register")[0];
+var span_submit = document.getElementsByClassName("close_submit")[0];
 
 // Get the modal
+var submit_modal = document.getElementById("submit_modal");
 var login_modal = document.getElementById("login_modal");
 var register_modal = document.getElementById("register_modal");
 
 // Get the button that opens the modal
-var login_button = document.getElementById("login_button");
-var register_button = document.getElementById("register_button");
+var submit_button = document.getElementById("submit_button");
+var submit_login_button = document.getElementById("submit_login_button");
+var submit_register_button = document.getElementById("submit_register_button");
+
+// When the user clicks on the button, open the submit modal
+submit_button.onclick = function() {
+  submit_modal.style.display = "block";
+}
 
 // When the user clicks on the button, open the login modal
-login_button.onclick = function() {
+submit_login_button.onclick = function() {
+  submit_modal.style.display = "none";
   login_modal.style.display = "block";
 }
 
 // When the user clicks on the button, open the register modal
-register_button.onclick = function() {
+submit_register_button.onclick = function() {
+  submit_modal.style.display = "none";
   register_modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span_login.onclick = function() {
-  login_modal.style.display = "none";
-}
-
-span_register.onclick = function() {
-  register_modal.style.display = "none";
+span_submit.onclick = function() {
+  submit_modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == login_modal) {
-    login_modal.style.display = "none";
-  }
-  if (event.target == register_modal) {
-    register_modal.style.display = "none";
+  if (event.target == submit_modal) {
+    submit_modal.style.display = "none";
   }
 }

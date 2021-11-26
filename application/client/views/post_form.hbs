@@ -15,6 +15,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href='/stylesheets/post_form.css' />
+    <script defer type="text/javascript" src= "/js/submit_modal.js"  ></script>
 </head>
 
 <div class="body">
@@ -45,7 +46,7 @@
             {{#if logged}}
             <input class="registerbtn" id="post_button" type="submit" value="post" name="Post" />
             {{else}}
-            <div id="user_nav"><a href="/login" >Login</a> or <a href="/register" >Register</a></div>
+            <button type="button" id="submit_button">submit</button>
             {{/if}}
         </div>
     </form>

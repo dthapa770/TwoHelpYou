@@ -15,6 +15,7 @@
 <head>
     <script defer type="text/javascript" src="/js/message_form.js"  ></script>
     <link rel='stylesheet' type="text/css" href='/stylesheets/message.css' />
+    <script defer type="text/javascript" src= "/js/submit_modal.js"  ></script>
 </head>
 
 <div class="body">
@@ -23,16 +24,11 @@
         <h2>Send message</h2>
         <p id="username" >To: {{current_user.username}}</p>
         <div>
+            <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br>
             {{#if logged}}
-                <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br>
                 <button  class="registerbtn" id="message-button" type="submit">Send</button> <br><br><br>
             {{else}}
-                <p>You need to login or register an account before you can send message.</p><br><br>
-                <div id="user_nav">
-                    <a href="/login" >Login</a><br><br>
-                    or <br><br>
-                    <a href="/register" >Register</a><br><br><br>
-                </div>
+                <button type="button" id="submit_button">submit</button>
             {{/if}}
         </div>
     </form>
