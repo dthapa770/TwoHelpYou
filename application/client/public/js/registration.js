@@ -178,7 +178,6 @@ let register_form = document.getElementById('register_page');
  * @returns 
  */
 register_form.onsubmit = function(event) {
-	console.log('here');
 	if (!ValidateUser(username)) {
 		alert('Fix User');
 	} else if (!ValidatePassword(user_password)) {
@@ -188,10 +187,8 @@ register_form.onsubmit = function(event) {
 	} else if (!ValidateEmail(email_to_add)) {
 		alert('Email address must have @sfsu.edu or @mail.sfsu.edu!');
 	} else {
-		console.log('all good');
 		return true;
 	}
-	console.log('issue');
 	event.preventDefault();
 };
 
