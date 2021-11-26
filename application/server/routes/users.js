@@ -75,7 +75,7 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 			// req.flash('Error', err.getMessage());
 			res.status(err.GetStatus());
 			req.session.save(function() {
-				res.redirect(err.GetRedirectURL());
+				res.redirect(req.get('referer'));
 			});
 		} else {
 			next(err);
@@ -101,9 +101,7 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 				ErrorPrint(err.GetMessage());
 				// req.flash('Error', err.getMessage());
 				res.status(err.GetStatus());
-				req.session.save(function() {
-					res.redirect(err.GetRedirectURL());
-				});
+				res.redirect(req.get('referer'));
 			} else {
 				next(err);
 			}
@@ -127,13 +125,39 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 				return UserModel.Create(first_name, last_name, username, password, email, image_name);
 			}
 		})
+		// Need to login user here.
 		.then((create_user) => {
 			if (create_user < 0) {
 				throw new UserError('Server Error: User cannot be created', '/registration', 500);
 			} else {
 				SuccessPrint('Users.js -->User was created!!');
-				res.redirect('/login');
+				SuccessPrint(`User ${username} is logged in`);
+				req.session.username = username;
+				req.session.user_id = create_user;
+				res.locals.logged = true;
+				return UserModel.GetUserMessageCount(create_user);
 			}
+		})
+		.then((messages) => {
+			if (messages.user_id < 0) {
+			} else {
+				req.session.dashboard_first_name = messages.first_name;
+				req.session.dashboard_message_count = messages.messages;
+				return UserModel.GetUserPostCount(messages.user_id );
+			}
+		})
+		.then((posts) => {
+			if (posts.posts < 0) {
+				throw new UserError('Server Error: User cannot get posts', '/registration', 500);
+			} else {
+				req.session.dashboard_post_count = posts.posts;
+				return 0;
+			}
+		})
+		.then((msg) => {
+			req.session.save(function() {
+				res.redirect(req.get('referer'));
+			})
 		})
 		.catch((err) => {
 			ErrorPrint('user cannot be made', err);
@@ -141,7 +165,7 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 				ErrorPrint(err.GetMessage());
 				//req.flash('error', err.getMessage());
 				res.status(err.GetStatus());
-				res.redirect(err.GetRedirectURL());
+				res.redirect(req.get('referer'));
 			} else {
 				next(err);
 			}

@@ -50,7 +50,7 @@ UserModel.Create = async (first_name,last_name,username,password,email,image_nam
  * @param username 
  * @returns resolution to query
  */
-UserModel.UsernameExists = (username) =>{
+UserModel.UsernameExists = async (username) =>{
     return db.execute("SELECT * FROM user WHERE username=?", [username])
     .then(([results,fields]) =>{
         return Promise.resolve(!(results && results.length==0));
@@ -63,7 +63,7 @@ UserModel.UsernameExists = (username) =>{
  * @param email 
  * @returns resolution to query
  */
-UserModel.EmailExists = (email) =>{
+UserModel.EmailExists = async (email) =>{
     return db.execute("SELECT * FROM user WHERE email=?", [email])
     .then(([results, fields]) => {
           return Promise.resolve(!(results && results.length == 0));
@@ -78,7 +78,7 @@ UserModel.EmailExists = (email) =>{
  * @param password 
  * @returns result of signin
  */
-UserModel.Authenticate = (username, password) =>{
+UserModel.Authenticate = async (username, password) =>{
     let user_id;
     let baseSQL="SELECT user_id,username, password, email FROM user WHERE username=?;";
     return db.execute(baseSQL,[username])
@@ -105,7 +105,7 @@ UserModel.Authenticate = (username, password) =>{
  * @param username 
  * @returns 
  */
-UserModel.GetUser = (username) => {
+UserModel.GetUser = async (username) => {
     let baseSQL = `SELECT u.username, u.user_id, u.first_name, u.photopath
                     from user u
                     where u.username = ?;`;
@@ -121,7 +121,7 @@ UserModel.GetUser = (username) => {
  * @param user_id 
  * @returns 
  */
-UserModel.GetUserMessageCount = (user_id) => {
+UserModel.GetUserMessageCount = async (user_id) => {
     let baseSQL = `SELECT u.user_id, u.first_name, COUNT(m.receiver_id) AS messages 
                     FROM user u LEFT JOIN message m
                     ON u.user_id = m.receiver_id
@@ -139,7 +139,7 @@ UserModel.GetUserMessageCount = (user_id) => {
  * @param user_id 
  * @returns 
  */
-UserModel.GetUserPostCount = (user_id) => {
+UserModel.GetUserPostCount = async (user_id) => {
     let baseSQL = `SELECT u.user_id, COUNT(p.user_id) AS posts 
                     FROM user u LEFT JOIN post p
                     ON u.user_id = p.user_id

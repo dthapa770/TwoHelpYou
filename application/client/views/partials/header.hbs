@@ -15,6 +15,7 @@
 
 <head>
     <script defer type="text/javascript" src="/js/login.js"  ></script>
+    <script defer type="text/javascript" src="/js/registration.js"  ></script>
 </head>
 
 {{!-- Legal to prompt users this is not a real website --}}
@@ -49,16 +50,19 @@
   {{#if logged}}
   <div id="user_nav"> | <a href="/message_page" >Messages</a> | <a href="" id="logout" >Logout</a></div>
   {{else}}
-  <div id="user_nav">{{!--<a href="/login" >Login</a>--}}<button id="myBtn">login</button> | <a href="/register" >Register</a></div>
+  <div id="user_nav">
+    {{!--<a href="/login" >Login</a>--}} | <button id="login_button">login</button> | 
+    {{!-- <a href="/register" >Register</a> --}}<button id="register_button">Register</button>
+  </div>
   {{/if}}
 </div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+<!-- Login Modal -->
+<div id="login_modal" class="modal">
 
-<!-- Modal content -->
+<!-- Login content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close close_login">&times;</span>
     <form class="requires-validation login_box" novalidate id="login_page" method="POST" action="/users/login"
         enctype="application/x-www-form-urlencoded" >
         <h2>Login</h2>
@@ -75,10 +79,71 @@
         <button class="registerbtn" id="login_button" type="submit" value="login" name="Login" />Login</button><br /><vr />
         {{!-- <button type="submit" class="registerbtn"> Login </button> --}}
         <div class = "container">
-            <p>
+            {{!-- <p>
                 Do not have an account yet? Click here to
                 <a href="../register">Register</a>!
-            </p>
+            </p> --}}
+        </div>
+    </form>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div id="register_modal" class="modal">
+
+<!-- Register Content -->
+  <div class="modal-content">
+    <span class="close close_register">&times;</span>
+    <form id="register_page" action="/users/register" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div class="entry_box" >
+            <h2>User Registration Form</h2>
+            <div class="register_input">
+                <label for="first_name">First name: </label>
+                <input class="input" type="text" id="first_name" name="first_name" required placeholder="First name" />
+                <label for="last_name">Last name: </label>
+                <input class="input" type="text" id="last_name" name="last_name" required placeholder="Last name" />
+            </div>
+            <div class="register_input">
+                <label for="username">Username: </label>
+                <input class="input_single_row" type="text" id="username" name="username" required placeholder="Username" />
+            </div>
+            <div class="register_input">
+                <label for="email">Email: </label>
+                <input class="input_single_row" type="email" id="email" name="email" required placeholder="Email Address" />
+            </div>
+            {{!--<div>
+                <label for="email">Email </label>
+                <input type="email" id="email" name="email" required placeholder="Email Address" />
+            </div>--}}
+            <div class="register_input">
+                <label for="password">Password: </label>
+                <input class="input_single_row" id="register_password" type="password" name="password" required placeholder="Password" />
+                {{!-- <i class="bi bi-eye-slash" id="togglePassword"></i> --}}
+            </div>
+            <div class="register_input">
+                <label for="confirm_password">Confirm Password: </label>
+                <input class="input_single_row" id="confirm_password" type="password" required placeholder="Confirm Password" />
+            </div>
+        </div>
+        <div class="flow_box" >
+            <div class="container flow_box">
+                <label for="profile_picture">Upload Image for Profile Picture </label>
+                <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+                <label>Uploading a picture is optional, if no picture is provided a defualt will be used</label>
+            </div>
+            <div class="flow_box">
+                {{!--<label for="ToS">Please Read and Accept </label> --}}
+                <div><a href="">Term of Service</a> and <a href="">Privacy Rules</a></div>
+                <div>
+                    <input type="checkbox" id="ToS" name="terms" value="agreement" required> 
+                    <label for="terms" for = "invalidCheck">I agree to the Term of Service and Privacy Rules.</label>
+                </div>
+            </div>
+            <div>
+                <input type="checkbox" id="age" name="old" value="enough" required>
+                <label for="old">I am 13 years or older.</label>
+            </div>
+            <button type="submit" class="registerbtn" value="Register">Register</button>
         </div>
     </form>
   </div>

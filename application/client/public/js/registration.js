@@ -150,7 +150,7 @@ email_to_add.onchange = function(event) {
 	ValidateEmail(email_to_add);
 };
 
-let user_password = document.getElementById('password');
+let user_password = document.getElementById('register_password');
 let user_confirm = document.getElementById('confirm_password');
 /**
  * Listerner for password validation
