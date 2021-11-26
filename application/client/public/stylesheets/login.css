@@ -21,11 +21,11 @@
     align-items: center;
 }
 
-.login_input {
+.login_input_1 {
     text-align: left;
 }
 
-.input {
+.login_input_2 {
     max-width: 100vh;
     width: 80%;
 }

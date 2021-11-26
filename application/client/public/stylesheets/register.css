@@ -30,12 +30,12 @@ input[type=text], input[type=password], input[type = email] {
     width: 60%;
 }
 
-.register_input {
+.register_input_1 {
 	text-align: left;
 	display: grid;
 }
 
-.input {
+.register_input_2 {
 	max-width: 100vh;
 	width: 80% !important;
 }
