@@ -59,6 +59,10 @@ router.get('/login/:username/:post_id/:course_prefix/:course_postfix', function(
   res.render('login'), {title: 'Software Engineering Class SFSU'}
 });
 
+router.get('/login/message-form',function(req,res,next){
+  res.render('login'),{title: 'Software Engineering Class SFSU'}
+});
+
 router.get('/login', function(req,res,next){
   res.render('login'), {title: 'Software Engineering Class SFSU'}
 });
