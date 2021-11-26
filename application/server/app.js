@@ -3,8 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var sessions=require('express-session');
-var mysqlSessions=require('express-mysql-session')(sessions);
+var sessions = require('express-session');
+var mysqlSessions = require('express-mysql-session')(sessions);
+var flash = require('express-flash');
 var fileupload = require('express-fileupload');
 var messageRouter =require('./routes/message');
 var handlebars = require("express-handlebars");
@@ -40,6 +41,9 @@ app.use(sessions({
         resave:false,
         saveUninitialized:false
 }))
+
+app.use(flash());
+
 // view engine setup
 app.set('views', path.join(__dirname, '../client/views'));
 app.set('view engine', 'hbs');

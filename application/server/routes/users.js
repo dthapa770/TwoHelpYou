@@ -42,9 +42,9 @@ const Validate = (req, res, next) => {
 	if(errors.isEmpty()){
 		return next()
 	}else{
-		// req.flash('error', "Enter Valid information"); 
+		req.flash('Error', "Enter Valid information"); 
 		ErrorPrint("Validation Failed!")
-		res.redirect('/registration'); 
+		res.redirect('/register'); 
 	}
 }
 
@@ -72,7 +72,7 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 		console.log('error');
 		if (err instanceof UserError) {
 			ErrorPrint(err.GetMessage());
-			// req.flash('Error', err.getMessage());
+			req.flash('Error', err.GetMessage());
 			res.status(err.GetStatus());
 			req.session.save(function() {
 				res.redirect(req.get('referer'));
@@ -99,7 +99,7 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 			ErrorPrint("Cannot handle image properly.")
 			if (err instanceof UserError) {
 				ErrorPrint(err.GetMessage());
-				// req.flash('Error', err.getMessage());
+				req.flash('Error', err.getMessage());
 				res.status(err.GetStatus());
 				res.redirect(req.get('referer'));
 			} else {
@@ -113,14 +113,14 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 	UserModel.UsernameExists(username)
 		.then((user_name_exists) => {
 			if (user_name_exists) {
-				throw new UserError('Registration Failed:Username already exist!!', '/registration', 200);
+				throw new UserError('Registration Failed: Username already exist!!', '/register', 200);
 			} else {
 				return UserModel.EmailExists(email);
 			}
 		})
 		.then((email_exists) => {
 			if (email_exists) {
-				throw new UserError('Registration Failed:Email already exist!!', '/registration', 200);
+				throw new UserError('Registration Failed: Email already exist!!', '/register', 200);
 			} else {
 				return UserModel.Create(first_name, last_name, username, password, email, image_name);
 			}
@@ -128,10 +128,11 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 		// Need to login user here.
 		.then((create_user) => {
 			if (create_user < 0) {
-				throw new UserError('Server Error: User cannot be created', '/registration', 500);
+				throw new UserError('Server Error: User cannot be created', '/register', 500);
 			} else {
 				SuccessPrint('Users.js -->User was created!!');
 				SuccessPrint(`User ${username} is logged in`);
+				req.flash('Success', `User, ${username}, was Created.`);
 				req.session.username = username;
 				req.session.user_id = create_user;
 				res.locals.logged = true;
@@ -163,7 +164,7 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 			ErrorPrint('user cannot be made', err);
 			if (err instanceof UserError) {
 				ErrorPrint(err.GetMessage());
-				//req.flash('error', err.getMessage());
+				req.flash('Error', err.GetMessage());
 				res.status(err.GetStatus());
 				res.redirect(req.get('referer'));
 			} else {
@@ -182,6 +183,7 @@ router.post('/login', async (req, res, next) => {
 	try {
 		if (logged_user_id > 0) {
 			SuccessPrint(`User ${username} is logged in`);
+			req.flash('Success', `User, ${username}, is now logged in.`);
 			let messages = await UserModel.GetUserMessageCount(logged_user_id);
 			if (messages.user_id > 0) {
 				req.session.dashboard_first_name = messages.first_name;
@@ -203,6 +205,7 @@ router.post('/login', async (req, res, next) => {
 		ErrorPrint('User login failed!!');
 		if (err instanceof UserError) {
 			ErrorPrint(err.GetMessage());
+			req.flash('Error', err.GetMessage());
 			res.status(err.GetStatus());
 			res.redirect(req.get('referer'));
 		} else {
@@ -239,7 +242,8 @@ router.get('/:username', GetAllUserPost, (req,res,next) => {
 		let user = results[0];
 		res.render('user_profile', {current_user: user, title: `User: ${username}`});
 	  } else {
-		  ErrorPrint('Error, this is no the correct User profile.');
+		  ErrorPrint('Error, this is not a correct User profile.');
+		  req.flash('Error', 'This is not a correct User profile.');
 		  req.session.save(function () {
 			  res.redirect('/');
 		  })

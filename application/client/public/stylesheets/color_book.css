@@ -124,6 +124,31 @@ a.dashboard_link {
 	text-align: left;
 }
 
+/* Flash Message */
+#flash_message {
+	position: fixed;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%,0);
+	border: solid;
+	background-color: white;
+	border-radius: 25%;
+}
+
+#flash_message div {
+    text-align: center;
+}
+
+.flash_error {
+    border-color: red !important;
+    color: red !important;
+}
+
+.flash_success {
+    border-color: green !important;
+    color: green !important;
+}
+
 /* Buttons and links */
 a.button:hover {
 	color: initial;

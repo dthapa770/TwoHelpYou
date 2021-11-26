@@ -26,7 +26,10 @@ var UserModel = require('../models/user_model');
 router.post('/create/:username', (req, res, next) => {
 	if (!req.session.username) {
 		ErrorPrint('Must be logged in to send message');
-		res.redirect('/');
+		req.flash('Error', 'Must be logged in to send message');
+		req.session.save(function () {
+            res.redirect('/');
+        })
 	} else {
 		let message = req.body.message;
         let username = req.params.username;
@@ -35,10 +38,14 @@ router.post('/create/:username', (req, res, next) => {
 			.then((was_successful) => {
 				if (was_successful !== -1) {
 					SuccessPrint(`message was sent to ${username}`);
+					req.flash('Success', `Message was sent to ${username}.`);
 				} else {
 					ErrorPrint('message was not saved');
+					req.flash('Error', 'Message was not saved');
 				}
-                res.redirect('/');
+                req.session.save(function () {
+                	res.redirect('/');
+            	})
 			})
 			.catch((err) => next(err));
 	}
@@ -57,6 +64,7 @@ router.get('/:username', (req, res, next) => {
           res.render('message', {current_user: user, title: `User: ${username}`});
         } else {
             ErrorPrint('Error, this is not the correct User profile.');
+			req.flash('Error', 'This is not the correct User profile');
             req.session.save(function () {
                 res.redirect('/');
             })
