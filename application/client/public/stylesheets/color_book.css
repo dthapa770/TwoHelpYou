@@ -50,7 +50,7 @@ body {
 .site_section {
 	grid-row: 2;
 	background: #310944;
-	font-size: x-large;
+	font-size: small;
 	font-weight: bold;
 	color: #ffffff;
 	padding: 2%;
@@ -66,6 +66,7 @@ body {
 	grid-auto-rows: 1fr;
 	justify-content: space-between;
 	align-items: center;
+	/* line-height: 16px; */
 }
 
 .bottom_header {
@@ -84,11 +85,30 @@ body {
 	margin: 0;
 	display: flex;
 	justify-content: center;
+	align-items: baseline;
+	/* line-height: 16px; */
 }
 
-#search_button {
-	border: 0;
+.search_nav {
+	padding: 15px 0 15px 0;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+	line-height: 17px;
+	/* flex-grow: 1; */
 }
+
+
+#default_nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+/* #search_button {
+	border: 0;
+} */
 
 #return_to_home {
 	color: #310944;
@@ -262,7 +282,7 @@ input[type=text], input[type=password], input[type = email] {
 }
 
 /*to fix the issue when window is not at full screen*/
-@media all and (max-width: 520px) {
+@media all and (max-width: 581px) {
 	.main_navbar {
 		grid-template-columns: max-content max-content;
 		grid-template-rows: max-content max-content;
