@@ -14,23 +14,40 @@
  ************************************************************************* --}}
 <head>
     <script defer type="text/javascript" src="/js/message_form.js"  ></script>
+    <script defer type="text/javascript" src="/js/local_storage.js"  ></script>
     <link rel='stylesheet' type="text/css" href='/stylesheets/message.css' />
     <script defer type="text/javascript" src= "/js/submit_modal.js"  ></script>
 </head>
 
 <div class="body">
-    <form id="message_page" method="POST" action="/message/create/{{current_user.username}}"
+    <form id="message_page" method="POST" action="/message/create/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"
         enctype="application/x-www-form-urlencoded">
-        <h2>Send message</h2>
-        <p id="username" >To: {{current_user.username}}</p>
+        {{!-- <h2>Send message</h2> --}}
+        <h2>Register Tutoring Time</h2>
+        <div class="message_info">
+            <p id="username">To: {{current_user.username}}</p>
+            <p id="tutor-time">
+                Date: <span id ="date-time"></span>
+                <script>
+                    var dt= new Date();
+                    document.write(new Date().toLocaleDateString()); 
+                </script> 
+            </p>    
+            <br> 
+            <p id="course">Course: {{course_prefix}}{{course_postfix}}</p>
+            
+        </div>
+        <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6"></textarea><br>
+       
         <div>
             <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br>
             {{#if logged}}
+                <p class="message_info">From: {{sender_username}}</p>
                 <button  class="registerbtn" id="message-button" type="submit">Send</button> <br><br><br>
             {{else}}
-                <button type="button" id="submit_button">submit</button>
+                <p class="message_info">From: Anon</p>
+                <button type="button" id="submit_button">Send</button>
             {{/if}}
         </div>
-    </form>
-    
+    </form>   
 </div>

@@ -23,7 +23,7 @@ var UserModel = require('../models/user_model');
 /**
  * route to send message to user.
  */
-router.post('/create/:username', (req, res, next) => {
+ router.post('/create/:username/:post_id/:course_prefix/:course_postfix', (req, res, next) => {
 	if (!req.session.username) {
 		ErrorPrint('Must be logged in to send message');
 		req.flash('Error', 'Must be logged in to send message');
@@ -34,34 +34,44 @@ router.post('/create/:username', (req, res, next) => {
 		let message = req.body.message;
         let username = req.params.username;
 		let userId = req.session.user_id;
-		Create(userId, username, message)
-			.then((was_successful) => {
-				if (was_successful !== -1) {
-					SuccessPrint(`message was sent to ${username}`);
-					req.flash('Success', `Message was sent to ${username}.`);
-				} else {
-					ErrorPrint('message was not saved');
-					req.flash('Error', 'Message was not saved');
-				}
-                req.session.save(function () {
-                	res.redirect('/');
-            	})
-			})
-			.catch((err) => next(err));
+		let course_prefix = req.params.course_prefix;
+		let course_postfix = req.params.course_postfix;
+		let post_id = req.params.post_id;
+        if(message &&username &&post_id &&course_prefix &&course_postfix){
+			Create(userId, username, message,course_prefix,course_postfix)
+				.then((was_successful) => {
+					if (was_successful !== -1) {
+						SuccessPrint(`message was sent to ${username}`);
+						req.flash('Success', `Message was sent to ${username}.`);
+					} else {
+						ErrorPrint('message was not sent');
+						req.flash('Error', 'Message was not sent');
+					}
+					req.session.save(function () {
+						res.redirect('/conformation');
+					})
+				})
+				.catch((err) => next(err));
+		}else {
+			res.redirect(`/message/${username}/${post_id}/${course_prefix}/${course_postfix}`)
+		}
 	}
 });
 
 /**
  * Route to create form to send message to user.
  */
-router.get('/:username', (req, res, next) => {
+ router.get('/:username/:post_id/:course_prefix/:course_postfix', (req, res, next) => {
     let username= req.params.username;
-    
+	let post_id = req.params.post_id;
+	let course_prefix = req.params.course_prefix;
+	let course_postfix = req.params.course_postfix;
+	let sender = req.session.username;
     UserModel.GetUser(username)
     .then((results) => {
         if (results.length){
           let user = results[0];
-          res.render('message', {current_user: user, title: `User: ${username}`});
+          res.render('message', {current_user: user, post_id:post_id, course_prefix: course_prefix, course_postfix:course_postfix, sender_username:sender, title: `User: ${username}`});
         } else {
             ErrorPrint('Error, this is not the correct User profile.');
 			req.flash('Error', 'This is not the correct User profile');

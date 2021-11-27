@@ -188,6 +188,7 @@ a.button:hover {
 	font-weight: bold;
 	background: grey;
 	transition-duration: 0.4s;
+	text-decoration:none
 }
 
 .button:hover {
@@ -251,6 +252,7 @@ input[type=text], input[type=password], input[type = email] {
 	cursor: pointer;
 	/* max-width: 25%; */
 	opacity: 0.9;
+	text-decoration:none
 }
 
 .registerbtn:hover {

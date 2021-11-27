@@ -176,9 +176,13 @@ router.post('/register', UserValidationRules(), Validate, (req, res, next) => {
 /**
  * Route for user login
  */
-router.post('/login', async (req, res, next) => {
+router.post('/login/message', async (req, res, next) => {
 	var username = req.body.user_name;
 	var password = req.body.password;
+	var postUserName = req.params.username;
+	var postId = req.params.post_id;
+	var coursePrefix = req.params.course_prefix;
+	var coursePostfix = req.params.course_postfix;
 	let logged_user_id = await UserModel.Authenticate(username, password);
 	try {
 		if (logged_user_id > 0) {
@@ -198,6 +202,12 @@ router.post('/login', async (req, res, next) => {
 			res.locals.logged = true;
 			await SaveSession(req.session);
 			res.redirect(req.get('referer'));
+			// if(postUserName && postId && coursePrefix && coursePostfix){
+			// 	res.redirect(`/message/${postUserName}/${postId}/${coursePrefix}/${coursePostfix}`);
+			// }
+			// else{
+			// 	res.redirect('/');
+			// }
 		} else {
 			throw new UserError('Invalid username and/or password!', req.get('referer'), 200);
 		}
@@ -208,12 +218,72 @@ router.post('/login', async (req, res, next) => {
 			req.flash('Error', err.GetMessage());
 			res.status(err.GetStatus());
 			res.redirect(req.get('referer'));
+			// res.redirect(`/login/${postUserName}/${postId}/${coursePrefix}/${coursePostfix}`);
 		} else {
+			console.log(err);
+			console.log('err');
 			next(err);
 		}
 	}
 });
 
+router.post('/login/message-form', async (req, res, next) => {
+	var username = req.body.user_name;
+	var password = req.body.password;
+	let logged_user_id = await UserModel.Authenticate(username, password);
+	try {
+		if (logged_user_id > 0) {
+			SuccessPrint(`User ${username} is logged in`);
+			req.session.username = username;
+			req.session.user_id = logged_user_id;
+			res.locals.logged = true;
+			await SaveSession(req.session);
+			res.redirect('/message');
+		
+		} else {
+			throw new UserError('Invalid username and/or password!', '/login', 200);
+		}
+	} catch (err) {
+		ErrorPrint('User login failed!!');
+		if (err instanceof UserError) {
+			ErrorPrint(err.GetMessage());
+			res.status(err.GetStatus());
+			res.redirect(`/login`);
+		} else {
+			console.log('err');
+			next(err);
+		}
+	}
+});
+
+router.post('/login', async (req, res, next) => {
+	var username = req.body.user_name;
+	var password = req.body.password;
+	let logged_user_id = await UserModel.Authenticate(username, password);
+	try {
+		if (logged_user_id > 0) {
+			SuccessPrint(`User ${username} is logged in`);
+			req.session.username = username;
+			req.session.user_id = logged_user_id;
+			res.locals.logged = true;
+			await SaveSession(req.session);
+			res.redirect(`/`);
+		
+		} else {
+			throw new UserError('Invalid username and/or password!', '/login', 200);
+		}
+	} catch (err) {
+		ErrorPrint('User login failed!!');
+		if (err instanceof UserError) {
+			ErrorPrint(err.GetMessage());
+			res.status(err.GetStatus());
+			res.redirect(`/login`);
+		} else {
+			console.log('err');
+			next(err);
+		}
+	}
+});
 /**
  * Route for user logout
  */

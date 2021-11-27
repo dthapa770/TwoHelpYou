@@ -21,12 +21,11 @@ var MessageModel = {};
  * @param user_id 
  * @returns messages sent to user
  */
-MessageModel.GetUserMessages = (user_id) => {
+MessageModel.GetUserMessages = (user_id) =>{
 	let baseSQL = `select u.username, m.message, m.time, m.message_id
                     from user u, message m
                     where u.user_id = m.sender_id and m.receiver_id = ?;`;
-	return db
-		.execute(baseSQL, [ user_id ])
+	return db.execute(baseSQL, [ user_id ])
 		.then(([ results, fields ]) => {
 			return Promise.resolve(results);
 		})
@@ -40,9 +39,9 @@ MessageModel.GetUserMessages = (user_id) => {
  * @param message 
  * @returns 
  */
-MessageModel.Create = (sender,receiver,message) =>{
-    let baseSQL = `INSERT INTO message (time, message, receiver_id,sender_id) VALUES (now(),?,(SELECT user_id FROM user WHERE username = ?),?);`
-    return db.query(baseSQL,[message,receiver,sender])
+MessageModel.Create = (sender,receiver,message,course_prefix,course_postfix) =>{
+    let baseSQL = `INSERT INTO message ( time, message,receiver_id,sender_id,related_course_id) VALUES (now(),?,(SELECT user_id FROM user WHERE username = ?),?,(SELECT course_id FROM course WHERE course_prefix=? AND course_postfix=?));`
+    return db.query(baseSQL,[message,receiver,sender,course_prefix,course_postfix])
     .then (([results,fields]) =>{
         if(results && results.affectedRows){
             return Promise.resolve(results);
@@ -53,7 +52,6 @@ MessageModel.Create = (sender,receiver,message) =>{
     })
     .catch((err) => Promise.reject(err));
 }
-
 /**
  * Grabs all message data for recipent of message
  * @param user_id 

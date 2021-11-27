@@ -235,4 +235,14 @@ PostModel.ValidateUser = async (username) => {
 		.catch((err) => Promise.reject(-1));
 }
 
+PostModel.GetPostById=(postId) =>{
+    let baseSQL=
+        'SELECT u.username, p.availability, u.first_name, u.thumbnail, u.last_name, p.post_id, c.course_prefix,c.course_postfix  FROM user u JOIN post p ON p.post_id = u.user_id JOIN course c ON p.course_id = c.course_id   WHERE p.post_id = ?;'
+    return db.execute(baseSQL,[postId])
+        .then(([results, fields]) =>{
+              return Promise.resolve(results);
+        })
+        .catch( err => Promise.reject(err))
+}
+
 module.exports = PostModel;
