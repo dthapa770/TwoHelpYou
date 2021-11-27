@@ -1,3 +1,18 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: local_storage.js
+ * 
+ * Description: Store data from forms locally.
+ *****************************************************************************/
+
 const loginbutton = document.querySelector('.lsbutton');
 
 // remove first 3 char

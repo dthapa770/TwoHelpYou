@@ -8,7 +8,7 @@
  *        Wesley J Xu
  *        Chung Hei Fong
  * 
- * File: frontend.js
+ * File: message_form.js
  * 
  * Description: Provides functionability to the message form page.
  *****************************************************************************/

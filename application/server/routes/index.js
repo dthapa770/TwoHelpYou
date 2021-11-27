@@ -55,13 +55,13 @@ router.get('/about/xu', function(req, res, next) {
 }) ;
 //end of router for about page
 
-router.get('/login/:username/:post_id/:course_prefix/:course_postfix', function(req,res,next){
-  res.render('login'), {title: 'Software Engineering Class SFSU'}
-});
+// router.get('/login/:username/:post_id/:course_prefix/:course_postfix', function(req,res,next){
+//   res.render('login'), {title: 'Software Engineering Class SFSU'}
+// });
 
-router.get('/login/message-form',function(req,res,next){
-  res.render('login'),{title: 'Software Engineering Class SFSU'}
-});
+// router.get('/login/message-form',function(req,res,next){
+//   res.render('login'),{title: 'Software Engineering Class SFSU'}
+// });
 
 router.get('/login', function(req,res,next){
   res.render('login'), {title: 'Software Engineering Class SFSU'}
@@ -83,15 +83,16 @@ router.get('/message_page', GetAllUserMessages, function(req,res,next) {
   res.render('message_page'), {title: 'Software Engineering Class SFSU'}
 })
 
-router.get('/message', function(req,res,next) {
-  res.render('message'), {title: 'Software Engineering Class SFSU'}
-})
+// router.get('/message', function(req,res,next) {
+//   res.render('message'), {title: 'Software Engineering Class SFSU'}
+// })
 
-router.get('/conformation',function(req,res,next) {
-  res.render('conformation',{ title:'Software Engineering Class SFSU'})
+router.get('/confirmation',function(req,res,next) {
+  res.render('confirmation',{ title:'Software Engineering Class SFSU'})
 });
 
 router.get('/post/:id(\\d+)',GetPostById,function(req,res,next){
      res.render('post'),{ title:'Software Engineering Class SFSU'} 
 });
+
 module.exports = router;

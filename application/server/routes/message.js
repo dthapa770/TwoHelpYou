@@ -33,12 +33,11 @@ var UserModel = require('../models/user_model');
 	} else {
 		let message = req.body.message;
         let username = req.params.username;
-		let userId = req.session.user_id;
 		let course_prefix = req.params.course_prefix;
 		let course_postfix = req.params.course_postfix;
 		let post_id = req.params.post_id;
         if(message &&username &&post_id &&course_prefix &&course_postfix){
-			Create(userId, username, message,course_prefix,course_postfix)
+			Create(req.session.user_id, username, message,course_prefix,course_postfix)
 				.then((was_successful) => {
 					if (was_successful !== -1) {
 						SuccessPrint(`message was sent to ${username}`);
