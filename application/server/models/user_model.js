@@ -87,7 +87,7 @@ UserModel.Authenticate = async (username, password) =>{
                 user_id= results[0].user_id;
                 return bcrypt.compare(password, results[0].password );
             }else{
-                return Promise.reject(err);
+                return Promise.resolve(-1);
             }
         })
         .then((password_match) =>{
