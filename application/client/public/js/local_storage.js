@@ -28,7 +28,7 @@ const savetolocalstorge = () =>{
     //get user message box
     var inputVal = document.getElementById("message-text");
 
-    var username_tag = document.getElementById("username").innerHTML;
+    var username_tag = document.getElementById("to_username").innerHTML;
     username_tag  = Remove3char(username_tag);
 
     var time = document.getElementById("date-time").innerHTML;
