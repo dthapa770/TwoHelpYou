@@ -50,3 +50,7 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.small {
+	font-size: 10px;
+}
