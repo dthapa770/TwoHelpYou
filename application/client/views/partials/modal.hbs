@@ -70,11 +70,11 @@
                 <input class="register_input_2" type="text" id="last_name" name="last_name" required placeholder="Last name" />
             </div>
             <div class="register_input_1">
-                <label for="username">Username: <div> <label class="small">Username must be 3 or more characters </label> </div> </label>
+                <label for="username">Username: <div> <label id="user_message" class="small">Username must be 3 or more characters </label> </div> </label>
                 <input class="input_single_row" type="text" id="username" name="username" required placeholder="Username" />
             </div>
             <div class="register_input_1">
-                <label for="email">Email: <div> <label class="small">Email address must end with sfsu.edu or mail.sfsu.edu</label> </div></label>
+                <label for="email">Email: <div> <label id="email_message" class="small">Email address must end with sfsu.edu or mail.sfsu.edu</label> </div></label>
                 <input class="input_single_row" type="email" id="email" name="email" required placeholder="Email Address" />
             </div>
             {{!--<div>
@@ -82,12 +82,12 @@
                 <input type="email" id="email" name="email" required placeholder="Email Address" />
             </div>--}}
             <div class="register_input_1">
-                <label for="password">Password: <div> <label class="small">Password must contain 8 or more characters, uppercase letter, lower case letter, number and a special character</label> </div> </label>
+                <label for="password">Password: <div> <label id="password_message" class="small">Password must contain 8 or more characters, uppercase letter, lower case letter, number and a special character</label> </div> </label>
                 <input class="input_single_row" id="register_password" type="password" name="password" required placeholder="Password" />
                 {{!-- <i class="bi bi-eye-slash" id="togglePassword"></i> --}}
             </div>
             <div class="register_input_1">
-                <label for="confirm_password">Confirm Password: </label>
+                <label for="confirm_password">Confirm Password: <div> <label id="confirm_message" class="small"></label> </div> </label>
                 <input class="input_single_row" id="confirm_password" type="password" required placeholder="Confirm Password" />
             </div>
         </div>

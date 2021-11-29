@@ -48,7 +48,7 @@ function Success(input) {
  */
 function ValidateUser(name) {
 	var first_character = name.value.charAt(0);
-	var message = 'User name must:';
+	var message = 'Username must:';
 
 	if (first_character.match(/[a-zA-Z]/gi) == null) {
 		message = message + '\n* Start with a character';
@@ -62,8 +62,34 @@ function ValidateUser(name) {
 		message = message + '\n* Be 3 or more characters';
 	}
 
-	if (message != 'User name must:') return Error(name, message);
+	if (message != 'Username must:') return Error(name, message);
 	else return Success(name);
+}
+
+/**
+ * Function to check if username follows
+ * required format
+ * @param name 
+ * @returns 
+ */
+ function CheckUser(name) {
+	var first_character = name.value.charAt(0);
+	var message = 'Invalid! Username must:';
+
+	if (first_character.match(/[a-zA-Z]/gi) == null) {
+		message = message + '\n* Start with a character';
+	}
+
+	if (name.value.match(/[^a-zA-Z0-9]/g)) {
+		message = message + '\n* Cannot have nonAlphaNumeric';
+	}
+
+	if (name.value.length < 3) {
+		message = message + '\n* Be 3 or more characters';
+	}
+
+	if (message != 'Invalid! Username must:') return message;
+	else return 'Username is valid';
 }
 
 /**
@@ -79,6 +105,18 @@ function ValidateEmail(email_to_add) {
 	return Success(email_to_add);
 }
 
+/**
+ * Function to validate email is compliant
+ * Only allows @mail.sfsu.edu or @sfsu.edu)
+ * @param email_to_add 
+ * @returns 
+ */
+function CheckEmail(email_to_add) {
+	if (!email_to_add.value.match(/^[a-zA-Z0-9_.+-]+@(sfsu|mail.sfsu)\.edu$/)) {
+		return 'Invalid! Email does not end with sfsu.edu or mail.sfsu.edu';
+	}
+	return 'Email is valid';
+}
 /**
  * Ensures that passowrds meets all requirements
  * @param password 
@@ -118,6 +156,37 @@ function ValidatePassword(password) {
 	else return Success(password);
 }
 
+
+/**
+ * Checks that passowrds meets all requirements
+ * @param password 
+ * @returns 
+ */
+
+function CheckPassword(password) {
+	var message = 'Password does not contain:';
+
+	if (password.value.length < 8) {
+		message = message + '\n* 8 or more characters';
+	}
+	if (!password.value.match(/[a-z]/)) {
+		message = message + '\n* A lowercase character';
+	}
+	if (!password.value.match(/[A-Z]/)) {
+		message = message + '\n* An uppercase character';
+	}
+	if (!password.value.match(/[0-9]/)) {
+		message = message + '\n* A number';
+	}
+	if (!password.value.match(/[(|/|*|-|+|!|@|#|$|^|&|*|)]/)) {
+		message = message + '\n* A special character specified below:';
+		message = message + '\n  * ( / * - + ! @ # $ ^ & * )';
+	}
+
+	if (message != 'Password does not contain:') return message;
+	else return 'Password is valid';
+}
+
 /**
  * Ensure that confirmation matches password
  * @param password 
@@ -132,13 +201,27 @@ function ConfirmPassword(password, confirm_password) {
 	}
 }
 
+/**
+ * Checks that confirmation matches password
+ * @param password 
+ * @param confirm_password 
+ * @returns 
+ */
+ function CheckConfirmPassword(password, confirm_password) {
+	if (password.value != confirm_password.value) {
+		return 'Invalid! Password does not match';
+	} else {
+		return 'Passwords match';
+	}
+}
 let username = document.getElementById('username');
 /**
  * Listener for username validation
  * @param event 
  */
 username.onchange = function(event) {
-	ValidateUser(username);
+	document.getElementById('user_message').innerHTML = CheckUser(username);
+
 };
 
 let email_to_add = document.getElementById('email');
@@ -147,7 +230,7 @@ let email_to_add = document.getElementById('email');
  * @param event 
  */
 email_to_add.onchange = function(event) {
-	ValidateEmail(email_to_add);
+	document.getElementById('email_message').innerHTML = CheckEmail(email_to_add);
 };
 
 let user_password = document.getElementById('register_password');
@@ -157,9 +240,9 @@ let user_confirm = document.getElementById('confirm_password');
  * @param event 
  */
 user_password.onchange = function(event) {
-	ValidatePassword(user_password);
+	document.getElementById('password_message').innerHTML = CheckPassword(user_password);
 	if (document.getElementById('confirm_password').value != '') {
-		ConfirmPassword(user_password, user_confirm);
+		document.getElementById('confirm_message').innerHTML = CheckConfirmPassword(user_password, user_confirm);
 	}
 };
 
@@ -168,7 +251,7 @@ user_password.onchange = function(event) {
  * @param event 
  */
 user_confirm.onchange = function(event) {
-	ConfirmPassword(user_password, user_confirm);
+	document.getElementById('confirm_message').innerHTML = CheckConfirmPassword(user_password, user_confirm);
 };
 
 let register_form = document.getElementById('register_page');
