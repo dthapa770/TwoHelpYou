@@ -220,7 +220,13 @@ let username = document.getElementById('username');
  * @param event 
  */
 username.onchange = function(event) {
+	if(CheckUser(username) == 'Username is valid') {
 	document.getElementById('user_message').innerHTML = CheckUser(username);
+	document.getElementById('user_message').style.color = 'green';
+	} else {
+		document.getElementById('user_message').innerHTML = CheckUser(username);
+		document.getElementById('user_message').style.color = 'red';
+	}
 
 };
 
@@ -230,7 +236,13 @@ let email_to_add = document.getElementById('email');
  * @param event 
  */
 email_to_add.onchange = function(event) {
+	if(CheckEmail(email_to_add) == 'Email is valid') {
 	document.getElementById('email_message').innerHTML = CheckEmail(email_to_add);
+	document.getElementById('email_message').style.color = 'green';
+	} else {
+		document.getElementById('email_message').innerHTML = CheckEmail(email_to_add);
+		document.getElementById('email_message').style.color = 'red';
+	}
 };
 
 let user_password = document.getElementById('register_password');
@@ -240,9 +252,12 @@ let user_confirm = document.getElementById('confirm_password');
  * @param event 
  */
 user_password.onchange = function(event) {
-	document.getElementById('password_message').innerHTML = CheckPassword(user_password);
-	if (document.getElementById('confirm_password').value != '') {
-		document.getElementById('confirm_message').innerHTML = CheckConfirmPassword(user_password, user_confirm);
+	if(CheckPassword(user_password) == 'Password is valid') {
+		document.getElementById('password_message').innerHTML = CheckPassword(user_password);
+		document.getElementById('password_message').style.color = 'green';
+	} else {
+		document.getElementById('password_message').innerHTML = CheckPassword(user_password);
+		document.getElementById('password_message').style.color = 'red';
 	}
 };
 
@@ -251,7 +266,16 @@ user_password.onchange = function(event) {
  * @param event 
  */
 user_confirm.onchange = function(event) {
-	document.getElementById('confirm_message').innerHTML = CheckConfirmPassword(user_password, user_confirm);
+	if(CheckPassword(user_password) != 'Password is valid') {
+		document.getElementById('confirm_message').innerHTML = CheckPassword(user_password);
+		document.getElementById('confirm_message').style.color = 'red';
+	} else if(CheckConfirmPassword(user_password, user_confirm) == 'Passwords match') {
+		document.getElementById('confirm_message').innerHTML = CheckConfirmPassword(user_password, user_confirm);
+		document.getElementById('confirm_message').style.color = 'green';
+	} else {
+		document.getElementById('confirm_message').innerHTML = CheckConfirmPassword(user_password, user_confirm);
+		document.getElementById('confirm_message').style.color = 'red';
+	}
 };
 
 let register_form = document.getElementById('register_page');
