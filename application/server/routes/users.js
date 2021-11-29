@@ -44,7 +44,7 @@ const Validate = (req, res, next) => {
 	}else{
 		req.flash('Error', "Enter Valid information"); 
 		ErrorPrint("Validation Failed!")
-		res.redirect('/register'); 
+		res.redirect(req.get('referer')); 
 	}
 }
 

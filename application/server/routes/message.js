@@ -47,7 +47,7 @@ var UserModel = require('../models/user_model');
 						req.flash('Error', 'Message was not sent');
 					}
 					req.session.save(function () {
-						res.redirect('/conformation');
+						res.redirect('/confirmation');
 					})
 				})
 				.catch((err) => next(err));
