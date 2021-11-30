@@ -14,6 +14,8 @@
  *****************************************************************************/
 
 const loginbutton = document.querySelector('.lsbutton');
+// const sendbutton = document.querySelector('.deletels');
+// const settextarea = document.querySelector('.text_area');
 
 // remove first 3 char
 function Remove3char(username_tag) {
@@ -28,22 +30,36 @@ const savetolocalstorge = () =>{
     //get user message box
     var inputVal = document.getElementById("message-text");
 
-    var username_tag = document.getElementById("username").innerHTML;
-    username_tag  = Remove3char(username_tag);
+    // var username_tag = document.getElementById("username").innerHTML;
+    // username_tag  = Remove3char(username_tag);
 
-    var time = document.getElementById("date-time").innerHTML;
-    // var time = document.write(new Date().toLocaleDateString());
-    // time = Remove5char(time);
+    // var time = document.getElementById("date-time").innerHTML;
+    // // var time = document.write(new Date().toLocaleDateString());
+    // // time = Remove5char(time);
 
-    var course = document.getElementById("course").innerHTML;
-    course = Remove5char(course);
+    // var course = document.getElementById("course").innerHTML;
+    // course = Remove5char(course);
 
     
+
     localStorage.setItem('inputbox', inputVal.value);
-    // localStorage.setItem('tutor', tutorname.value);
-    localStorage.setItem('tutor', username_tag);
-    localStorage.setItem('time', time);
-    localStorage.setItem('course', course);
+    // // localStorage.setItem('tutor', tutorname.value);
+    // localStorage.setItem('tutor', username_tag);
+    // localStorage.setItem('time', time);
+    // localStorage.setItem('course', course);
 };
 
 loginbutton.addEventListener('click', savetolocalstorge);
+
+
+
+const settotextarea = () =>{
+    var x = localStorage.getItem('inputbox');
+    document.getElementById("text_area").innerHTML = x;
+}
+
+
+
+// sendbutton.addEventListener('submit', deletelocalstorage);
+
+//settextarea.addEventListener('onload', settotextarea);
