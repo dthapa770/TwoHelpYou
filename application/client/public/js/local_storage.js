@@ -23,10 +23,12 @@ function Remove3char(username_tag) {
     return username_tag.substring(3);
 }
 
+// remove the first 5 char
 function Remove5char(value) {
     return value.substring(7);
 }
 
+//get the user input and store it into local storage
 const savetolocalstorge = () =>{
     //get user message box
     var inputVal = document.getElementById("message-text");
@@ -51,10 +53,13 @@ const savetolocalstorge = () =>{
     // localStorage.setItem('course', course);
 };
 
+//remove everything in localstorage
 const deletelocalstorage = () =>{
-    localStorage.clear();
+    // localStorage.clear();
+    localStorage.removeItem('inputbox');
 }
 
+//
 const writetext = () => {
     let inputVal = window.localStorage.getItem('inputbox');
 
