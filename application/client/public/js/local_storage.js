@@ -14,8 +14,9 @@
  *****************************************************************************/
 
 const loginbutton = document.querySelector('.lsbutton');
-// const sendbutton = document.querySelector('.deletels');
-// const settextarea = document.querySelector('.text_area');
+const sendbutton = document.querySelector('.deletels');
+const settextarea = document.querySelector('.text_area');
+// const settextarea = document.getElementById('a');
 
 // remove first 3 char
 function Remove3char(username_tag) {
@@ -42,6 +43,7 @@ const savetolocalstorge = () =>{
 
     
 
+    // localStorage.setItem('inputbox', inputVal.value);
     localStorage.setItem('inputbox', inputVal.value);
     // // localStorage.setItem('tutor', tutorname.value);
     // localStorage.setItem('tutor', username_tag);
@@ -49,17 +51,37 @@ const savetolocalstorge = () =>{
     // localStorage.setItem('course', course);
 };
 
-loginbutton.addEventListener('click', savetolocalstorge);
-
-
-
-const settotextarea = () =>{
-    var x = localStorage.getItem('inputbox');
-    document.getElementById("text_area").innerHTML = x;
+const deletelocalstorage = () =>{
+    localStorage.clear();
 }
 
+const writetext = () => {
+    console.log("loading the text");
+    let inputVal = window.localStorage.getItem('inputbox');
+    console.log(inputVal);
+
+    if(inputVal){
+        let inputbox = document.getElementById("message-text");
+        inputbox.setAttribute('value',inputVal);
+    }
 
 
-// sendbutton.addEventListener('submit', deletelocalstorage);
+    // var inputVal = document.getElementById("message-text").innerHTML;
+    // var inputVal = document.getElementById("message-text")
+    // console.log(localStorage.getItem('inputbox'));
+    
+    // inputVal = localStorage.getItem('inputbox');
+    // inputVal = setAttribute();
+    // console.log(inputVal);
+    // document.getElementById("text_area").innerHTML = x;
+}
 
-//settextarea.addEventListener('onload', settotextarea);
+window.addEventListener('load', writetext);
+
+if(loginbutton){
+    loginbutton.addEventListener('click', savetolocalstorge);
+}
+
+if(sendbutton){
+    sendbutton.addEventListener('click', deletelocalstorage);
+}

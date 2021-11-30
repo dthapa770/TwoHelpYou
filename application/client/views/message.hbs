@@ -15,8 +15,6 @@
 <head>
     <script defer type="text/javascript" src="/js/message_form.js"  ></script>
     <script defer type="text/javascript" src="/js/local_storage.js"  ></script>
-    <script defer type="text/javascript" src="/js/local_storage_delete.js"  ></script>
-    <script defer type="text/javascript" src="/js/local_storage_read.js"  ></script>
     <link rel='stylesheet' type="text/css" href='/stylesheets/message.css' />
     <script defer type="text/javascript" src= "/js/submit_modal.js"  ></script>
 </head>
@@ -39,8 +37,11 @@
             <p id="course">Course: {{course_prefix}}{{course_postfix}}</p>
             
         </div>
-        <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6"></textarea><br>
-       
+        
+        <div>
+            <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6">{{text}}</textarea><br>
+        </div>
+        
         <div>
             {{!-- <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br> --}}
             {{#if logged}}
