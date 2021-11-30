@@ -56,24 +56,9 @@ const deletelocalstorage = () =>{
 }
 
 const writetext = () => {
-    console.log("loading the text");
     let inputVal = window.localStorage.getItem('inputbox');
-    console.log(inputVal);
 
-    if(inputVal){
-        let inputbox = document.getElementById("message-text");
-        inputbox.setAttribute('value',inputVal);
-    }
-
-
-    // var inputVal = document.getElementById("message-text").innerHTML;
-    // var inputVal = document.getElementById("message-text")
-    // console.log(localStorage.getItem('inputbox'));
-    
-    // inputVal = localStorage.getItem('inputbox');
-    // inputVal = setAttribute();
-    // console.log(inputVal);
-    // document.getElementById("text_area").innerHTML = x;
+    document.getElementById("message-text").innerHTML = inputVal;
 }
 
 window.addEventListener('load', writetext);
