@@ -42,7 +42,7 @@
                 <input class="login_input_2" type="password" name="password" id="password" required placeholder="Password" minlength="8"/><br/>
             </p>
         </div>
-        <button class="registerbtn" id="login_button" type="submit" value="login" name="Login" />Login</button><br /><vr />
+        <button class="submitbtn" id="login_button" type="submit" value="login" name="Login" />Login</button><br /><vr />
         {{!-- <button type="submit" class="registerbtn"> Login </button> --}}
         <div class = "container">
             {{!-- <p>
@@ -109,7 +109,7 @@
                 <input type="checkbox" id="age" name="old" value="enough" required>
                 <label for="old">I am 13 years or older.</label>
             </div>
-            <button type="submit" class="registerbtn" value="Register">Register</button>
+            <button type="submit" class="submitbtn" value="Register">Register</button>
         </div>
     </form>
   </div>
@@ -122,8 +122,10 @@
   <div class="modal-content">
     <span class="close close_submit">&times;</span>
     <div>
-        <button type="button" id="submit_login_button">Login</button>   
-        <button type="button" id="submit_register_button">Register</button>
+        <h2>You have to login before submitting</h2>
+        <button class="submitbtn" type="button" id="submit_login_button">Login</button> <br/><br/>
+        <a>If you do not have an account feel free to register here!</a> <br/><br/>
+        <button class="submitbtn" type="button" id="submit_register_button">Register</button>
     </div>
   </div>
 </div>

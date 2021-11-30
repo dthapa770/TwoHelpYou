@@ -89,9 +89,13 @@ body {
 	/* line-height: 16px; */
 }
 
+.padding{
+	padding-left: 10px;
+}
+
 .search_nav {
 	padding: 15px 0 15px 0;
-	margin: 5px 0 22px 0;
+	/*margin: 10px 0 22px 0;*/ 
 	display: inline-block;
 	border: none;
 	background: #f1f1f1;
@@ -170,11 +174,53 @@ a.dashboard_link {
 }
 
 /* Buttons and links */
-a.button:hover {
+button:hover {
 	color: initial;
 	text-decoration: none;
 	background-color: goldenrod;
 	color: black;
+}
+
+.navbar-button {
+    text-decoration: none;
+    background-color: #310944;
+    color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    margin: 4px;
+    border-radius: 20%;
+    border: none;
+    cursor: pointer;
+    /* max-width: 25%; */
+    opacity: 0.9;
+}
+
+.navbar-button:hover {
+	opacity:1;
+	color: white;
+	background-color: black;
+}
+
+.logo-button{
+	text-decoration: none;
+    background-color: #310944;
+    color: white;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+    border-radius: 20%;
+    border: none;
+    cursor: pointer;
+    /* max-width: 25%; */
+    opacity: 0.9;
+}
+
+.logo-button:hover{
+	opacity:1;
+	color: white;
+	background-color: black;
 }
 
 .button {
@@ -243,7 +289,7 @@ input[type=text], input[type=password], input[type = email] {
 	background: #f1f1f1;
 }
 
-.registerbtn {
+.submitbtn {
 	background-color: #310944;
 	color: white;
 	padding: 16px 20px;
@@ -255,8 +301,10 @@ input[type=text], input[type=password], input[type = email] {
 	text-decoration:none
 }
 
-.registerbtn:hover {
+.submitbtn:hover {
 	opacity:1;
+	color: black;
+	background-color: goldenrod;
 }
 
 .registration_body {
