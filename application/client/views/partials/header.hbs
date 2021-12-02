@@ -53,8 +53,10 @@
   <div id="user_nav"> | <a href="" id="logout" >Logout</a></div>
   {{else}}
   <div id="user_nav">
-    <a class="navbar-button" href="/login" >Login</a> | {{!--<button type="button" id="login_button">login</button>--}} 
-    <a class="navbar-button" href="/register" >Register</a> {{!--<button type="button" id="register_button">Register</button>--}}
+    {{!-- <a class="navbar-button" href="/login" >Login</a> |  --}}
+    {{!-- <a class="navbar-button" href="/register" >Register</a>  --}}
+    <button class="navbar-button" type="button" id="login_button">Login</button> |
+    <button class="navbar-button" type="button" id="register_button">Register</button>
   </div>
   {{/if}}
 </div>
