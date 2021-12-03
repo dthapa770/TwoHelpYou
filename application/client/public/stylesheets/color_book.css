@@ -253,11 +253,31 @@ button:hover {
 	margin-bottom: 1%;
 	border-radius: 10px;
 	border: 1px groove grey;
+	display: grid;
+	grid-template-columns: auto 150px 150px auto;
 }
-/* display: grid;
+
+.card_left_item {
+	grid-column-start: 2;
+	grid-column-end: 3;
 	text-align: left;
-  }
-  */
+}
+
+.card_right_item {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	margin-right: 10%;
+	text-align: right;
+}
+
+.card_cross_row {
+	grid-column-start: 2;
+	grid-column-end: 4;
+}
+
+.card_text {
+	text-align: left;
+}
 
 #main_content {
 	display: grid;
@@ -359,6 +379,9 @@ input[type=text], input[type=password], input[type = email] {
 }
 
 @media all and (max-width: 375px) {
+	.card_body {
+		margin-right: 0%;
+	}	
 	.main_navbar {
 		grid-template-columns: max-content max-content;
 		grid-template-rows: max-content max-content max-content;

@@ -15,9 +15,13 @@
  ************************************************************************* --}}
 
 <section class="card_body" id="post_{{post_id}}">
-        <p class="card_title"><b>Courses: </b>{{course_prefix}} {{course_postfix}} <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="registerbtn">Contact Tutor</button></a></p>
-        {{!-- <p class="card_title">{{avg_rating}}</p>--}}
-        <p class="card_text"><b>Avaliability: </b>{{availability}}</p>
-        
+        <p class="card_title card_left_item"> <b>Course:</b> {{course_prefix}} {{course_postfix}}</p>
+        <p class="card_right_item">
+                <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="registerbtn">Contact {{username}}</button></a>
+        </p>
+        <div class="card_text card_cross_row">
+                <p><b>Avaliability:</b></p>
+                <p>{{availability}}</p>
+        </div> 
 
 </section>
