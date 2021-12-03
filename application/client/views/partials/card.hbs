@@ -15,9 +15,9 @@
  ************************************************************************* --}}
 
 <section class="card_body" id="post_{{post_id}}">
-        <p class="card_title">{{course_prefix}} {{course_postfix}} <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="registerbtn">Contact Tutor</button></a></p>
+        <p class="card_title"> <b>Course:</b> {{course_prefix}} {{course_postfix}} <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="registerbtn">Contact {{username}}</button></a></p>
         {{!-- <p class="card_title">{{avg_rating}}</p> --}}
-        <p class="card_text">{{availability}}</p>
-        <a href="/users/{{username}}"><button class="registerbtn">{{username}} Profile</button></a><br/><br/>
+        <p class="card_text"><b>Avaliability:</b> {{availability}}</p> 
+        <b>Tutor's Profile Page:</b> <a href="/users/{{username}}"><button class="registerbtn">{{username}} </button></a><br/><br/>
         <img class="card_image" src="../{{thumbnail}}" alt="image missing" width="100" height="100">
 </section>
