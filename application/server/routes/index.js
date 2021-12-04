@@ -88,11 +88,19 @@ router.get('/message_page', GetAllUserMessages, function(req,res,next) {
 // })
 
 router.get('/confirmation',function(req,res,next) {
-  res.render('confirmation',{ title:'Software Engineering Class SFSU'})
+  res.render('confirmation'),{ title:'Software Engineering Class SFSU'}
 });
 
 router.get('/post/:id(\\d+)',GetPostById,function(req,res,next){
      res.render('post'),{ title:'Software Engineering Class SFSU'} 
+});
+
+router.get('/tos', function(req,res,next) {
+  res.render('tos'), {title: 'Software Engineering Class SFSU'}
+});
+
+router.get('/privacy_rules', function(req,res,next) {
+  res.render('privacy_rules'), {title: 'Software Engineering Class SFSU'}
 });
 
 module.exports = router;
