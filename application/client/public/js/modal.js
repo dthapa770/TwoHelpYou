@@ -39,6 +39,7 @@ register_button.onclick = function() {
 // When the user clicks on <span> (x), close the modal
 span_login.onclick = function() {
   login_modal.style.display = "none";
+
 }
 
 span_register.onclick = function() {
@@ -54,3 +55,35 @@ window.onclick = function(event) {
     register_modal.style.display = "none";
   }
 }
+
+//reset form data
+function resetForm(form) {
+  console.log("reset form");
+    // iterate over all of the inputs for the form
+    // element and reset to default values
+    for (var i = 0; i < form.length; i++) {
+        var input = form.elements[i];
+        // in case the input has the property of 'value'
+        if (input.value) {
+            input.value = '';
+        }
+    }
+}
+
+//reset modal
+function resetModal() {
+  resetForm(document.getElementById("login_page"));
+  resetForm(document.getElementById("register_page"));
+}
+//onlick call resetForm()
+let cancel_login = document.getElementById("cancel_login");
+let cancel_register = document.getElementById("cancel_register");
+
+cancel_login.onclick = function() {
+  resetModal();
+}
+
+cancel_register.onclick = function() {
+  resetModal();
+}
+

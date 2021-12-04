@@ -25,7 +25,7 @@
 	var message = 'Invalid! Course number must:';
 
 	if (input.value.match(regEx) == null) {
-		message = message + '* Be 3 or more characters';
+		message = message + '* Be 3 or more digits';
 	}
 
 	if (message != 'Invalid! Course number must:') return message;
