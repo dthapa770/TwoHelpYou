@@ -89,9 +89,13 @@ body {
 	/* line-height: 16px; */
 }
 
+.padding{
+	padding-left: 10px;
+}
+
 .search_nav {
 	padding: 15px 0 15px 0;
-	margin: 5px 0 22px 0;
+	/*margin: 10px 0 22px 0;*/ 
 	display: inline-block;
 	border: none;
 	background: #f1f1f1;
@@ -170,11 +174,53 @@ a.dashboard_link {
 }
 
 /* Buttons and links */
-a.button:hover {
+button:hover {
 	color: initial;
 	text-decoration: none;
 	background-color: goldenrod;
 	color: black;
+}
+
+.navbar-button {
+    text-decoration: none;
+    background-color: #310944;
+    color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    margin: 4px;
+    border-radius: 20%;
+    border: none;
+    cursor: pointer;
+    /* max-width: 25%; */
+    opacity: 0.9;
+}
+
+.navbar-button:hover {
+	opacity:1;
+	color: white;
+	background-color: black;
+}
+
+.logo-button{
+	text-decoration: none;
+    background-color: #310944;
+    color: white;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+    border-radius: 20%;
+    border: none;
+    cursor: pointer;
+    /* max-width: 25%; */
+    opacity: 0.9;
+}
+
+.logo-button:hover{
+	opacity:1;
+	color: white;
+	background-color: black;
 }
 
 .button {
@@ -207,11 +253,31 @@ a.button:hover {
 	margin-bottom: 1%;
 	border-radius: 10px;
 	border: 1px groove grey;
+	display: grid;
+	grid-template-columns: auto 150px 150px auto;
 }
-/* display: grid;
+
+.card_left_item {
+	grid-column-start: 2;
+	grid-column-end: 3;
 	text-align: left;
-  }
-  */
+}
+
+.card_right_item {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	margin-right: 10%;
+	text-align: right;
+}
+
+.card_cross_row {
+	grid-column-start: 2;
+	grid-column-end: 4;
+}
+
+.card_text {
+	text-align: left;
+}
 
 #main_content {
 	display: grid;
@@ -243,7 +309,7 @@ input[type=text], input[type=password], input[type = email] {
 	background: #f1f1f1;
 }
 
-.registerbtn {
+.submitbtn {
 	background-color: #310944;
 	color: white;
 	padding: 16px 20px;
@@ -255,8 +321,10 @@ input[type=text], input[type=password], input[type = email] {
 	text-decoration:none
 }
 
-.registerbtn:hover {
+.submitbtn:hover {
 	opacity:1;
+	color: black;
+	background-color: goldenrod;
 }
 
 .registration_body {
@@ -284,10 +352,12 @@ input[type=text], input[type=password], input[type = email] {
 }
 
 /*to fix the issue when window is not at full screen*/
-@media all and (max-width: 581px) {
+@media all and (max-width: 700px) {
 	.main_navbar {
 		grid-template-columns: max-content max-content;
 		grid-template-rows: max-content max-content;
+		row-gap: 5%;
+		padding-bottom: 5%;
 	}
 	#search_form {
 		grid-column-start: 1;
@@ -301,6 +371,36 @@ input[type=text], input[type=password], input[type = email] {
 	#user_nav {
 		grid-column-start: 2;
 		grid-row: 1;
+	}
+	#main_content {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media all and (max-width: 375px) {
+	.card_body {
+		margin-right: 0%;
+	}	
+	.main_navbar {
+		grid-template-columns: max-content max-content;
+		grid-template-rows: max-content max-content max-content;
+		justify-items: center;
+	}
+	#search_form {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 3;
+	}
+	#default_nav {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 1;
+	}
+	#user_nav {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 2;
 	}
 	#main_content {
 		display: flex;

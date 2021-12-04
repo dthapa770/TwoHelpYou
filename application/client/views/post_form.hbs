@@ -81,7 +81,7 @@
             </div>
             <div class="grid crossrow" id="credibility">
                 <label class="crossrow" for="credibility"><div class="align_left">CV/Resume | Why you are qualified to tutor this course (Required)*</div></label>
-                <input class="crossrow" type="file" id="credibility2" name="credibility">
+                <input class="crossrow post_btn" type="file" id="credibility2" name="credibility">
             </div>
             <br>
         </div>
@@ -91,7 +91,7 @@
             <input class="post_btn pdeletels" id="post_button" type="submit" value="Submit Request" name="Post" />
             <button class="post_btn" id="reset_button" type="reset" value="cancel" name="Cancel">Cancel</button>
             {{else}}
-            <button class="post_btn plsbutton" type="button" id="submit_button">Submit</button>
+            <button class="post_btn plsbutton" {{!-- submitbtn --}} type="button" id="submit_button">Submit</button>
             <button class="post_btn" id="reset_button" type="reset" value="cancel" name="Cancel">Cancel</button>
             {{/if}}
         </div>

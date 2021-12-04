@@ -44,7 +44,7 @@
         </div>
         <div class="send_cancel">
             <div>
-                <button class="btn" id="login_button" type="submit" value="login" name="Login">Login</button>
+                <button class="btn"{{!-- class="btn" --}}id="login_button" type="submit" value="login" name="Login">Login</button>
             </div>
             <div>
                 <button class="btn" id="cancel_login" type="reset" value="cancel" name="Cancel">Cancel</button>
@@ -130,8 +130,10 @@
   <div class="modal-content">
     <span class="close close_submit">&times;</span>
     <div>
-        <button type="button" id="submit_login_button">Login</button>   
-        <button type="button" id="submit_register_button">Register</button>
+        <h2>You have to login before submitting</h2>
+        <button class="submitbtn" type="button" id="submit_login_button">Login</button> <br/><br/>
+        <a>If you do not have an account feel free to register here!</a> <br/><br/>
+        <button class="submitbtn" type="button" id="submit_register_button">Register</button>
     </div>
   </div>
 </div>
