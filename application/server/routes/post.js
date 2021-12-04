@@ -30,6 +30,17 @@ router.get('/search', async (req, res, next) => {
     let searchQuery = (req.query.search).split(',');
     let searchTerm = '';
     let prefix = searchQuery[0];
+    if (searchQuery[1].length > 40) {
+        let results = await PostModel.GetNRecentPosts(5);
+        res.render('search_results',{
+            title: "Search: Query is too long",
+            prefix: prefix,
+            postfix: searchQuery[1],
+            message: "search query is too long, try again.",
+            cards: results
+        });
+        return;
+    }
     if (prefix != '')
         searchTerm = searchQuery[0] +' '+ searchQuery[1];
     else
