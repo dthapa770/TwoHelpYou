@@ -128,7 +128,7 @@ body {
 	margin: 1%;
     padding: 2%;
     padding-right: 10%;
-	border: solid purple;
+	border: solid #310944;
 	background-color: gold;
 	border-radius: 10%;
 	display: flex;
@@ -137,6 +137,21 @@ body {
 }
 a.dashboard_link {
 	font-size: small;
+	color: #310944;
+	border-radius: 20%;
+	border: 1px groove #310944;
+	padding: 1%;
+	text-decoration: none;
+	display: inline-block;
+	font-size: normal;
+	font-weight: bold;
+	transition-duration: 0.4s;
+	text-decoration:none;
+}
+
+a.dashboard_link:hover {
+	color: gold;
+	background-color: #310944;
 }
 
 /* main site content */
@@ -224,7 +239,7 @@ button:hover {
 }
 
 .button {
-	color: purple;
+	color: #310944;
 	border: none;
 	padding: .5%;
 	text-align: center;
@@ -286,6 +301,21 @@ button:hover {
 	justify-content: center;
 }
 
+.card_button {
+	color: #310944;
+	border-radius: 20%;
+	border: 1px groove gold;
+	padding: 1%;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: normal;
+	font-weight: bold;
+	background: white;
+	transition-duration: 0.4s;
+	text-decoration:none;
+}
+
 .side_bar {
 	grid-column-start: 1;
 	grid-column-end: 3;
@@ -333,6 +363,17 @@ input[type=text], input[type=password], input[type = email] {
 	color: #565656;
 	background-color: #fff;
 	margin-left: 815px;
+}
+
+.legal_link {
+	text-decoration: none;
+	border: 1px groove #310944;
+	border-radius: 20%;
+	color: #310944
+}
+
+.legal_link:hover {
+	background-color: gold;
 }
 
 .invalid-feedback {

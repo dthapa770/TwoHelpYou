@@ -17,9 +17,9 @@
 <section class="card_body" id="post_{{post_id}}">
         <p class="card_title card_left_item"> <b>Course:</b> {{course_prefix}} {{course_postfix}}</p>
         <p class="card_right_item">
-                <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="registerbtn">Contact {{username}}</button></a>
+                <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="card_button">Contact {{username}}</button></a>
         </p>
-        {{!-- <p class="card_title"> <b>Course:</b> {{course_prefix}} {{course_postfix}} <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="registerbtn">Contact {{username}}</button></a></p> --}}
+        {{!-- <p class="card_title"> <b>Course:</b> {{course_prefix}} {{course_postfix}} <a href="/message/{{username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"><button class="card_button">Contact {{username}}</button></a></p> --}}
         {{!-- <p class="card_title">{{avg_rating}}</p> --}}
         <div class="card_text card_cross_row">
                 <p><b>Avaliability:</b></p>
@@ -29,7 +29,7 @@
                 <b>Tutor's Profile:</b>
         </p>
         <p class="card_right_item">
-                <a href="/users/{{username}}"><button class="registerbtn">{{username}} </button></a>
+                <a href="/users/{{username}}"><button class="card_button">{{username}} </button></a>
         </p>
         <div class="card_cross_row">
                 <img class="card_image" src="../{{thumbnail}}" alt="image missing" width="100" height="100">
