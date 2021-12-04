@@ -15,6 +15,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href='/stylesheets/post_form.css' />
+    <script defer type="text/javascript" src= "/js/post_form.js"  ></script>
     <script defer type="text/javascript" src= "/js/submit_modal.js"  ></script>
 </head>
 
@@ -32,7 +33,7 @@
                 </select>
             </div>
             <div class="grid crossrow">
-                <label class="crossrow" for="course_number"><div class="align_left">Please enter course number (Required)*</div></label>
+                <label class="crossrow" for="course_number"><div class="align_left">Please enter course number (Required)*<div> <label id="course_postfix_message" class="small">Course number must be 3 numeric characters </label> </div> </label>
                 <input type="text" id="course_postfix" name="course_postfix" required placeholder="ex: 310"
                     maxlength="3" />
             </div>
