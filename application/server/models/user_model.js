@@ -142,7 +142,7 @@ UserModel.GetUserMessageCount = async (user_id) => {
 UserModel.GetUserPostCount = async (user_id) => {
     let baseSQL = `SELECT u.user_id, COUNT(p.user_id) AS posts 
                     FROM user u LEFT JOIN post p
-                    ON u.user_id = p.user_id
+                    ON u.user_id = p.user_id AND p.authorized = 1
                     GROUP BY u.user_id, p.user_id
                     HAVING u.user_id = ?;`
     return db.execute(baseSQL, [user_id])
