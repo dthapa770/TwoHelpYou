@@ -13,8 +13,19 @@
  * Description: card partials tof user messages
  ************************************************************************* --}}
 
-<section class="card_body" id="message_{{message_id}}">
-        <a href="/users/{{username}}" class="card_title">{{username}}</a><br />
-        <p class="card_title"> {{time}}</p>
-        <p class="card_text">{{message}}</p>
+<head>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/from_message.css' />
+</head>
+
+<section class="card_body from_message" id="message_{{message_id}}">
+        <div class="from_user">
+                <b>From: </b>
+                <a href="/users/{{username}}" class="card_title">{{username}}</a>
+        </div>
+        <div class="date_messaged_div">
+                <span class="date_messaged" id="messaged_date">{{time}}</span>
+        </div>
+        <div class="message_content">
+                <p>{{message}}</p>
+        </div>
 </section>

@@ -1,0 +1,31 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: from_message.css
+ * 
+ * Description: Provides the styling for the from user message page
+ *****************************************************************************/
+/*From message page layout*/
+.from_message {
+	grid-template-columns: auto auto;
+}
+.from_user {
+    text-align: left;
+}
+
+.date_messaged_div {
+    text-align: right;
+}
+
+.message_content {
+    text-align: left;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

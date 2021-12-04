@@ -186,3 +186,12 @@ let flashElement = document.getElementById('flash_message');
 if (flashElement){
     SetFlashMessageFadeOut();
 }
+
+/**
+ * Format time for messages
+ */
+document.addEventListener('DOMContentLoaded', (event) => {
+	document.querySelectorAll('span[class=date_messaged]').forEach((message_date => {
+		message_date.textContent = new Date(message_date.textContent).toLocaleString();
+	}));
+});
