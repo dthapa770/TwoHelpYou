@@ -16,6 +16,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href='/stylesheets/post_form.css' />
     <script defer type="text/javascript" src= "/js/submit_modal.js"  ></script>
+    <script defer type="text/javascript" src="/js/local_storage.js"  ></script>
 </head>
 
 <div class="body">
@@ -24,7 +25,7 @@
         <div class="grid">
             <div class="grid crossrow" id="course_information">
                 <label class="crossrow" for="course_prefix"><div class="align_left">Please Select the subject (Required)*</div></label>
-                <select name="course_prefix" id="select_menu" tabindex="0" required>
+                <select name="course_prefix" id="post_select_menu" tabindex="0" required>
                     <option selected value="" disabled selected hidden>Major</option>
                     {{#each course}}
                     <option value="{{this.course_prefix}}">{{this.course_prefix}}</option>
@@ -38,7 +39,7 @@
             </div>
             <div class="grid crossrow" id="availability">
                 <label class="crossrow" for="availability"><div class="align_left">Please enter your availability (Required)*</div></label>
-                <input class="crossrow" type="text" id="availability" name="availability" required
+                <input class="crossrow" type="text" id="availability2" name="availability" required
                     placeholder="ex: Mon-Fri 9am-5pm" minlength="3" />
                 {{!-- 
                 <!-- select multiple days checkbox -->
@@ -79,16 +80,16 @@
             </div>
             <div class="grid crossrow" id="credibility">
                 <label class="crossrow" for="credibility"><div class="align_left">CV/Resume | Why you are qualified to tutor this course (Required)*</div></label>
-                <input class="crossrow" type="file" id="credibility" name="credibility">
+                <input class="crossrow" type="file" id="credibility2" name="credibility">
             </div>
             <br>
         </div>
         <div>
             <label class="crossrow" for="post"><div class="align_left">Please Note: Applications will take up to 24 hrs to review</div></label>
             {{#if logged}}
-            <input class="post_btn" id="post_button" type="submit" value="Submit Request" name="Post" />
+            <input class="post_btn pdeletels" id="post_button" type="submit" value="Submit Request" name="Post" />
             {{else}}
-            <button type="button" id="submit_button">submit</button>
+            <button class="plsbutton" type="button" id="submit_button">submit</button>
             {{/if}}
         </div>
     </form>
