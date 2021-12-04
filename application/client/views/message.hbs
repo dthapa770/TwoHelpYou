@@ -38,17 +38,17 @@
             
         </div>
         <div> <label id="text_area_message" class="small">Please enter you message below </label> </div> 
-        <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6"></textarea><br>
+        <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6">{{text}}</textarea><br>
        
         <div>
             {{!-- <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br> --}}
             {{#if logged}}
                 <p class="message_info">From: {{sender_username}}</p>
-                <button class="message_btn" id="message-button" type="submit">Send</button>
+                <button class="message_btn deletels" id="message-button" type="submit">Send</button>
                 <button class="message_btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
             {{else}}
                 <p class="message_info">From: Anon</p>
-                <button class="message_btn" type="button" id="submit_button">Send</button>
+                <button class="message_btn lsbutton" type="button" id="submit_button">Send</button>
                 <button class="message_btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
             {{/if}}
         </div>
