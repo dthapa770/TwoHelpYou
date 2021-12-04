@@ -82,3 +82,8 @@
 .small {
 	font-size: 12px;
 }
+
+.send_cancel {
+	display: grid;
+	grid-template-columns: auto auto;
+}
