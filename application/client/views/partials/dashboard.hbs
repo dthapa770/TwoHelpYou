@@ -13,16 +13,31 @@
  * Description: Dashboard for loged in users on all pages as a partial
  ************************************************************************* --}}
 
-<div class="dashboard">
-    <div class="dashboard_content">
-        <div>Hello {{dashboard_first_name}}</div>
-        <div>You have: </br><a class="dashboard_link" 
-            href="/message_page">
-            {{dashboard_message_count}} Message(s)</a></div>
-        {{#if dashboard_post_count}}
-        <div>and: </br><a class="dashboard_link" 
-            href="/users/{{dashboard_username}}">
-            {{dashboard_post_count}} Post(s)</a></div>
-        {{/if}}
+<head>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/dashboard.css' />
+    <script defer type="text/javascript" src= "/js/dashboard.js"  ></script>
+</head>
+
+<div id="side_panel" class="side_panel">
+    <a href="javascript:void(0)" class="close_button" onclick="closeNav()">&times;</a>
+    <div>Hello {{dashboard_first_name}}</div>
+    <div>You have: </br>
+        <a class="dashboard_link" href="/message_page">
+            {{dashboard_message_count}} Message(s)
+        </a>
     </div>
+    {{#if dashboard_post_count}}
+    <div>and: </br>
+        <a class="dashboard_link" href="/users/{{dashboard_username}}">
+            {{dashboard_post_count}} Post(s)
+        </a>
+    </div>
+    {{/if}}
+</div>
+
+<div class="dashboard">
+    <button class="open_button" onclick="openNav()">
+        &#9776; Hello {{dashboard_first_name}} </br>
+        {{dashboard_message_count}} &#9993;
+    </button>
 </div>

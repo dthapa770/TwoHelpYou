@@ -1,0 +1,65 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ * 
+ * File: dashboard.css
+ * 
+ * Description: Dashboard css provided by w3school.
+ *****************************************************************************/
+
+/* The side_panel menu */
+.side_panel {
+	height: 150px; /* Specify a height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 150px;
+	left: 0;
+    border: .5px groove #310944;
+	background-color: white;
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the side_panel */
+    font-size: large;
+}
+
+/* The side_panel links */
+.side_panel a {
+	transition: 0.3s;
+}
+
+.close_button {
+    color: #310944;
+	text-decoration: none;
+}
+
+/* Position and style the close button (top right corner) */
+.side_panel .close_button {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+/* Style the button that is used to open the side_panel */
+.open_button {
+	font-size: medium;
+	cursor: pointer;
+	background-color: #310944;
+	color: gold;
+	padding: 10px 15px;
+	border: none;
+}
+
+.open_button:hover {
+    border: .5px groove #310944;
+	background-color: gold;
+	color: #310944;
+}
