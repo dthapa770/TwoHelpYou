@@ -152,7 +152,8 @@ a.dashboard_link {
 #flash_message {
 	position: fixed;
     left: 50%;
-    top: 25%;
+    top: 20%;
+	padding: 10px;
     transform: translate(-50%,0);
 	border: solid;
 	background-color: white;
@@ -165,12 +166,12 @@ a.dashboard_link {
 
 .flash_error {
     border-color: red !important;
-    color: red !important;
+    color: black !important;
 }
 
 .flash_success {
     border-color: green !important;
-    color: green !important;
+    color: black !important;
 }
 
 /* Buttons and links */
@@ -333,22 +334,6 @@ input[type=text], input[type=password], input[type = email] {
 	color: #565656;
 	background-color: #fff;
 	margin-left: 815px;
-}
-
-.invalid-feedback {
-    color: #ff606e;
-}
- 
-.valid-feedback {
-    color: #2acc80;
-}
-
-.Error {
-    color: #ff606e;
-}
-
-.Success {
-    color: #2acc80;
 }
 
 /*to fix the issue when window is not at full screen*/
