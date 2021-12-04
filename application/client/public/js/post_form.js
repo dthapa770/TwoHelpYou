@@ -39,11 +39,11 @@ let course_postfix = document.getElementById('course_postfix');
  * @param event 
  */
 course_postfix.onchange = function(event) {
-	if(CheckUser(course_postfix) != 'Course number is valid') {
-	document.getElementById('course_postfix_message').innerHTML = CheckCourse(course_postfix);
-	document.getElementById('course_postfix_message').style.color = 'red';
+	if (CheckCourse(course_postfix) != 'Course number is valid') {
+		document.getElementById('course_postfix_message').innerHTML = CheckCourse(course_postfix);
+		document.getElementById('course_postfix_message').style.color = 'red';
 	} else {
-		document.getElementById('course_postfix_message').innerHTML = 'Course number is valid';
+		document.getElementById('course_postfix_message').innerHTML = CheckCourse(course_postfix);
 		document.getElementById('course_postfix_message').style.color = 'green';
 	}
 

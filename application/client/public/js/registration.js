@@ -167,20 +167,20 @@ function CheckPassword(password) {
 	var message = 'Password does not contain:';
 
 	if (password.value.length < 8) {
-		message = message + '\n* 8 or more characters';
+		message = message + '* 8 or more characters ';
 	}
 	if (!password.value.match(/[a-z]/)) {
-		message = message + '\n* A lowercase character';
+		message = message + '* A lowercase character ';
 	}
 	if (!password.value.match(/[A-Z]/)) {
-		message = message + '\n* An uppercase character';
+		message = message + '* An uppercase character ';
 	}
 	if (!password.value.match(/[0-9]/)) {
-		message = message + '\n* A number';
+		message = message + '* A number';
 	}
 	if (!password.value.match(/[(|/|*|-|+|!|@|#|$|^|&|*|)]/)) {
-		message = message + '\n* A special character specified below:';
-		message = message + '\n  * ( / * - + ! @ # $ ^ & * )';
+		message = message + '* A special character as follows:';
+		message = message + '( / * - + ! @ # $ ^ & * ) ';
 	}
 
 	if (message != 'Password does not contain:') return message;
