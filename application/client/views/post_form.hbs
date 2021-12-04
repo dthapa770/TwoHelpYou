@@ -15,6 +15,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href='/stylesheets/post_form.css' />
+    <script defer type="text/javascript" src= "/js/post_form.js"  ></script>
     <script defer type="text/javascript" src= "/js/submit_modal.js"  ></script>
 </head>
 
@@ -32,14 +33,14 @@
                 </select>
             </div>
             <div class="grid crossrow">
-                <label class="crossrow" for="course_number"><div class="align_left">Please enter course number (Required)*</div></label>
+                <label class="crossrow" for="course_number"><div class="align_left">Please enter course number (Required)*<div> <label id="course_postfix_message" class="small">Course number must be 3 numeric characters </label> </div> </div> </label>
                 <input type="text" id="course_postfix" name="course_postfix" required placeholder="ex: 310"
                     maxlength="3" />
             </div>
             <div class="grid crossrow" id="availability">
-                <label class="crossrow" for="availability"><div class="align_left">Please enter your availability (Required)*</div></label>
+                <label class="crossrow" for="availability"><div class="align_left">Please enter your availability (Required)*<div> <label id="availability_message" class="small">Please separate different time slots with a comma as show below </label> </div> </div> </label>
                 <input class="crossrow" type="text" id="availability" name="availability" required
-                    placeholder="ex: Mon-Fri 9am-5pm" minlength="3" />
+                    placeholder="ex: Mon-Fri 9am-5pm, Sat 2pm-6pm" minlength="3" maxlength="40"/>
                 {{!-- 
                 <!-- select multiple days checkbox -->
                 <div class="grid crossrow" id="days">
@@ -87,8 +88,10 @@
             <label class="crossrow" for="post"><div class="align_left">Please Note: Applications will take up to 24 hrs to review</div></label>
             {{#if logged}}
             <input class="post_btn" id="post_button" type="submit" value="Submit Request" name="Post" />
+            <button class="post_btn" id="reset_button" type="reset" value="cancel" name="Cancel">Cancel</button>
             {{else}}
-            <button type="button" id="submit_button">submit</button>
+            <button class="post_btn" type="button" id="submit_button">Submit</button>
+            <button class="post_btn" id="reset_button" type="reset" value="cancel" name="Cancel">Cancel</button>
             {{/if}}
         </div>
     </form>

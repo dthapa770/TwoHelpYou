@@ -12,35 +12,33 @@
  * 
  * Description: Provides the styling for the message form page
  *****************************************************************************/
-
- /* .message_button{
-    background-color: #008CBA;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-
-    width: 100px;
-    max-width: 70%;
-	height: auto;
- }
-
- .message_button:hover{
-    background-color: #04779e;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    margin: 4px 2px;
-
-    width: 100px;
-    max-width: 70%;
-	height: auto;
- } */
+/*blue button with temporary hover effect  */
+.message_btn{
+   /* background color purple */
+  background-color: #3d00a7e3;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+}
+.message_btn:hover {
+ /* background color gold */
+ background-color: #f0ca20;
+ color: #ffffff;
+ -webkit-transition: all 0.3s ease-in-out;
+ -moz-transition: all 0.3s ease-in-out;
+ -o-transition: all 0.3s ease-in-out;
+ -ms-transition: all 0.3s ease-in-out;
+ transition: all 0.3s ease-in-out;
+}
 .message_info{
    text-align: left; 
     position: relative;
