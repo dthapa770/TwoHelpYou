@@ -35,12 +35,12 @@ router.get('/search', async (req, res, next) => {
     else
         searchTerm = searchQuery[1];
     if (!searchTerm) {
-        let results = await PostModel.GetNHighestPosts(100);
+        let results = await PostModel.GetNRecentPosts(100);
         res.render('search_results',{
             title: "All Posts",
             prefix: prefix,
             postfix: searchQuery[1],
-            message: " No search term given, generating all",
+            message: "no search term given, showing all posts.",
             cards: results
         });
     } else {
@@ -50,25 +50,36 @@ router.get('/search', async (req, res, next) => {
                 title: "Search: " + prefix +" "+ searchQuery[1],
                 prefix: prefix,
                 postfix: searchQuery[1],
-                message: " relevent post(s) found.",
+                message: "that are relevent.",
                 cards: results
             });
         } else if (prefix == ''){
-            let results = await PostModel.GetNHighestPosts(5);
+            let results = await PostModel.GetNRecentPosts(5);
             res.render('search_results',{
                 title: "Search: " + prefix +" "+ searchQuery[1],
                 prefix: prefix,
                 postfix: searchQuery[1],
-                message: " most highest rated posts, no results were found.",
+                message: "no results were found.",
                 cards: results
             });
         } else {
-            let results = await PostModel.GetNHighestPrefixPosts(5, prefix);
+            let results = await PostModel.GetNRecentPrefixPosts(5, prefix);
+            if (results.length < 1) {
+                let results = await PostModel.GetNRecentPosts(5);
+                res.render('search_results',{
+                    title: "Search: " + prefix +" "+ searchQuery[1],
+                    prefix: prefix,
+                    postfix: searchQuery[1],
+                    message: "no results in category, showing all recent posts.",
+                    cards: results
+                });
+                return;
+            }
             res.render('search_results',{
                 title: "Search: " + prefix +" "+ searchQuery[1],
                 prefix: prefix,
                 postfix: searchQuery[1],
-                message: " most highest rated posts within catagory, no results were found.",
+                message: "within catagory, no results were found.",
                 cards: results
             });
         }

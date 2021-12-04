@@ -65,7 +65,7 @@ function JsEscape(str){
  */
 let main_content = document.getElementById('main_content');
 if (main_content) {
-	UpdateCardCount(' most highest rated posts.');
+	UpdateCardCount(' most recently created posts');
 }
 /**
  * Event listener waiting for user to interact with the

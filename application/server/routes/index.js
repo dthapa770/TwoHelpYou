@@ -15,13 +15,13 @@
 
 var express = require('express');
 var router = express.Router();
-var GetHighestRatedPost = require('../middleware/post_middleware').GetHighestRatedPost;
+var GetRecentPost = require('../middleware/post_middleware').GetRecentPost;
 var GetAllPostCoursePrefix = require('../middleware/post_middleware').GetAllPostCoursePrefix;
 var GetAllUserMessages = require('../middleware/message_middleware').GatAllUserMessages;
 var GetPostById = require('../middleware/post_middleware').GetUserPostById;
 
 /* GET home page. */
-router.get('/', GetHighestRatedPost, function(req, res, next) {
+router.get('/', GetRecentPost, function(req, res, next) {
   res.render('index', { title: 'Software Engineering Class SFSU' });
 });
 

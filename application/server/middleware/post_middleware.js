@@ -23,9 +23,9 @@ const PostMiddleware = {}
  * @param res 
  * @param next 
  */
-PostMiddleware.GetHighestRatedPost = async function(req,res,next) {
+PostMiddleware.GetRecentPost = async function(req,res,next) {
     try {
-        let cards = await PostModel.GetNHighestPosts(5);
+        let cards = await PostModel.GetNRecentPosts(5);
         res.locals.cards = cards;
         if (cards.length == 0) {
             console.log("error in getting highest rated");
