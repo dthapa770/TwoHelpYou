@@ -21,7 +21,6 @@
  * @returns 
  */
  function CheckCourse(input) {
-	var first_character = input.value.charAt(0);
 	var regEx = /^[0-9]{3}$/;
 	var message = 'Invalid! Course number must:';
 
@@ -31,7 +30,24 @@
 
 	if (message != 'Invalid! Course number must:') return message;
 	else return 'Course number is valid';
-}
+};
+
+/**
+ * Function to check if course postifx follows
+ * required format
+ * @param input 
+ * @returns 
+ */
+ function CheckAvailability(input) {
+	var message = '';
+//check if input length is under 40 characters
+	if (input.value.length > 40) {
+		message = message + 'Invalid! Must Be less than 40 characters';
+	}
+
+	if (message != '') return message;
+	else return "Message length is under 40 characters";
+};
 
 let course_postfix = document.getElementById('course_postfix');
 /**
@@ -47,4 +63,16 @@ course_postfix.onchange = function(event) {
 		document.getElementById('course_postfix_message').style.color = 'green';
 	}
 
+};
+
+let availability = document.getElementById('availability');
+/**
+ * Listener for availability validation
+ * @param event
+ */
+availability.onchange = function(event) {
+	if (CheckAvailability(availability) != 'Message length is under 40 characters') {
+		document.getElementById('availability_message').innerHTML = CheckAvailability(availability);
+		document.getElementById('availability_message').style.color = 'red';
+	}
 };

@@ -38,11 +38,12 @@
                 <input class="login_input_2" type="text" name="user_name" id="user_name" required placeholder="Username" minlength="3"/>
             </div>
             <div>
-                <label for="password">Password: <div> <label id="login_password_message" class="small">Password must contain 8 or more characters, uppercase letter, lower case letter, number and a special character</label> </div> </label>
+                <label for="password">Password: <div> <label id="login_password_message" class="small">Password must contain 8 or more characters,<br> uppercase, lowercase, number and a special character</label> </div> </label>
                 <input class="login_input_2" type="password" name="password" id="password" required placeholder="Password" minlength="8"/>
             </div>
         </div>
-        <button class="registerbtn" id="login_button" type="submit" value="login" name="Login" />Login</button>
+        <button class="btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
+        <button class="btn" id="login_button" type="submit" value="login" name="Login" />Login</button>
         {{!-- <button type="submit" class="registerbtn"> Login </button> --}}
         <div class = "container">
             {{!-- <p>
@@ -109,7 +110,8 @@
                 <input type="checkbox" id="age" name="old" value="enough" required>
                 <label for="old">I am 13 years or older.</label>
             </div>
-            <button type="submit" class="registerbtn" value="Register">Register</button>
+            <button class="btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
+            <button class="btn" type="submit" value="Register">Register</button>
         </div>
     </form>
   </div>
