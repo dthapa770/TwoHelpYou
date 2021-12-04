@@ -44,12 +44,12 @@
             {{!-- <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br> --}}
             {{#if logged}}
                 <p class="message_info">From: {{sender_username}}</p>
+                <button class="message_btn" id="message-button" type="submit">Send</button>
                 <button class="message_btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
-                <button class="message_btn" id="message-button" type="submit">Send</button> <br><br><br>
             {{else}}
                 <p class="message_info">From: Anon</p>
-                <button class="message_btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
                 <button class="message_btn" type="button" id="submit_button">Send</button>
+                <button class="message_btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
             {{/if}}
         </div>
     </form>   
