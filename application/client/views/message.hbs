@@ -37,8 +37,9 @@
             
         </div>
         <div> <label id="text_area_message" class="small">Please enter you message below </label> </div> 
-        <textarea class= "text_area" id="message_text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6">{{text}}</textarea><br>
-       
+        <textarea class= "text_area" id="message_text" name = "message" value ="message" 
+            placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)'
+            rows="6" required>{{text}}</textarea><br>
         <div>
             {{#if logged}}
                 <p class="message_info">From: {{sender_username}}</p>
