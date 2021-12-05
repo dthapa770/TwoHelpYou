@@ -207,6 +207,7 @@ router.post('/login', async (req, res, next) => {
 			ErrorPrint(err.GetMessage());
 			req.flash('Error', err.GetMessage());
 			res.status(err.GetStatus());
+			await SaveSession(req.session);
 			res.redirect(req.get('referer'));
 		} else {
 			console.log(err);
@@ -228,6 +229,7 @@ router.post('/logout', (req, res, next) => {
 			SuccessPrint('session was destroyed');
 			res.clearCookie('csid');
 			res.json({ status: 'OK', message: 'user is logged out' });
+			next();
 		}
 	});
 });
