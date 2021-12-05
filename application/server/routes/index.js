@@ -75,10 +75,6 @@ router.get('/message_page', GetAllUserMessages, function(req,res,next) {
   res.render('message_page'), {title: 'Software Engineering Class SFSU'}
 })
 
-router.get('/confirmation',function(req,res,next) {
-  res.render('confirmation'),{ title:'Software Engineering Class SFSU'}
-});
-
 router.get('/post/:id(\\d+)',GetPostById,function(req,res,next){
      res.render('post'),{ title:'Software Engineering Class SFSU'} 
 });
