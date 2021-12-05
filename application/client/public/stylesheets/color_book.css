@@ -166,12 +166,12 @@ a.dashboard_link {
 
 .flash_error {
     border-color: red !important;
-    color: black !important;
+    color: red !important;
 }
 
 .flash_success {
     border-color: green !important;
-    color: black !important;
+    color: green !important;
 }
 
 /* Buttons and links */
