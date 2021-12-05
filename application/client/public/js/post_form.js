@@ -49,8 +49,9 @@ course_postfix.onchange = function (event) {
 
 };
 
-//regex to validate day and time input format: 3 alphabetical characters, hyphen, 3 alphabetical characters, space, 1 number, 2 alphabetical characters , 1 number, 2 alphabetical characters
-let time_regex = /^[a-zA-Z]{3}-[a-zA-Z]{3} [0-9]{1}[a-zA-Z]{2}:[0-9]{2}[a-zA-Z]{2}$/;
+//regex to validate day and time input format: 3 alphabetical characters, hyphen, 3 alphabetical characters, space, 1 number, 2 alphabetical characters , hyphen, 1 number, 2 alphabetical characters
+let time_regex = /^[a-zA-Z]{3}-[a-zA-Z]{3} [0-9]{1}[a-zA-Z]{2}-[0-9]{1}[a-zA-Z]{2}$/;
+
 
 
 /**
@@ -60,7 +61,8 @@ let time_regex = /^[a-zA-Z]{3}-[a-zA-Z]{3} [0-9]{1}[a-zA-Z]{2}:[0-9]{2}[a-zA-Z]{
  * @returns 
  */
 function ValidateAvailavility(val) {
-	if (availability.value.match(time_regex) == null) {
+
+	if (val.value.match(/^[a-zA-Z]{3}-[a-zA-Z]{3} [0-9]{1}[a-zA-Z]{2}-[0-9]{1}[a-zA-Z]{2}$/g) != null) {
 		console.log("valid");
 		availability.style.border = "1px solid green";
 		return true;
