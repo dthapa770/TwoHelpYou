@@ -166,7 +166,8 @@ a.dashboard_link:hover {
 #flash_message {
 	position: fixed;
     left: 50%;
-    top: 25%;
+    top: 20%;
+	padding: 10px;
     transform: translate(-50%,0);
 	border: solid;
 	background-color: white;
@@ -373,22 +374,6 @@ input[type=text], input[type=password], input[type = email] {
 
 .legal_link:hover {
 	background-color: gold;
-}
-
-.invalid-feedback {
-    color: #ff606e;
-}
- 
-.valid-feedback {
-    color: #2acc80;
-}
-
-.Error {
-    color: #ff606e;
-}
-
-.Success {
-    color: #2acc80;
 }
 
 /*to fix the issue when window is not at full screen*/
