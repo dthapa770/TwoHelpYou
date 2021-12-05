@@ -13,6 +13,41 @@
  * Description: Dashboard css provided by w3school.
  *****************************************************************************/
 
+/* Dashboard */
+.dashboard {
+	grid-row: 4;
+	grid-column: 1;
+	justify-self: start;
+}
+
+.dashboard_content {
+	margin: 1%;
+	padding: 2%;
+	padding-right: 10%;
+	border: solid #310944;
+	background-color: gold;
+	border-radius: 10%;
+	text-align: left;
+}
+a.dashboard_link {
+	font-size: small;
+	color: #310944;
+	border-radius: 20%;
+	border: 1px groove #310944;
+	padding: 1%;
+	text-decoration: none;
+	display: inline-block;
+	font-size: normal;
+	font-weight: bold;
+	transition-duration: 0.4s;
+	text-decoration: none;
+}
+
+a.dashboard_link:hover {
+	color: gold;
+	background-color: #310944;
+}
+
 /* The side_panel menu */
 .side_panel {
 	height: 150px; /* Specify a height */
@@ -21,12 +56,12 @@
 	z-index: 1; /* Stay on top */
 	top: 150px;
 	left: 0;
-    border: .5px groove #310944;
+	border: .5px groove #310944;
 	background-color: white;
 	overflow-x: hidden; /* Disable horizontal scroll */
 	padding-top: 60px; /* Place content 60px from the top */
 	transition: 0.5s; /* 0.5 second transition effect to slide in the side_panel */
-    font-size: large;
+	font-size: large;
 }
 
 /* The side_panel links */
@@ -35,7 +70,7 @@
 }
 
 .close_button {
-    color: #310944;
+	color: #310944;
 	text-decoration: none;
 }
 
@@ -59,7 +94,7 @@
 }
 
 .open_button:hover {
-    border: .5px groove #310944;
+	border: .5px groove #310944;
 	background-color: gold;
 	color: #310944;
 }

@@ -22,7 +22,6 @@
 <div class="body">
     <form id="message_page" method="POST" action="/message/create/{{current_user.username}}/{{post_id}}/{{course_prefix}}/{{course_postfix}}"
         enctype="application/x-www-form-urlencoded">
-        {{!-- <h2>Send message</h2> --}}
         <h2>Message Center</h2>
         <div class="message_info">
             <p id="to_username">To: {{current_user.username}}</p>
@@ -38,17 +37,16 @@
             
         </div>
         <div> <label id="text_area_message" class="small">Please enter you message below </label> </div> 
-        <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6">{{text}}</textarea><br>
+        <textarea class= "text_area" id="message_text" name = "message" value ="message" placeholder='Type your contact information and the subject you want to ask here &#10;(i.e:&#10;Phone:(123)123-1234&#10;Email:1234@****.com&#10;Subject:about homework&#10;)' rows="6">{{text}}</textarea><br>
        
         <div>
-            {{!-- <textarea class= "text_area" id="message-text" name = "message" value ="message" placeholder="Type your message here" rows="5"></textarea><br><br> --}}
             {{#if logged}}
                 <p class="message_info">From: {{sender_username}}</p>
-                <button class="message_btn deletels" id="message-button" type="submit">Send</button>
+                <button class="message_btn delete_login_send" id="message-button" type="submit">Send</button>
                 <button class="message_btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
             {{else}}
                 <p class="message_info">From: Anon</p>
-                <button class="message_btn lsbutton" type="button" id="submit_button">Send</button>
+                <button class="message_btn login_send_button" type="button" id="submit_button">Send</button>
                 <button class="message_btn" id="reset_button" type="reset" value="cancel" name="Cancel" />Cancel</button>
             {{/if}}
         </div>

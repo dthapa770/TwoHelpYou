@@ -75,12 +75,18 @@ PostMiddleware.GetAllUserPost = async function(req,res,next) {
     }
 }
 
+/**
+ * Get all post related to the user using id
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 PostMiddleware.GetUserPostById = async function(req, res, next){
     try{
-        let postId =req.params.id;
-        let results =await PostModel.GetPostById(postId);
+        let post_id = req.params.id;
+        let results = await PostModel.GetPostById(post_id);
         if(results && results.length){
-            res.locals.current_post =results[0];
+            res.locals.current_post = results[0];
             next();
         } 
     } catch(err) {

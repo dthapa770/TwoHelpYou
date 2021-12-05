@@ -122,16 +122,6 @@ function CheckEmail(email_to_add) {
  * @param password 
  * @returns 
  */
-//  const togglePassword = document.querySelector('#togglePassword');
-//  const password = document.querySelector('#password');
-
-//  togglePassword.addEventListener('click', function (e) {
-//     // toggle the type attribute
-//     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-//     password.setAttribute('type', type);
-//     // toggle the eye / eye slash icon
-//     this.classList.toggle('bi-eye');
-// });
 function ValidatePassword(password) {
 	var message = 'Password does not contain:';
 
@@ -162,7 +152,6 @@ function ValidatePassword(password) {
  * @param password 
  * @returns 
  */
-
 function CheckPassword(password) {
 	var message = 'Password does not contain:';
 

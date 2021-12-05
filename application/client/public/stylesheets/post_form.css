@@ -74,14 +74,3 @@ select {
 .top_pad {
 	padding-top: 16px;
 }
-
-@media all and (min-width: 450px) {
-	
-}
-
-/* @media all and (max-width: 450px) {
-	.flow {
-		margin-left: 30vw;
-		margin-right: 30vw;
-	}
-} */

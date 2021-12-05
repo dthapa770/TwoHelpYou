@@ -27,23 +27,30 @@ var login_button = document.getElementById("login_button");
 var register_button = document.getElementById("register_button");
 
 // When the user clicks on the button, open the login modal
-login_button.onclick = function() {
-  login_modal.style.display = "block";
+if (login_button) {
+  login_button.onclick = function() {
+    login_modal.style.display = "block";
+  }
 }
 
 // When the user clicks on the button, open the register modal
-register_button.onclick = function() {
-  register_modal.style.display = "block";
+if (register_button) {
+  register_button.onclick = function() {
+    register_modal.style.display = "block";
+  }
 }
 
 // When the user clicks on <span> (x), close the modal
-span_login.onclick = function() {
-  login_modal.style.display = "none";
-
+if (span_login) {
+  span_login.onclick = function() {
+    login_modal.style.display = "none";
+  }
 }
 
-span_register.onclick = function() {
-  register_modal.style.display = "none";
+if (span_register) {
+  span_register.onclick = function() {
+    register_modal.style.display = "none";
+  }
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -79,11 +86,15 @@ function resetModal() {
 let cancel_login = document.getElementById("cancel_login");
 let cancel_register = document.getElementById("cancel_register");
 
-cancel_login.onclick = function() {
-  resetModal();
+if (cancel_login) {
+  cancel_login.onclick = function() {
+    resetModal();
+  }
 }
 
-cancel_register.onclick = function() {
-  resetModal();
+if (cancel_register) {
+  cancel_register.onclick = function() {
+    resetModal();
+  }
 }
 

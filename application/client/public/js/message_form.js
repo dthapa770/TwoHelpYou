@@ -16,7 +16,7 @@
 /**
  * This function is to to make the input box auto resize when needed
  */
-let el = document.getElementById(`message-text`);
+let el = document.getElementById(`message_text`);
 el.addEventListener("input", function() {
   if (el.scrollTop != 0)
     el.style.height = el.scrollHeight + "px";

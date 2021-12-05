@@ -13,11 +13,11 @@
  * Description: Store data from forms locally.
  *****************************************************************************/
 
-const message_loginbutton = document.querySelector('.lsbutton');
-const message_sendbutton = document.querySelector('.deletels');
+const message_login_button = document.querySelector('.login_send_button');
+const message_send_button = document.querySelector('.delete_login_send');
 
-const post_loginbutton = document.querySelector('.plsbutton');
-const post_sendbutton = document.querySelector('.pdeletels');
+const post_login_button = document.querySelector('.post_login_send_button');
+const post_send_button = document.querySelector('.post_delete_login_send');
 
 /**
  * remove first 3 char in string
@@ -36,42 +36,42 @@ function Remove5char(value) {
 /**
  * get the user input in message and store it into local storage
  */
-const save_message_localstorge = () =>{
+const SaveMessageLocalStorge = () =>{
     //get user message box
-    var inputVal = document.getElementById("message-text");
+    var input_value = document.getElementById("message_text");
 
-    localStorage.setItem('inputbox', inputVal.value);
+    localStorage.setItem('input_box', input_value.value);
 };
 
 /**
  * remove key in localstorage that is for message page
  */
-const delete_message_localstorage = () =>{
+const DeleteMessageLocalStorage = () =>{
     // localStorage.clear();
-    localStorage.removeItem('inputbox');
+    localStorage.removeItem('input_box');
 }
 
 /**
  * store user input back to textbox in message page
  */
-const writetext = () => {
-    let inputVal = window.localStorage.getItem('inputbox');
+const WriteText = () => {
+    let input_value = window.localStorage.getItem('input_box');
 
-    document.getElementById("message-text").innerHTML = inputVal;
+    document.getElementById("message_text").innerHTML = input_value;
 }
 
 /**
  * get and store all the input field data into local storage
  */
-const getpostinfo = () => {
+const GetPostInfo = () => {
     let major = document.getElementById('post_select_menu');
-    let coursenum =  document.getElementById('course_postfix');
+    let course_number =  document.getElementById('course_postfix');
     let availability = document.getElementById('availability2');
     // let credibility = document.getElementById('credibility2');
     
 
     localStorage.setItem('major', major.value);
-    localStorage.setItem('course', coursenum.value);
+    localStorage.setItem('course', course_number.value);
     localStorage.setItem('availability', availability.value);
     // localStorage.setItem('credibility', credibility.value);
 }
@@ -79,14 +79,14 @@ const getpostinfo = () => {
 /**
  * write all the local starage data back into the post page
  */
-const writepostinfo = () => {
+const WritePostInfo = () => {
     let major = window.localStorage.getItem('major');
-    let coursenum = window.localStorage.getItem('course');
+    let course_number = window.localStorage.getItem('course');
     let availability = window.localStorage.getItem('availability');
     // let credibility = window.localStorage.getItem('credibility');
 
     document.getElementById("post_select_menu").value = major;
-    document.getElementById('course_postfix').value = coursenum;
+    document.getElementById('course_postfix').value = course_number;
     document.getElementById('availability2').value = availability;
     // document.getElementById('credibility2').value = credibility;
 }
@@ -94,7 +94,7 @@ const writepostinfo = () => {
 /**
  * remove all key that relate to post page in localstorage
  */
-const delete_post_localstorage = () =>{
+const DeletePostLocalStorage = () =>{
     // localStorage.clear();
     localStorage.removeItem('major');
     localStorage.removeItem('course');
@@ -105,32 +105,32 @@ const delete_post_localstorage = () =>{
 /**
  * listen to the message page submit button if user isn't login
  */
-if(message_loginbutton){
-    message_loginbutton.addEventListener('click', save_message_localstorge);
+if(message_login_button){
+    message_login_button.addEventListener('click', SaveMessageLocalStorge);
 }
 
 /**
  * listen to the message page submit button if user already login
  */
-if(message_sendbutton){
-    window.addEventListener('load', writetext);
-    message_sendbutton.addEventListener('click', delete_message_localstorage);
+if(message_send_button){
+    window.addEventListener('load', WriteText);
+    message_send_button.addEventListener('click', DeleteMessageLocalStorage);
 }
 
 /**
  * listen to the post page submit button if user isn't login
  */
 
-if(post_loginbutton){
-    post_loginbutton.addEventListener('click', getpostinfo);
+if(post_login_button){
+    post_login_button.addEventListener('click', GetPostInfo);
 }
 
 /**
  *listen to the post page submit button when user is already login
  */
-if(post_sendbutton){
-    window.addEventListener('load', writepostinfo);
-    post_sendbutton.addEventListener('click', delete_post_localstorage);
+if(post_send_button){
+    window.addEventListener('load', WritePostInfo);
+    post_send_button.addEventListener('click', DeletePostLocalStorage);
 }
 
 

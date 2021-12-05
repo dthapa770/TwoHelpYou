@@ -1,0 +1,71 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ *
+ * File: media_size.css
+ * 
+ * Description: Adjusts content by media size
+ *****************************************************************************/
+
+/*to fix the issue when window is not at full screen*/
+@media all and (max-width: 700px) {
+	.main_navbar {
+		grid-template-columns: max-content max-content;
+		grid-template-rows: max-content max-content;
+		row-gap: 5%;
+		padding-bottom: 5%;
+	}
+	#search_form {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 2;
+	}
+	#default_nav {
+		grid-column-start: 1;
+		grid-row: 1;
+	}
+	#user_nav {
+		grid-column-start: 2;
+		grid-row: 1;
+	}
+	#main_content {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media all and (max-width: 375px) {
+	.card_body {
+		margin-right: 0%;
+	}	
+	.main_navbar {
+		grid-template-columns: max-content max-content;
+		grid-template-rows: max-content max-content max-content;
+		justify-items: center;
+	}
+	#search_form {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 3;
+	}
+	#default_nav {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 1;
+	}
+	#user_nav {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 2;
+	}
+	#main_content {
+		display: flex;
+		flex-direction: column;
+	}
+}

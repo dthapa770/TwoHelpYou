@@ -31,36 +31,31 @@
                 <input class="register_input_2" type="text" id="last_name" name="last_name" required placeholder="Last name" />
             </div>
             <div class="register_input_1">
-                <label for="username">Username: </label>
+                <label for="user_name">Username: <div> <label id="user_message" class="small">Username must be 3 or more characters </label> </div> </label>
                 <input class="input_single_row" type="text" id="username" name="username" required placeholder="Username" />
             </div>
             <div class="register_input_1">
-                <label for="email">Email: </label>
+                <label for="email">Email: <div> <label id="email_message" class="small">Email address must end with sfsu.edu or mail.sfsu.edu</label> </div></label>
                 <input class="input_single_row" type="email" id="email" name="email" required placeholder="Email Address" />
             </div>
-            {{!--<div>
-                <label for="email">Email </label>
-                <input type="email" id="email" name="email" required placeholder="Email Address" />
-            </div>--}}
             <div class="register_input_1">
-                <label for="password">Password: </label>
-                <input class="input_single_row" id="password" type="password" name="password" required placeholder="Password" />
-                {{!-- <i class="bi bi-eye-slash" id="togglePassword"></i> --}}
+                <label for="password">Password: <div> <label id="password_message" class="small">Password must contain 8 or more characters, uppercase letter, lower case letter, number and a special character</label> </div> </label>
+                <input class="input_single_row" id="register_password" type="password" name="password" required placeholder="Password" />
             </div>
             <div class="register_input_1">
-                <label for="confirm_password">Confirm Password: </label>
+                <label for="confirm_password">Confirm Password: <div> <label id="confirm_message" class="small"></label> </div> </label>
                 <input class="input_single_row" id="confirm_password" type="password" required placeholder="Confirm Password" />
             </div>
         </div>
         <div class="flow_box" >
             <div class="container flow_box">
                 <label for="profile_picture">Upload Image for Profile Picture </label>
-                <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+                <input class="btn" type="file" id="profile_picture" name="profile_picture" accept="image/*">
                 <label>Uploading a picture is optional, if no picture is provided a defualt will be used</label>
             </div>
             <div class="flow_box">
-                {{!--<label for="ToS">Please Read and Accept </label> --}}
-                <div><a href="/tos" target="_blank">Term of Service</a> and <a href="/privacy_rules" target="_blank">Privacy Rules</a></div>
+                <label for="ToS">Please Read and Accept </label>
+                <div><a class="legal_link" href="/tos" target="_blank">Term of Service</a> and <a class="legal_link" href="/privacy_rules" target="_blank">Privacy Rules</a></div>
                 <div>
                     <input type="checkbox" id="ToS" name="terms" value="agreement" required> 
                     <label for="terms" for = "invalidCheck">I agree to the Term of Service and Privacy Rules.</label>
@@ -70,7 +65,14 @@
                 <input type="checkbox" id="age" name="old" value="enough" required>
                 <label for="old">I am 13 years or older.</label>
             </div>
-            <button type="submit" class="submitbtn" value="Register">Register</button>
+            <div class="send_cancel">
+                <div>
+                    <button class="btn" type="submit" value="Register">Register</button>
+                </div>
+                <div>
+                    <button class="btn" id="cancel_register" type="reset" value="cancel" name="Cancel" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
         </div>
     </form>
 </div>

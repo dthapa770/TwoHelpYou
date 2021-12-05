@@ -68,6 +68,7 @@
 	/* Safari */
 	transition-duration: 0.4s;
 }
+
 .btn:hover {
   /* background color gold */
   background-color: #f0ca20;

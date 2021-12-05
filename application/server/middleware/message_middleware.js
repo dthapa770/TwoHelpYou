@@ -13,20 +13,26 @@
  * Description: middleware between model and routes
  *****************************************************************************/
 
- var MessageModel = require('../models/message_model');
- const MessageMiddleware = {}
+var MessageModel = require('../models/message_model');
+const MessageMiddleware = {};
 
-MessageMiddleware.GatAllUserMessages = async function(req,res,next) {
-    try {
-        let results = await MessageModel.GetUserMessages(req.session.user_id);
-        res.locals.results = results;
-        if (results.length == 0) {
-            console.log("Error getting messages");
-        }
-        next();
-    } catch(err) {
-        next(err);
-    }
-}
+/**
+ * Gets all messages sent to user
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+MessageMiddleware.GatAllUserMessages = async function(req, res, next) {
+	try {
+		let results = await MessageModel.GetUserMessages(req.session.user_id);
+		res.locals.results = results;
+		if (results.length == 0) {
+			console.log('Error getting messages');
+		}
+		next();
+	} catch (err) {
+		next(err);
+	}
+};
 
 module.exports = MessageMiddleware;

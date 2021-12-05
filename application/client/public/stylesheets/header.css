@@ -1,0 +1,96 @@
+/******************************************************************************
+ * Class: CSC 0648-03 Software Engineering Fall 2021
+ * Team: 1
+ * Name:  Justin Lam
+ *        Aviral Puri
+ *        Dinesh Thapa
+ *        Kurt D Resayo
+ *        Wesley J Xu
+ *        Chung Hei Fong
+ *
+ * File: header.css
+ * 
+ * Description: provide css to header content.
+ *****************************************************************************/
+
+/* header & footer */
+.cross_screen_row {
+	grid-column-start: 1;
+	grid-column-end: 4;
+	clear: both;
+}
+
+.banner {
+	grid-row: 1;
+	font-size: x-small;
+	background: #186295;
+	color: #ffffff;
+	padding: .5%;
+	clear: both;
+}
+
+.site_section {
+	grid-row: 2;
+	background: #310944;
+	font-size: small;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 2%;
+}
+
+.main_navbar {
+	grid-row: 3;
+	background: gold;
+	color: white;
+	padding: .5%;
+	display: grid;
+	grid-template-columns: max-content max-content max-content;
+	grid-auto-rows: 1fr;
+	justify-content: space-between;
+	align-items: center;
+	/* line-height: 16px; */
+}
+
+.bottom_header {
+	background: gold;
+	color: white;
+	clear: both;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+
+	/* height: 100%; */
+	/* margin-top: -100%; */
+}
+
+.search_bar {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	/* line-height: 16px; */
+}
+
+.padding {
+	padding-left: 15px;
+}
+
+.search_nav {
+	padding: 15px 0 15px 0;
+	/*margin: 10px 0 22px 0;*/
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+	line-height: 17px;
+	/* flex-grow: 1; */
+}
+
+#default_nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#return_to_home {
+	color: #310944;
+}
