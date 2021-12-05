@@ -49,6 +49,46 @@ course_postfix.onchange = function (event) {
 
 };
 
+//regex to validate day and time input format: 3 alphabetical characters, hyphen, 3 alphabetical characters, space, 1 number, 2 alphabetical characters , 1 number, 2 alphabetical characters
+let time_regex = /^[a-zA-Z]{3}-[a-zA-Z]{3} [0-9]{1}[a-zA-Z]{2}:[0-9]{2}[a-zA-Z]{2}$/;
+
+
+/**
+ * Function to check if availability follows
+ * required format
+ * @param val
+ * @returns 
+ */
+function ValidateAvailavility(val) {
+	if (availability.value.match(time_regex) == null) {
+		console.log("valid");
+		availability.style.border = "1px solid green";
+		return true;
+	} else {
+		console.log("invalid");
+		availability.style.border = "1px solid red";
+		return false;
+	}
+}
+
+//availability event listener
+let availability = document.getElementById('availability2');
+availability.onchange = function (event) {
+//check that input matches regex
+	ValidateAvailavility(availability);
+};
+
+//on submit validate inputs
+let post_form = document.getElementById('post_page');
+post_form.onsubmit = function (event) {
+	if(!ValidateAvailavility(availability)) {
+		return false;
+	}else {
+		return true;
+	}
+	event.preventDefault();
+};
+
 //get days checkboxes
 let mon = document.getElementById('monday');
 let tue = document.getElementById('tuesday');
@@ -89,7 +129,6 @@ let duration_sun = document.getElementById('duration_7');
 // }
 //if checkbox is checked display time input
 mon.onclick = function (event) {
-	console.log("checked");
 	if (mon.checked) {
 		start_time_mon.style.display = "block";
 		duration_mon.style.display = "block";
@@ -204,6 +243,5 @@ jQuery(function($) {
 	});
 	requiredCheckboxes.trigger('change');
   });
-
 
 
