@@ -95,27 +95,7 @@ button:hover {
 	background-color: black;
 }
 
-.logo-button{
-	text-decoration: none;
-    background-color: #310944;
-    color: white;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-top: 3px;
-    border-radius: 20%;
-    border: none;
-    cursor: pointer;
-    /* max-width: 25%; */
-    opacity: 0.9;
-}
-
-.logo-button:hover{
-	opacity:1;
-	color: white;
-	background-color: black;
-}
-
-.button {
+.about_button {
 	color: #310944;
 	border: none;
 	padding: .5%;
@@ -129,7 +109,7 @@ button:hover {
 	text-decoration:none
 }
 
-.button:hover {
+.about_button:hover {
 	background-color: yellow;
 	color: white;
 }
@@ -216,7 +196,7 @@ input[type=text], input[type=password], input[type = email] {
 	background: #f1f1f1;
 }
 
-.submitbtn {
+.custom_button_2 {
 	background-color: #310944;
 	color: white;
 	padding: 16px 20px;
@@ -228,7 +208,7 @@ input[type=text], input[type=password], input[type = email] {
 	text-decoration:none
 }
 
-.submitbtn:hover {
+.custom_button_2:hover {
 	opacity:1;
 	color: black;
 	background-color: goldenrod;

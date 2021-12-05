@@ -52,7 +52,7 @@
 }
 
 /*blue button with temporary hover effect  */
-.btn{
+.modal_button_1 {
     /* background color purple */
 	background-color: #310944;
 	border: none;
@@ -69,7 +69,7 @@
 	transition-duration: 0.4s;
 }
 
-.btn:hover {
+.modal_button_1:hover {
   /*background-color: gold;*/
   background-color: #f0ca20;
   color: #ffffff;
@@ -79,7 +79,7 @@
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.registerbtn {
+.modal_button_2 {
 	background-color: #310944;
 	border: none;
 	color: white;
@@ -97,7 +97,7 @@
 	/* Safari */
 }
 
-.registerbtn:hover {
+.modal_button_2:hover {
 	/*opacity:1;*/
 	color: black;
 	background-color: goldenrod;
