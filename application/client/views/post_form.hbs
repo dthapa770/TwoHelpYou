@@ -15,6 +15,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href='/stylesheets/post_form.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script defer type="text/javascript" src="/js/post_form.js"></script>
     <script defer type="text/javascript" src="/js/submit_modal.js"></script>
     <script defer type="text/javascript" src="/js/local_storage.js"></script>
@@ -59,7 +60,7 @@
                 <div class="grid crossrow" id="days">
                     <div class="grid crossrow justify_left" id="days">
                         <label class="crossrow" for="days">Select One or More Days:</label>
-                        <input type="checkbox" name="days[]" id="monday" value="Monday">
+                        <input type="checkbox" name="days[]" id="monday" value="Monday" required="required">
                         <div class="align_left">Monday</div>
                         <!-- start time selector -->
                         <div class="grid crossrow justify_left" id="monday_time" style="display:none">
@@ -83,7 +84,7 @@
                             </select>
                         </div>
 
-                        <input type="checkbox" name="days[]" id="tuesday" value="Tuesday">
+                        <input type="checkbox" name="days[]" id="tuesday" value="Tuesday" required="required">
                         <div class="align_left">Tuesday</div>
                         <!-- start time selector -->
                         <div class="grid crossrow justify_left" id="tuesday_time" style="display:none">
@@ -107,7 +108,7 @@
                             </select>
                         </div>
 
-                        <input type="checkbox" name="days[]" id="wednesday" value="Wednesday">
+                        <input type="checkbox" name="days[]" id="wednesday" value="Wednesday" required="required">
                         <div class="align_left">Wednesday</div>
                         <!-- start time selector -->
                         <div class="grid crossrow justify_left" id="wednesday_time" style="display:none">
@@ -131,7 +132,7 @@
                             </select>
                         </div>
 
-                        <input type="checkbox" name="days[]" id="thursday" value="Thursday">
+                        <input type="checkbox" name="days[]" id="thursday" value="Thursday" required="required">
                         <div class="align_left">Thursday</div>
                         <!-- start time selector -->
                         <div class="grid crossrow justify_left" id="thursday_time" style="display:none">
@@ -155,7 +156,7 @@
                             </select>
                         </div>
 
-                        <input type="checkbox" name="days[]" id="friday" value="Friday">
+                        <input type="checkbox" name="days[]" id="friday" value="Friday" required="required">
                         <div class="align_left">Friday</div>
                         <!-- start time selector -->
                         <div class="grid crossrow justify_left" id="friday_time" style="display:none">
@@ -179,7 +180,7 @@
                             </select>
                         </div>
 
-                        <input type="checkbox" name="days[]" id="saturday" value="Saturday">
+                        <input type="checkbox" name="days[]" id="saturday" value="Saturday" required="required">
                         <div class="align_left">Saturday</div>
                         <!-- start time selector -->
                         <div class="grid crossrow justify_left" id="saturday_time" style="display:none">
@@ -203,7 +204,7 @@
                             </select>
                         </div>
 
-                        <input type="checkbox" name="days[]" id="sunday" value="Sunday">
+                        <input type="checkbox" name="days[]" id="sunday" value="Sunday" required="required">
                         <div class="align_left">Sunday</div>
                         <!-- start time selector -->
                         <div class="grid crossrow justify_left" id="sunday_time" style="display:none">

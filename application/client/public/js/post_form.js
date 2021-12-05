@@ -93,9 +93,13 @@ mon.onclick = function (event) {
 	if (mon.checked) {
 		start_time_mon.style.display = "block";
 		duration_mon.style.display = "block";
+		start_time_mon.required = true;
+		duration_mon.required = true;
 	} else {
 		start_time_mon.style.display = "none";
 		duration_mon.style.display = "none";
+		start_time_mon.required = false;
+		duration_mon.required = false;
 	}
 
 };
@@ -103,9 +107,13 @@ tue.onclick = function (event) {
 	if (tue.checked) {
 		start_time_tue.style.display = "block";
 		duration_tue.style.display = "block";
+		start_time_tue.required = true;
+		duration_tue.required = true;
 	} else {
 		start_time_tue.style.display = "none";
 		duration_tue.style.display = "none";
+		start_time_tue.required = false;
+		duration_tue.required = false;
 	}
 
 };
@@ -114,9 +122,13 @@ wed.onclick = function (event) {
 	if (wed.checked) {
 		start_time_wed.style.display = "block";
 		duration_wed.style.display = "block";
+		start_time_wed.required = true;
+		duration_wed.required = true;
 	} else {
 		start_time_wed.style.display = "none";
 		duration_wed.style.display = "none";
+		start_time_wed.required = false;
+		duration_wed.required = false;
 	}
 
 };
@@ -126,9 +138,13 @@ thurs.onclick = function (event) {
 	if (thurs.checked) {
 		start_time_thurs.style.display = "block";
 		duration_thurs.style.display = "block";
+		duration_thurs.required = true;
+		start_time_thurs.required = true;
 	} else {
 		start_time_thurs.style.display = "none";
 		duration_thurs.style.display = "none";
+		start_time_thurs.required = false;
+		duration_thurs.required = false;
 	}
 
 };
@@ -137,9 +153,13 @@ fri.onclick = function (event) {
 	if (fri.checked) {
 		start_time_fri.style.display = "block";
 		duration_fri.style.display = "block";
+		start_time_fri.required = true;
+		duration_fri.required = true;
 	} else {
 		start_time_fri.style.display = "none";
 		duration_fri.style.display = "none";
+		start_time_fri.required = false;
+		duration_fri.required = false;
 	}
 
 };
@@ -148,23 +168,42 @@ sat.onclick = function (event) {
 	if (sat.checked) {
 		start_time_sat.style.display = "block";
 		duration_sat.style.display = "block";
+		start_time_sat.required = true;
+		duration_sat.required = true;
 	} else {
 		start_time_sat.style.display = "none";
 		duration_sat.style.display = "none";
+		start_time_sat.required = false;
+		duration_sat.required = false;
 	}
 
 };
 
 sun.onclick = function (event) {
 	if (sun.checked) {
-		start_time_sun.style.display = "inline-block";
-		duration_sun.style.display = "inline-block";
+		start_time_sun.style.display = "block";
+		duration_sun.style.display = "block";
+		start_time_sun.required = true;
+		duration_sun.required = true;
 	} else {
 		start_time_sun.style.display = "none";
 		duration_sun.style.display = "none";
+		start_time_sun.required = false;
+		duration_sun.required = false;
 	}
 
 };
+
+//jquery to validate that atleast one checkbox is checked
+jQuery(function($) {
+	var requiredCheckboxes = $(':checkbox[required]');
+	requiredCheckboxes.on('change', function(e) {
+	  var checkboxGroup = requiredCheckboxes.filter('[name="' + $(this).attr('name') + '"]');
+	  var isChecked = checkboxGroup.is(':checked');
+	  checkboxGroup.prop('required', !isChecked);
+	});
+	requiredCheckboxes.trigger('change');
+  });
 
 
 
