@@ -69,7 +69,7 @@
 	transition-duration: 0.4s;
 }
 .btn:hover {
-  /* background color gold */
+  /*background-color: gold;*/
   background-color: #f0ca20;
   color: #ffffff;
   -webkit-transition: all 0.3s ease-in-out;
@@ -78,6 +78,36 @@
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+.registerbtn {
+	background-color: #310944;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	/* max-width: 25%; */
+	/*opacity: 0.9;*/
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	/* Safari */
+}
+
+.registerbtn:hover {
+	/*opacity:1;*/
+	color: black;
+	background-color: goldenrod;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+
 
 .small {
 	font-size: 12px;
