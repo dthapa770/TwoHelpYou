@@ -31,7 +31,7 @@ router.get('/search', async (req, res, next) => {
     let searchTerm = '';
     let prefix = searchQuery[0];
     if (searchQuery[1].length > 40) {
-        let results = await PostModel.GetNRecentPosts(5);
+        let results = await PostModel.GetNRecentPosts(6);
         res.render('search_results',{
             title: "Search: Query is too long",
             prefix: prefix,
@@ -65,7 +65,7 @@ router.get('/search', async (req, res, next) => {
                 cards: results
             });
         } else if (prefix == ''){
-            let results = await PostModel.GetNRecentPosts(5);
+            let results = await PostModel.GetNRecentPosts(6);
             res.render('search_results',{
                 title: "Search: " + prefix +" "+ searchQuery[1],
                 prefix: prefix,
@@ -74,9 +74,9 @@ router.get('/search', async (req, res, next) => {
                 cards: results
             });
         } else {
-            let results = await PostModel.GetNRecentPrefixPosts(5, prefix);
+            let results = await PostModel.GetNRecentPrefixPosts(6, prefix);
             if (results.length < 1) {
-                let results = await PostModel.GetNRecentPosts(5);
+                let results = await PostModel.GetNRecentPosts(6);
                 res.render('search_results',{
                     title: "Search: " + prefix +" "+ searchQuery[1],
                     prefix: prefix,
