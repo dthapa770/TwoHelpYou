@@ -19,11 +19,11 @@
 		grid-template-columns: max-content max-content;
 		grid-template-rows: max-content max-content;
 		row-gap: 5%;
-		padding-bottom: 5%;
+		padding-bottom: 5% !important;
 	}
 	#search_form {
 		grid-column-start: 1;
-		grid-column-end: 3;
+		grid-column-end: 4;
 		grid-row: 2;
 	}
 	#default_nav {
@@ -31,7 +31,7 @@
 		grid-row: 1;
 	}
 	#user_nav {
-		grid-column-start: 2;
+		grid-column-start: 3;
 		grid-row: 1;
 	}
 	#main_content {
@@ -51,17 +51,17 @@
 	}
 	#search_form {
 		grid-column-start: 1;
-		grid-column-end: 3;
+		grid-column-end: 4;
 		grid-row: 3;
 	}
 	#default_nav {
 		grid-column-start: 1;
-		grid-column-end: 3;
+		grid-column-end: 4;
 		grid-row: 1;
 	}
 	#user_nav {
 		grid-column-start: 1;
-		grid-column-end: 3;
+		grid-column-end: 4;
 		grid-row: 2;
 	}
 	#main_content {
