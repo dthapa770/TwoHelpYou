@@ -34,6 +34,7 @@ function CheckCourse(input) {
 
 
 let course_postfix = document.getElementById('course_postfix');
+let postfix_valid = false;
 /**
  * Listener for course_postfix validation
  * @param event 
@@ -42,9 +43,11 @@ course_postfix.onchange = function (event) {
 	if (CheckCourse(course_postfix) != 'Course number is valid') {
 		document.getElementById('course_postfix_message').innerHTML = CheckCourse(course_postfix);
 		document.getElementById('course_postfix_message').style.color = 'red';
+		postfix_valid = false;
 	} else {
 		document.getElementById('course_postfix_message').innerHTML = CheckCourse(course_postfix);
 		document.getElementById('course_postfix_message').style.color = 'green';
+		postfix_valid = true;
 	}
 
 };
@@ -65,11 +68,9 @@ function ValidateAvailavility(val) {
 	// Strict entry restriction
 	// if (val.value.match(/^[a-zA-Z]{3}-[a-zA-Z]{3} [0-9]{1}[a-zA-Z]{2}-[0-9]{1}[a-zA-Z]{2}$/g) != null) {
 	if (val.value.length > 3) {
-		console.log("valid");
 		availability.style.border = "1px solid green";
 		return true;
 	} else {
-		console.log("invalid");
 		availability.style.border = "1px solid red";
 		return false;
 	}
@@ -85,7 +86,7 @@ availability.onchange = function (event) {
 //on submit validate inputs
 let post_form = document.getElementById('post_page');
 post_form.onsubmit = function (event) {
-	if(!ValidateAvailavility(availability)) {
+	if(!ValidateAvailavility(availability) || !postfix_valid) {
 		return false;
 	}else {
 		return true;
