@@ -32,8 +32,8 @@ UserModel.Create = async (first_name,last_name,username,password,email,image_nam
     var thumbnail = "images/thumbnails/" + image_name;
     return bcrypt.hash(password,10)
         .then((hashedPassword)=>{
-            let baseSQL="INSERT INTO user (first_name,last_name,username,email,password,created,photopath,thumbnail) VALUES(?,?,?,?,?,now(),?,?);"
-            return db.execute(baseSQL,[first_name,last_name,username,email,hashedPassword,photopath,thumbnail])
+            let base_sql="INSERT INTO user (first_name,last_name,username,email,password,created,photopath,thumbnail) VALUES(?,?,?,?,?,now(),?,?);"
+            return db.execute(base_sql,[first_name,last_name,username,email,hashedPassword,photopath,thumbnail])
         })
         .then(([results,fields]) => {
             if(results && results.affectedRows){
@@ -80,8 +80,8 @@ UserModel.EmailExists = async (email) =>{
  */
 UserModel.Authenticate = async (username, password) =>{
     let user_id;
-    let baseSQL="SELECT user_id,username, password, email FROM user WHERE username=?;";
-    return db.execute(baseSQL,[username])
+    let base_sql="SELECT user_id,username, password, email FROM user WHERE username=?;";
+    return db.execute(base_sql,[username])
         .then(([results,fields]) =>{
             if(results && results.length ==1){
                 user_id= results[0].user_id;
@@ -106,10 +106,10 @@ UserModel.Authenticate = async (username, password) =>{
  * @returns 
  */
 UserModel.GetUser = async (username) => {
-    let baseSQL = `SELECT u.username, u.user_id, u.first_name, u.photopath
+    let base_sql = `SELECT u.username, u.user_id, u.first_name, u.photopath
                     from user u
                     where u.username = ?;`;
-    return db.execute(baseSQL, [username])
+    return db.execute(base_sql, [username])
     .then(([results, fields]) => {
         return Promise.resolve(results);
     })
@@ -122,12 +122,12 @@ UserModel.GetUser = async (username) => {
  * @returns 
  */
 UserModel.GetUserMessageCount = async (user_id) => {
-    let baseSQL = `SELECT u.user_id, u.first_name, COUNT(m.receiver_id) AS messages 
+    let base_sql = `SELECT u.user_id, u.first_name, COUNT(m.receiver_id) AS messages 
                     FROM user u LEFT JOIN message m
                     ON u.user_id = m.receiver_id
                     GROUP BY u.user_id, m.receiver_id
                     HAVING u.user_id = ?;`
-    return db.execute(baseSQL, [user_id])
+    return db.execute(base_sql, [user_id])
     .then(([messages, fields]) => {
         return Promise.resolve(messages[0]);
     })
@@ -140,12 +140,12 @@ UserModel.GetUserMessageCount = async (user_id) => {
  * @returns 
  */
 UserModel.GetUserPostCount = async (user_id) => {
-    let baseSQL = `SELECT u.user_id, COUNT(p.user_id) AS posts 
+    let base_sql = `SELECT u.user_id, COUNT(p.user_id) AS posts 
                     FROM user u LEFT JOIN post p
                     ON u.user_id = p.user_id AND p.authorized = 1
                     GROUP BY u.user_id, p.user_id
                     HAVING u.user_id = ?;`
-    return db.execute(baseSQL, [user_id])
+    return db.execute(base_sql, [user_id])
     .then(([posts, fields]) => {
         return Promise.resolve(posts[0]);
     })
