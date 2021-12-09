@@ -25,8 +25,8 @@ const PostModel = {};
  * @returns neccesary information to make the tutoring post/cards
  */
 PostModel.Search = (search) => {
-	let sqlSearchTerm = '%' + search + '%'; // Variables don't follow naming convention
-	let baseSQL = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
+	let sql_search_term = '%' + search + '%'; // Variables don't follow naming convention
+	let base_sql = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
 					u.user_id, u.username, u.thumbnail, avg(ifnull(r.rating,0)) as avg_rating,
 					concat_ws(' ', u.first_name, u.last_name, u.username, p.availability,
 					c.course_prefix, c.course_postfix)	as haystack
@@ -37,7 +37,7 @@ PostModel.Search = (search) => {
 					group by p.post_id
 					having haystack like ?
 					order by p.post_creation desc;`;
-	return db.execute(baseSQL,[ sqlSearchTerm ])
+	return db.execute(base_sql,[ sql_search_term ])
                 .then(([ results, fields ]) => {
 					return Promise.resolve(results);
 				})
@@ -53,7 +53,7 @@ PostModel.Search = (search) => {
  * @returns neccesary information to make the tutoring post/cards
  */
 PostModel.GetNRecentPrefixPosts = (nth, prefix) => {
-	let baseSQL = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
+	let base_sql = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
 					u.user_id, u.username, u.thumbnail, avg(ifnull(r.rating,0)) as avg_rating 
 					from user u, course c, post p left join review r 
 					on r.post_id = p.post_id
@@ -61,7 +61,7 @@ PostModel.GetNRecentPrefixPosts = (nth, prefix) => {
 					group by p.post_id 
 					having c.course_prefix like ?
 					order by p.post_creation desc limit ${nth};`;
-	return db.execute(baseSQL, [prefix])
+	return db.execute(base_sql, [prefix])
 	.then(([results, fields]) => {
 		return Promise.resolve(results);
 	})
@@ -77,13 +77,13 @@ PostModel.GetNRecentPrefixPosts = (nth, prefix) => {
  * @returns neccesary information to make the tutoring post/cards
  */
 PostModel.GetNRecentPosts = (nth) => {
-	let baseSQL = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
+	let base_sql = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
 					u.user_id, u.username, u.thumbnail, avg(ifnull(r.rating,0)) as avg_rating 
 					from user u, course c, post p left join review r 
 					on r.post_id = p.post_id
 					where u.user_id = p.user_id and c.course_id = p.course_id and p.authorized <> 0
 					group by p.post_id order by p.post_creation desc	limit ${nth};`;
-	return db.execute(baseSQL, [])
+	return db.execute(base_sql, [])
 	.then(([results, []]) => {
 		return Promise.resolve(results);
 	})
@@ -96,10 +96,10 @@ PostModel.GetNRecentPosts = (nth) => {
  * @returns neccesary information needed to load the drop down menu
  */
 PostModel.GetCoursePrefix = () => {
-	let baseSQL = `select distinct c.course_prefix 
+	let base_sql = `select distinct c.course_prefix 
 					from course c
 					order by c.course_prefix;`;
-	return db.execute(baseSQL, [])
+	return db.execute(base_sql, [])
 	.then(([results, []]) => {
 		return Promise.resolve(results);
 	})
@@ -112,10 +112,10 @@ PostModel.GetCoursePrefix = () => {
  * @returns bool on if it exists
  */
 PostModel.CheckCoursePrefix = async (course_prefix) => {
-	let baseSQL = `select c.course_prefix
+	let base_sql = `select c.course_prefix
 					from course c
 					where c.course_prefix = ?;`;
-	return db.execute(baseSQL, [course_prefix])
+	return db.execute(base_sql, [course_prefix])
 		.then(([ results, fields ]) => {
 			if (results.length > 0)
 				return Promise.resolve(true);
@@ -132,10 +132,10 @@ PostModel.CheckCoursePrefix = async (course_prefix) => {
  * @returns bool on if it exists
  */
 PostModel.CheckCoursePostfix = async (course_prefix, course_postfix) => {
-	let baseSQL = `select c.course_postfix
+	let base_sql = `select c.course_postfix
 					from course c
 					where c.course_prefix = ? and c.course_postfix = ?;`;
-	return db.execute(baseSQL, [course_prefix, course_postfix])
+	return db.execute(base_sql, [course_prefix, course_postfix])
 		.then(([results, fields]) => {
 			if (results.length > 0)
 				return Promise.resolve(true);
@@ -152,10 +152,10 @@ PostModel.CheckCoursePostfix = async (course_prefix, course_postfix) => {
  * @returns course_id
  */
 PostModel.GetCourseID = async (course_prefix, course_postfix) => {
-	let baseSQL = `select c.course_id
+	let base_sql = `select c.course_id
 					from course c
 					where c.course_prefix = ? and c.course_postfix = ?;`;
-	return db.execute(baseSQL, [course_prefix, course_postfix])
+	return db.execute(base_sql, [course_prefix, course_postfix])
 		.then(([results, fields]) =>{
 			if (results.length > 0) {
 				return Promise.resolve(results[0].course_id);
@@ -174,9 +174,9 @@ PostModel.GetCourseID = async (course_prefix, course_postfix) => {
  * @returns course_id
  */
 PostModel.InsertCourse = async (course_prefix, course_postfix) => {
-	let baseSQL = `INSERT INTO course (course_prefix, course_postfix)
+	let base_sql = `INSERT INTO course (course_prefix, course_postfix)
 					values (?,?);`;
-	return db.execute(baseSQL, [course_prefix, course_postfix])
+	return db.execute(base_sql, [course_prefix, course_postfix])
 		.then(([results,fields]) => {
 		if(results && results.affectedRows){
 			return Promise.resolve(results.insertId);
@@ -197,15 +197,15 @@ PostModel.InsertCourse = async (course_prefix, course_postfix) => {
  * @returns post_id
  */
 PostModel.CreatePost = async (availability, user_id, course_id, file_name) => {
-	let postSQL = `INSERT INTO post (availability, user_id, course_id)
+	let post_sql = `INSERT INTO post (availability, user_id, course_id)
 					VALUES (?,?,?);`;
 	let file_path = `documents/` + file_name;
-	let fileSQL = `INSERT INTO qualification (document_path, user_id, post_id)
+	let file_sql = `INSERT INTO qualification (document_path, user_id, post_id)
 					VALUES (?,?,?)`;
-	return db.execute(postSQL, [availability, user_id, course_id])
+	return db.execute(post_sql, [availability, user_id, course_id])
 		.then(([post_results,post_fields]) =>{
 			if (post_results && post_results.affectedRows) {
-				return db.execute(fileSQL, [file_path, user_id, post_results.insertId])
+				return db.execute(file_sql, [file_path, user_id, post_results.insertId])
 				.then(([file_results, file_fields]) => {
 					if (file_results && file_results.affectedRows) {
 							return Promise.resolve(post_results.insertId);
@@ -225,10 +225,10 @@ PostModel.CreatePost = async (availability, user_id, course_id, file_name) => {
  * @returns user_id
  */
 PostModel.ValidateUser = async (username) => {
-	let baseSQL = `SELECT user_id 
+	let base_sql = `SELECT user_id 
 					FROM user
 					WHERE username = ?;`;
-	return db.execute(baseSQL, [username])
+	return db.execute(base_sql, [username])
 		.then(([results, fields]) => {
 			return Promise.resolve(results[0].user_id);
 		})
@@ -240,10 +240,10 @@ PostModel.ValidateUser = async (username) => {
  * @param postid
  * @returns results
  */
-PostModel.GetPostById=(postId) =>{	// Variable name does not follow convention
-    let baseSQL=
+PostModel.GetPostById=(post_id) =>{	// Variable name does not follow convention
+    let base_sql=
         'SELECT u.username, p.availability, u.first_name, u.thumbnail, u.last_name, p.post_id, c.course_prefix,c.course_postfix  FROM user u JOIN post p ON p.post_id = u.user_id JOIN course c ON p.course_id = c.course_id   WHERE p.post_id = ?;'
-    return db.execute(baseSQL,[postId])
+    return db.execute(base_sql,[post_id])
         .then(([results, fields]) =>{
               return Promise.resolve(results);
         })

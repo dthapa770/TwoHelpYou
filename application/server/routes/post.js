@@ -27,49 +27,49 @@ const PostError = require('../helpers/error/post_error');
  * the information needed to build the tutoring post/cards
  */
 router.get('/search', async (req, res, next) => {
-    let searchQuery = (req.query.search).split(','); // Variable name doesnt follow convention
-    let searchTerm = '';                             // Variable name doesnt follow convention
-    let prefix = searchQuery[0];
-    if (searchQuery[1].length > 40) {
+    let search_query = (req.query.search).split(','); // Variable name doesnt follow convention
+    let search_term = '';                             // Variable name doesnt follow convention
+    let prefix = search_query[0];
+    if (search_query[1].length > 40) {
         let results = await PostModel.GetNRecentPosts(6);
         res.render('search_results',{
             title: "Search: Query is too long",
             prefix: prefix,
-            postfix: searchQuery[1],
+            postfix: search_query[1],
             message: "search query is too long, try again.",
             cards: results
         });
         return;
     }
     if (prefix != '')
-        searchTerm = searchQuery[0] +' '+ searchQuery[1];
+        search_term = search_query[0] +' '+ search_query[1];
     else
-        searchTerm = searchQuery[1];
-    if (!searchTerm) {
+        search_term = search_query[1];
+    if (!search_term) {
         let results = await PostModel.GetNRecentPosts(100);
         res.render('search_results',{
             title: "All Posts",
             prefix: prefix,
-            postfix: searchQuery[1],
+            postfix: search_query[1],
             message: "no search term given, showing all posts.",
             cards: results
         });
     } else {
-        let results = await PostModel.Search(searchTerm);
+        let results = await PostModel.Search(search_term);
         if (results.length) {
             res.render('search_results',{
-                title: "Search: " + prefix +" "+ searchQuery[1],
+                title: "Search: " + prefix +" "+ search_query[1],
                 prefix: prefix,
-                postfix: searchQuery[1],
+                postfix: search_query[1],
                 message: "that are relevent.",
                 cards: results
             });
         } else if (prefix == ''){
             let results = await PostModel.GetNRecentPosts(6);
             res.render('search_results',{
-                title: "Search: " + prefix +" "+ searchQuery[1],
+                title: "Search: " + prefix +" "+ search_query[1],
                 prefix: prefix,
-                postfix: searchQuery[1],
+                postfix: search_query[1],
                 message: "no results were found.",
                 cards: results
             });
@@ -78,18 +78,18 @@ router.get('/search', async (req, res, next) => {
             if (results.length < 1) {
                 let results = await PostModel.GetNRecentPosts(6);
                 res.render('search_results',{
-                    title: "Search: " + prefix +" "+ searchQuery[1],
+                    title: "Search: " + prefix +" "+ search_query[1],
                     prefix: prefix,
-                    postfix: searchQuery[1],
+                    postfix: search_query[1],
                     message: "no results in category, showing all recent posts.",
                     cards: results
                 });
                 return;
             }
             res.render('search_results',{
-                title: "Search: " + prefix +" "+ searchQuery[1],
+                title: "Search: " + prefix +" "+ search_query[1],
                 prefix: prefix,
-                postfix: searchQuery[1],
+                postfix: search_query[1],
                 message: "within catagory, no results were found.",
                 cards: results
             });
