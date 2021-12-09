@@ -27,8 +27,8 @@ const PostError = require('../helpers/error/post_error');
  * the information needed to build the tutoring post/cards
  */
 router.get('/search', async (req, res, next) => {
-    let searchQuery = (req.query.search).split(',');
-    let searchTerm = '';
+    let searchQuery = (req.query.search).split(','); // Variable name doesnt follow convention
+    let searchTerm = '';                             // Variable name doesnt follow convention
     let prefix = searchQuery[0];
     if (searchQuery[1].length > 40) {
         let results = await PostModel.GetNRecentPosts(6);

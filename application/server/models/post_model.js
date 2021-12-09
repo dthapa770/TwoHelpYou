@@ -25,7 +25,7 @@ const PostModel = {};
  * @returns neccesary information to make the tutoring post/cards
  */
 PostModel.Search = (search) => {
-	let sqlSearchTerm = '%' + search + '%';
+	let sqlSearchTerm = '%' + search + '%'; // Variables don't follow naming convention
 	let baseSQL = `select p.post_id, c.course_prefix, c.course_postfix, p.availability,
 					u.user_id, u.username, u.thumbnail, avg(ifnull(r.rating,0)) as avg_rating,
 					concat_ws(' ', u.first_name, u.last_name, u.username, p.availability,
@@ -235,7 +235,12 @@ PostModel.ValidateUser = async (username) => {
 		.catch((err) => Promise.reject(-1));
 }
 
-PostModel.GetPostById=(postId) =>{
+/**
+ * Gets post id from the database
+ * @param postid
+ * @returns results
+ */
+PostModel.GetPostById=(postId) =>{	// Variable name does not follow convention
     let baseSQL=
         'SELECT u.username, p.availability, u.first_name, u.thumbnail, u.last_name, p.post_id, c.course_prefix,c.course_postfix  FROM user u JOIN post p ON p.post_id = u.user_id JOIN course c ON p.course_id = c.course_id   WHERE p.post_id = ?;'
     return db.execute(baseSQL,[postId])
