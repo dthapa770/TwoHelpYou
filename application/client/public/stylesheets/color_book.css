@@ -232,3 +232,14 @@ input[type=text], input[type=password], input[type = email] {
 .legal_link:hover {
 	background-color: gold;
 }
+
+/* title css */
+#title {
+	font-size: 20px;
+	font-weight: bold;
+	color: gold;
+	text-align: center;
+	padding: 2%;
+	/* background color */
+	background-color: #310944;
+}
