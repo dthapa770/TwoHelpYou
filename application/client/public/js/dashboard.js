@@ -17,7 +17,7 @@
 function OpenNav() {
 	document.getElementById('side_panel').style.width = '250px';
 }
-
+console.log('hello')
 /* Set the width of the sidebar to 0 (hide it) */
 function CloseNav() {
 	document.getElementById('side_panel').style.width = '0';
